@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Winkelwagen() {
+export default function About() {
     return (
         <div>
-            <h1>Winkelwagen</h1>
+            <h1>Over Suusje</h1>
         </div>
     )
 }

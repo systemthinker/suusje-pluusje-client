@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function MeerInfo() {
+export default function Basket() {
     return (
         <div>
-            <h1>Meer Info</h1>
+            <h1>Winkelwagen</h1>
         </div>
     )
 }

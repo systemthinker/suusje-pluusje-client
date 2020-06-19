@@ -1,16 +1,18 @@
 import { combineReducers } from "redux";
 import appState from "./appState/reducer";
-import admin from "./admin/reducer";
-import bestelling from './bestelling/reducer'
-import klant from './klant/reducer'
+import admins from "./admins/reducer";
+import orders from './orders/reducer'
+import clients from './clients/reducer'
 import productDetails from './productDetails/reducer'
-import winkelwagen from './winkelwagen/reducer'
+import products from './products/reducer'
+import baskets from './baskets/reducer'
 
 export default combineReducers({
   appState,
-  admin,
-  bestelling,
-  klant,
+  admins,
+  orders,
+  clients,
   productDetails,
-  winkelwagen,
+  products,
+  baskets,
 });

@@ -7,17 +7,17 @@ import Loading from "./components/Loading";
 import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import Over from './pages/Over'
-import MeerInfo from './pages/MeerInfo'
-import Bestelling from './pages/Bestelling'
+import About from './pages/About'
+import MoreInfo from './pages/MoreInfo'
+import Order from './pages/Order'
 import Dashboard from './pages/Dashboard'
-import Winkelwagen from './pages/Winkelwagen'
+import Basket from './pages/Basket'
 import ProductDetails from './pages/ProductDetails'
 import Home from './pages/Home'
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
-import { getUserWithStoredToken } from "./store/klant/actions";
+import { getUserWithStoredToken } from "./store/clients/actions";
 
 
 
@@ -38,13 +38,13 @@ function App() {
       {isLoading ? <Loading /> : null}
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/over" component={Over} />
-        <Route path="/info" component={MeerInfo} />
+        <Route path="/about" component={About} />
+        <Route path="/info" component={MoreInfo} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
-        <Route path="/bestelling" component={Bestelling} />
+        <Route path="/order" component={Order} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/winkelwagen" component={Winkelwagen} />
+        <Route path="/basket" component={Basket} />
         <Route path="/product/:id" component={ProductDetails}/>
       </Switch>
     </div>

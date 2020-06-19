@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logOut } from "../../store/klant/actions";
+import { logOut } from "../../store/clients/actions";
 import Button from "react-bootstrap/Button";
-import { selectUser } from "../../store/klant/selectors";
+import { selectUser } from "../../store/clients/selectors";
 import Nav from "react-bootstrap/Nav";
 
 export default function LoggedIn() {

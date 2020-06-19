@@ -12,16 +12,16 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
 
-const loginSuccess = userWithToken => {
+const loginSuccess = clientWithToken => {
   return {
     type: LOGIN_SUCCESS,
-    payload: userWithToken
+    payload: clientWithToken
   };
 };
 
-const tokenStillValid = userWithoutToken => ({
+const tokenStillValid = clientWithoutToken => ({
   type: TOKEN_STILL_VALID,
-  payload: userWithoutToken
+  payload: clientWithoutToken
 });
 
 export const logOut = () => ({ type: LOG_OUT });
@@ -37,7 +37,7 @@ export const signUp = (name, email, password) => {
       });
 
       dispatch(loginSuccess(response.data));
-      dispatch(showMessageWithTimeout("success", true, "account created"));
+      dispatch(showMessageWithTimeout("success", true, "account aangemaakt"));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -62,7 +62,7 @@ export const login = (email, password) => {
       });
 
       dispatch(loginSuccess(response.data));
-      dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
+      dispatch(showMessageWithTimeout("success", false, "welkom terug!", 1500));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {

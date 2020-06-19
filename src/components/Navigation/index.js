@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectToken } from "../../store/klant/selectors";
+import { selectToken } from "../../store/clients/selectors";
 import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
@@ -24,10 +24,10 @@ export default function Navigation() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Home" />
-          <NavbarItem path="/over" linkText="Over" />
+          <NavbarItem path="/about" linkText="Over" />
           <NavbarItem path="/info" linkText="Meer Info"/>
           {loginLogoutControls}
-          <NavbarItem path="/winkelwagen" linkText="Mijn Winkelwagen"/>
+          <NavbarItem path="/basket" linkText="Mijn Winkelwagen"/>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
