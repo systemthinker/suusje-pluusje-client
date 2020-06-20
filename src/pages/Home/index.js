@@ -29,7 +29,7 @@ console.log('products?', products)
         // </Row>
       
       <Container fluid>
-            <h1>Home</h1>
+            <h1 className="App">Welkom op SuusjePluusje!</h1>
             <Row>
                 {products.map((product,index)=>{
                     if (index <= 3) {
