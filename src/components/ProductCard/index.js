@@ -9,7 +9,7 @@ export default function ProductCard({id, name, description, price, imageUrl}) {
         <div className="card">
             <img height="200" width="180" className="center-block" src={imageUrl} alt=""></img>
             <p>{name}</p>
-            <p>{description}</p>
+            <p className="description">{description}</p>
             <p ><bolder className="price">{price}</bolder></p>
             
         </div>
