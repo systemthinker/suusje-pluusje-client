@@ -8,11 +8,11 @@ export default function ProductDetailCard({name, price , imageUrl, description})
         <Container fluid>
             <div height="200px"></div>
             <h1>{name}</h1>
-            <img height="500px" src={`${imageUrl}`} alt=""></img>
+            <img height="600px" src={`${imageUrl}`} alt=""></img>
             <p>{description}</p>
-            <h4>{price}</h4>
+            <h1>&euro;{price}</h1>
             <Link to="/winkelwagen">
-               <Button variant="success">Voeg Toe Aan Winkelwagen</Button>
+               <Button  size="lg" variant="success">Voeg Toe Aan Winkelwagen</Button>
             </Link>
         </Container>
     )

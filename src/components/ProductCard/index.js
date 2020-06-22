@@ -1,6 +1,7 @@
 import React from 'react'
 import './productCard.css'
 import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 export default function ProductCard({id, name, description, price, imageUrl}) {
     return (
@@ -11,6 +12,9 @@ export default function ProductCard({id, name, description, price, imageUrl}) {
             <p>{name}</p>
             <p className="description">{description}</p>
             <p ><bolder className="price">{price}</bolder></p>
+            <Link to="/winkelwagen" style={{ textDecoration: 'none' }}>
+                <Button variant="success" block>In Winkelwagen</Button>
+            </Link>
             
         </div>
         </Link>
