@@ -10,10 +10,7 @@ export const fetchProducts = () => {
 
     const response = await Axios.get('http://localhost:4000/product')
 
-    console.log('reponse', response.data)
-
-
-    dispatch(fetchProductsAction(response.data))
+        dispatch(fetchProductsAction(response.data))
 }
 }
  
