@@ -13,15 +13,16 @@ export default function ProductDetails() {
     const dispatch = useDispatch()
     const product = useSelector(selectProductDetailPage)
     const client = useSelector(selectClient)
+    const clientId = client.id
     
     
-    function dispatchOnClick(productId){
-        if(client.clientId === undefined){
-            dispatch(createAnonymousClient(productId))
+    function dispatchOnClick(id){
+        if(clientId === undefined){
+            dispatch(createAnonymousClient(id))
         } 
         
-        if(client.clientId !== undefined && client.clientId){
-            dispatch(addProductToBasket(client.clientId,productId))
+        if(clientId !== undefined && clientId){
+            dispatch(addProductToBasket(clientId,id))
         }
         }
 
