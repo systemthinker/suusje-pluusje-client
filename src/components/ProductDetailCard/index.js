@@ -3,7 +3,7 @@ import { Container,Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 
-export default function ProductDetailCard({name, price , imageUrl, description}) {
+export default function ProductDetailCard({id, name, price , imageUrl, description, dispatchOnClick}) {
     return (
         <Container fluid>
             <div height="200px"></div>
@@ -11,9 +11,9 @@ export default function ProductDetailCard({name, price , imageUrl, description})
             <img height="600px" src={`${imageUrl}`} alt=""></img>
             <p>{description}</p>
             <h1>&euro;{price}</h1>
-            <Link to="/winkelwagen">
-               <Button  size="lg" variant="success">Voeg Toe Aan Winkelwagen</Button>
-            </Link>
+            
+               <Button  size="lg" onClick={e=>dispatchOnClick(id)} variant="success">Voeg Toe Aan Winkelwagen</Button>
+            
         </Container>
     )
 }

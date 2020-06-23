@@ -13,6 +13,8 @@ export default function Home() {
 const products = useSelector(selectProducts)
 const dispatch = useDispatch()
 const client = useSelector(selectClient);
+const id = client.id
+
 
 
     useEffect(()=>{
@@ -24,17 +26,15 @@ const client = useSelector(selectClient);
 
 
     function dispatchOnClick(productId){
-        if(client.clientId === undefined){
+        if(id === undefined){
            
             dispatch(createAnonymousClient(productId))
             
-            
-               
         } 
         
-        if(client.clientId !== undefined && client.clientId){
+        if(id !== undefined && id){
             
-            dispatch(addProductToBasket(client.clientId,productId))
+            dispatch(addProductToBasket(id,productId))
         }
         }
 

@@ -24,10 +24,10 @@ const tokenStillValid = clientWithoutToken => ({
   payload: clientWithoutToken
 });
 
-const createAnonymousClientAction = client => ({
-  type: "CREATE_ANONYMOUS_CLIENT",
-  payload: client
-})
+// const createAnonymousClientAction = client => ({
+//   type: "CREATE_ANONYMOUS_CLIENT",
+//   payload: client
+// })
 
 const addProductToBasketAction = products => ({
   type: "ADD_PRODUCT_TO_BASKET",
@@ -40,9 +40,11 @@ export const createAnonymousClient = (productId)=>{
       productId
     })
 
+    console.log('response is', response.data.basket)
+
     
-    dispatch(createAnonymousClientAction(response.data))
-    dispatch(addProductToBasketAction(response.data.products))
+    dispatch(loginSuccess(response.data))
+    dispatch(addProductToBasketAction(response.data.basket.products))
   }
 }
 export const logOut = () => ({ type: LOG_OUT });
