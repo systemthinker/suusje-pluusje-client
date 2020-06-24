@@ -18,13 +18,14 @@ export default function ProductCard({id, name, description, price, imageUrl, dis
         
         <div className="card">
             <Link to={`/product/${id}`} style={{ textDecoration: 'none' }}>
-            <img height="200" width="180" className="center-block" src={imageUrl} alt=""></img>
-            <p>{name}</p>
-            <p className="description">{description}</p>
-            <p className="price"> {price}</p>
-            </Link>
-            
+                <img height="200" width="180" className="center-block" src={imageUrl} alt=""></img>
+                <p>{name}</p>
+                <p className="description">{description}</p>
+                <p className="price"> {price}</p>
+                
+                
                 <Button variant="success" onClick={e=>dispatchOnClick(id)} block>In Winkelwagen</Button>
+            </Link>    
             
             
         </div>

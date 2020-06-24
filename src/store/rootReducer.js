@@ -5,7 +5,7 @@ import orders from './orders/reducer'
 import clients from './clients/reducer'
 import productDetails from './productDetails/reducer'
 import products from './products/reducer'
-import baskets from './baskets/reducer'
+import basket from './baskets/reducer'
 
 export default combineReducers({
   appState,
@@ -14,5 +14,5 @@ export default combineReducers({
   clients,
   productDetails,
   products,
-  baskets,
+  basket,
 });

@@ -7,9 +7,9 @@ import { fetchBasket } from '../../store/baskets/actions'
 export default function Basket() {
 // const basket = useSelector(selectBasket)
 
-//     useEffect(()=>{
-//         useDispatch(fetchBasket);
-//     },[dispatch])
+    useEffect(()=>{
+        useDispatch(fetchBasket);
+    },[dispatch])
     return (
         <div>
             <h1 className='App'>Winkelwagen</h1>
