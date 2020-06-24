@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectBasket } from '../../store/baskets/selectors'
 import OrderButton from '../OrderButton'
-import AddToBasketButton from '../AddToBasketButton'
+
 
 
 export default function ProductDetailCard({id, name, price , imageUrl, description, dispatchOnClick}) {

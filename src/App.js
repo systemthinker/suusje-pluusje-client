@@ -44,7 +44,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/order" component={Order} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/basket" component={Basket} />
+        <Route path="/basket/:id" component={Basket} />
         <Route path="/product/:id" component={ProductDetails}/>
       </Switch>
     </div>

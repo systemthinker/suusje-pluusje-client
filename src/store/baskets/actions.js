@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { apiUrl } from '../../config'
+import { apiUrl } from '../../config/constants'
 
 export const addProductToBasketAction = basket => ({
     type: "ADD_PRODUCT_TO_BASKET",
@@ -34,9 +34,9 @@ export const createBasket = () => {
 
 export const fetchBasket = (id) => {
     return async (dispatch) => {
-    const response = await Axios.get(`${apiUrl}/basket/${id}`)
+    const response = await Axios.get(`${apiUrl}/basket/client/${id}`)
         console.log('response is', response)
-    dispatch(fetchBasketAction(response.data))
+    dispatch(fetchBasketAction(response.data.products))
 
     }
 }

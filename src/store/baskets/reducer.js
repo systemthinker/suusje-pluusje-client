@@ -5,6 +5,9 @@ export default (state = initialState, action) => {
    
     case "ADD_PRODUCT_TO_BASKET":
       return [...action.payload]
+
+    case "FETCH_BASKET":
+      return [...action.payload]  
       
     default:
       return state;
