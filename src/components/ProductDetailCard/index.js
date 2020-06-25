@@ -1,13 +1,15 @@
 import React from 'react'
 import { Container,Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectBasket } from '../../store/baskets/selectors'
+import { selectAppLoading } from '../../store/appState/selectors'
 import OrderButton from '../OrderButton'
 
 
 
+
 export default function ProductDetailCard({id, name, price , imageUrl, description, dispatchOnClick}) {
+    const isLoading = useSelector(selectAppLoading);
     const mystyle = {
         marginTop: "20px",
         height: "70px",
@@ -15,8 +17,25 @@ export default function ProductDetailCard({id, name, price , imageUrl, descripti
         
       };
     const basket = useSelector(selectBasket);
-    console.log('basket is' , basket)
-    const isInBasket = basket.find(b=>b.id ===id) ? <OrderButton/> : <Button style={mystyle} size="lg" onClick={e=>dispatchOnClick(id)} variant="success">Voeg Toe Aan Winkelwagen</Button>
+    
+    function loading(){
+        if(isLoading){
+            return null;
+        } else {
+            return dispatchOnClick(id)
+        }
+    }
+
+    function loadingOrderButton(){
+        if(isLoading){
+            return null;
+        } else {
+            return <OrderButton />
+        }
+    }
+
+
+    const isInBasket = basket.find(b=>b.id ===id) ? loadingOrderButton() : <Button style={mystyle} size="lg" onClick={e=>{loading()}} variant="success">Voeg Toe Aan Winkelwagen</Button>
     
 
     return (

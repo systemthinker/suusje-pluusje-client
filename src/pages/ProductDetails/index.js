@@ -7,6 +7,7 @@ import { selectProductDetailPage } from '../../store/productDetails/selectors'
 import { selectClient } from '../../store/clients/selectors'
 import { useParams } from 'react-router-dom'
 import ProductDetailCard from '../../components/ProductDetailCard'
+import { appLoading, appDoneLoading } from '../../store/appState/actions'
 
 export default function ProductDetails() {
     const { id } = useParams();
@@ -18,11 +19,15 @@ export default function ProductDetails() {
     
     function dispatchOnClick(id){
         if(clientId === undefined){
+            dispatch(appLoading)
             dispatch(createAnonymousClient(id))
+            dispatch(appDoneLoading)
         } 
         
         if(clientId !== undefined && clientId){
+            dispatch(appLoading)
             dispatch(addProductToBasket(clientId,id))
+            dispatch(appDoneLoading)
         }
         }
 

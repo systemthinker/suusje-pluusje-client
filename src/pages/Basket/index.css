@@ -36,3 +36,14 @@
 .name {
     min-width: 300px;
 }
+
+.orderButtonBasket {
+  width: 100%;
+  margin-top: 20px;
+  
+}
+
+.orderButtonUnderDelivery {
+  margin-top: 30px;
+}
+

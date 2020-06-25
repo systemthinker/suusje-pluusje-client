@@ -27,7 +27,7 @@ export const removeProductFromBasket = (clientId,productId) => {
     const response = await Axios.put(`${apiUrl}/basket/${clientId}`,{
         productId
     })
-    console.log('response is', response)
+    
     dispatch(removeProductFromBasketAction(response.data))
 }
 }
@@ -37,7 +37,7 @@ export const addProductToBasket = (clientId,productId) => {
     const response = await Axios.patch(`${apiUrl}/basket/${clientId}`,{
         productId
     })
-    console.log('response is', response)
+    
     dispatch(addProductToBasketAction(response.data))
 }
 }
@@ -53,7 +53,7 @@ export const createBasket = () => {
 export const fetchBasket = (id) => {
     return async (dispatch) => {
     const response = await Axios.get(`${apiUrl}/basket/client/${id}`)
-        console.log('response fetch is', response)
+  
     dispatch(fetchBasketAction(response.data))
 
     }

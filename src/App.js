@@ -14,6 +14,7 @@ import Dashboard from './pages/Dashboard'
 import Basket from './pages/Basket'
 import ProductDetails from './pages/ProductDetails'
 import Home from './pages/Home'
+import OrderSignup from './pages/OrderSignup'
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -42,7 +43,8 @@ function App() {
         <Route path="/info" component={MoreInfo} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
-        <Route path="/order" component={Order} />
+        <Route exact path="/order" component={Order} />
+        <Route exact path="/order/signup" component={OrderSignup} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/basket/:id" component={Basket} />
         <Route path="/product/:id" component={ProductDetails}/>
