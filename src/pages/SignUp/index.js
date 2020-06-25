@@ -42,7 +42,7 @@ export default function SignUp() {
             value={name}
             onChange={event => setName(event.target.value)}
             type="text"
-            placeholder="Enter name"
+            placeholder="Vul uw naam in"
             required
           />
         </Form.Group>
@@ -52,11 +52,11 @@ export default function SignUp() {
             value={email}
             onChange={event => setEmail(event.target.value)}
             type="email"
-            placeholder="Enter email"
+            placeholder="Vul uw email in"
             required
           />
           <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
+          Wij delen uw email nooit.
           </Form.Text>
         </Form.Group>
 
@@ -66,16 +66,16 @@ export default function SignUp() {
             value={password}
             onChange={event => setPassword(event.target.value)}
             type="password"
-            placeholder="Password"
+            placeholder="Wachtwoord"
             required
           />
         </Form.Group>
         <Form.Group className="mt-5">
           <Button variant="primary" type="submit" onClick={submitForm}>
-            Sign up
+            Maak Account
           </Button>
         </Form.Group>
-        <Link to="/login">Click here to log in</Link>
+        <Link to="/login">Klik hier om in te loggen</Link>
       </Form>
     </Container>
   );

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectBasket } from '../../store/baskets/selectors'
-import { selectClient } from '../../store/clients/selectors'
+import { selectClient, selectToken } from '../../store/clients/selectors'
 import { fetchBasket } from '../../store/baskets/actions'
 import { addProductToBasket,removeProductFromBasket } from '../../store/baskets/actions'
 import { appLoading, appDoneLoading } from '../../store/appState/actions'
@@ -19,6 +19,7 @@ export default function Basket() {
 const { id } = useParams()
 const basket = useSelector(selectBasket);
 const client = useSelector(selectClient)
+const token = useSelector(selectToken)
 const clientId = client.id
 const orderPath = '/order'
 const orderSignUpPath = '/order/signup'
@@ -83,7 +84,7 @@ const verified = client.isVerified && client.name && client.email && token ? ord
                  </Col>
                  <Col md={3}><DeliveryInfo/>
                  <div >
-                <Link to="/"><Button className="orderButtonUnderDelivery" variant="success" size="lg"> Ik ga bestellen {'>>'} </Button></Link>
+                <Link to={`${verified}`}><Button className="orderButtonUnderDelivery" variant="success" size="lg"> Ik ga bestellen {'>>'} </Button></Link>
                 </div>
                  </Col>
                  <Col lg={2}></Col>
@@ -94,7 +95,7 @@ const verified = client.isVerified && client.name && client.email && token ? ord
                  
                  <Col md={5}>
                  <div >
-                <Link to="/"><Button className="orderButtonBasket" variant="success" size="lg"> Ik ga bestellen {'>>'} </Button></Link>
+                <Link to={`${verified}`}><Button className="orderButtonBasket" variant="success" size="lg"> Ik ga bestellen {'>>'} </Button></Link>
                 </div>
                 <div >
                 <Link to="/"><Button className="orderButtonBasket" variant="outline-primary" size="sm">{'<<'} Verder Winkelen </Button></Link>
