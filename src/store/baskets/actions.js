@@ -16,18 +16,36 @@ export const fetchBasketAction = basket => ({
     payload: basket
 })
 
+export const removeProductFromBasketAction = basket => ({
+    type: "REMOVE_PRODUCT_FROM_BASKET",
+    payload: basket
+})
+
+
+export const removeProductFromBasket = (clientId,productId) => {
+    return async (dispatch) => {
+    const response = await Axios.put(`${apiUrl}/basket/${clientId}`,{
+        productId
+    })
+    console.log('response is', response)
+    dispatch(removeProductFromBasketAction(response.data))
+}
+}
+
 export const addProductToBasket = (clientId,productId) => {
     return async (dispatch) => {
     const response = await Axios.patch(`${apiUrl}/basket/${clientId}`,{
         productId
     })
-    dispatch(addProductToBasketAction(response.data.products))
+    console.log('response is', response)
+    dispatch(addProductToBasketAction(response.data))
 }
 }
 
 export const createBasket = () => {
     return async (dispatch) => {
     const response = await Axios.patch(`${apiUrl}/basket/create`)
+   
     dispatch(createBasketAction(response.data))
 }
 }
@@ -35,8 +53,8 @@ export const createBasket = () => {
 export const fetchBasket = (id) => {
     return async (dispatch) => {
     const response = await Axios.get(`${apiUrl}/basket/client/${id}`)
-        console.log('response is', response)
-    dispatch(fetchBasketAction(response.data.products))
+        console.log('response fetch is', response)
+    dispatch(fetchBasketAction(response.data))
 
     }
 }
