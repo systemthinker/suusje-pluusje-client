@@ -7,6 +7,7 @@ import { selectToken } from "../../store/clients/selectors";
 import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
+import './index.css'
 
 export default function Navigation() {
   const token = useSelector(selectToken);
@@ -18,12 +19,12 @@ export default function Navigation() {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand as={NavLink} to="/">
-        SUUSJE PLUUSJE
+        <img src={`${'http://www.robbertvandenoutenaar.com/images/logoSuusjePluusje.png'}`} alt="" height="140px" width="250px"/>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
-          <NavbarItem path="/" linkText="Home" />
+          <NavbarItem className="nav-item" path="/" linkText="Home" />
           <NavbarItem path="/about" linkText="Over" />
           <NavbarItem path="/info" linkText="Meer Info"/>
           {loginLogoutControls}

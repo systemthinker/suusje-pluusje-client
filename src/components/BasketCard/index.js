@@ -42,7 +42,7 @@ export default function BasketCard(props) {
                         }} value={quantity} type="button" className="btn" id="btnPlus"><i data-feather="plus"></i>+ </Button>
                 </div>     
                 <p className="grid-item">prijs &#8364;</p>
-                <p className="grid-item priceBasket"> {totalPrice}</p>
+                <p className="grid-item priceBasket"> {totalPrice.toString().replace('.',',')}</p>
         </div>
        
 

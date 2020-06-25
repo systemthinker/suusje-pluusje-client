@@ -47,3 +47,12 @@
   margin-top: 30px;
 }
 
+.extraProducts {
+  position:relative; top:-800px; left: -200px;
+  display: inline-flex;
+  
+}
+
+.h3 {
+  margin-top: 80px;
+}

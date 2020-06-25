@@ -11,7 +11,7 @@ import OrderButton from '../OrderButton'
 export default function ProductDetailCard({id, name, price , imageUrl, description, dispatchOnClick}) {
     const isLoading = useSelector(selectAppLoading);
     const mystyle = {
-        marginTop: "20px",
+        marginTop: "10px",
         height: "70px",
         width: "30%",
         
@@ -42,7 +42,7 @@ export default function ProductDetailCard({id, name, price , imageUrl, descripti
         <Container fluid>
             <div height="200px"></div>
             <h1>{name}</h1>
-            <img height="600px" src={`${imageUrl}`} alt=""></img>
+            <img height="400px" src={`${imageUrl}`} alt=""></img>
             <p>{description}</p>
             <h1>&euro;{price}</h1>
             {isInBasket}

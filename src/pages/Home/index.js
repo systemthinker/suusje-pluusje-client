@@ -49,7 +49,7 @@ const id = client.id
                 {products.map((product,index)=>{
                     if (index <= 3) {
                     return <Col sm={3} className="column" key={product.id}>
-                        <ProductCard  {...product} dispatchOnClick={dispatchOnClick} />
+                        <ProductCard  {...product} dispatchOnClick={dispatchOnClick} link={true} />
                     </Col>
                     }
                 })}
@@ -58,7 +58,7 @@ const id = client.id
                 {products.map((product,index)=>{
                     if (index > 3 && index <= 7) {
                     return <Col sm={3} className="column" key={product.id}>
-                        <ProductCard  {...product} dispatchOnClick={dispatchOnClick} />
+                        <ProductCard  {...product} dispatchOnClick={dispatchOnClick} link={true}/>
                     </Col>
                     }
                 })}
@@ -67,19 +67,19 @@ const id = client.id
                 {products.map((product,index)=>{
                     if (index > 7 && index <= 11) {
                     return <Col sm={3} className="column" key={product.id}>
-                        <ProductCard  {...product} dispatchOnClick={dispatchOnClick} />
+                        <ProductCard  {...product} dispatchOnClick={dispatchOnClick} link={true}/>
                     </Col>
                     }
                 })}
             </Row>
             <Row>
-                {products.map((product,index)=>{
+                {/* {products.map((product,index)=>{
                     if (index > 11 && index <= 15) {
                     return <Col sm={3} className="column" key={product.id}>
                         <ProductCard  {...product} dispatchOnClick={dispatchOnClick}/>
                     </Col>
                     }
-                })}
+                })} */}
             </Row>
             
             
