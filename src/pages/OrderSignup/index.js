@@ -11,17 +11,15 @@ import { orderSignUp } from "../../store/clients/actions";
 
 export default function OrderSignup() {
     const token = useSelector(selectToken)
-    console.log('token is', token)
     const client = useSelector(selectClient);
+    const history = useHistory();
     const clientId = client.id
-    
-
+   
   const [name, setName] = useState("");
   const [email, setEmail] = useState( "");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  
-  const history = useHistory();
+    
 
   function submitForm(event) {
     event.preventDefault();
@@ -34,15 +32,19 @@ export default function OrderSignup() {
     setPassword("");
     setName("");
     
-  }
-
+    if(clientId,name,email,password){
+        history.push('/order')
+    }
+}
  
     useEffect(()=>{
         if (token === null) {
             history.push("/");
           }
         dispatch(getUserWithStoredToken());
-        
+        if(clientId,name,email,password,client.isVerified){
+            history.push('/order')
+        }
        
     },[dispatch])
 

@@ -8,6 +8,7 @@ import {
   setMessage
 } from "../appState/actions";
 
+
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
@@ -23,11 +24,6 @@ const tokenStillValid = clientWithoutToken => ({
   type: TOKEN_STILL_VALID,
   payload: clientWithoutToken
 });
-
-// const createAnonymousClientAction = client => ({
-//   type: "CREATE_ANONYMOUS_CLIENT",
-//   payload: client
-// })
 
 const addProductToBasketAction = products => ({
   type: "ADD_PRODUCT_TO_BASKET",
@@ -136,6 +132,7 @@ export const getUserWithStoredToken = () => {
 export const orderSignUp = (id,name, email, password) => {
   return async (dispatch, getState) => {
     const token = selectToken(getState());
+    
     console.log('token is', token)
     // if we have no token, stop
     if (token === null) return;
@@ -154,6 +151,7 @@ export const orderSignUp = (id,name, email, password) => {
       dispatch(loginSuccess(response.data));
       dispatch(showMessageWithTimeout("success", true, "gegevens verwerkt"));
       dispatch(appDoneLoading());
+      
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
