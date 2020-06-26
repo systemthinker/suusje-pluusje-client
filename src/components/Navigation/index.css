@@ -1,3 +1,19 @@
 .nav-item{
     font-size: 24px;
 }
+
+.react-icons {
+    vertical-align: middle;
+    color: blue;
+    background-color: blueviolet;
+   
+  }
+
+.counter {
+    position: relative;
+    left: 20px;
+    top: -65px;
+    font-weight: bolder;
+    font-size: 30px;
+    color: rgb(243, 135, 11);
+}  
