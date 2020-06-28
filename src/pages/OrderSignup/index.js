@@ -8,8 +8,6 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
 import { orderSignUp } from "../../store/clients/actions";
-import { appLoading, appDoneLoading } from '../../store/appState/actions'
-import Order from '../Order'
 
 export default function OrderSignup() {
     const token = useSelector(selectToken)
