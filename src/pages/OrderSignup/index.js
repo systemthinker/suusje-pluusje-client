@@ -8,6 +8,8 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
 import { orderSignUp } from "../../store/clients/actions";
+import { appLoading, appDoneLoading } from '../../store/appState/actions'
+import Order from '../Order'
 
 export default function OrderSignup() {
     const token = useSelector(selectToken)
@@ -26,15 +28,16 @@ export default function OrderSignup() {
     if (token === null) {
         history.push("/");
       }
-    dispatch(orderSignUp(clientId, name, email, password));
+      
+    dispatch(orderSignUp(clientId, name, email, password))
+
+    
 
     setEmail("");
     setPassword("");
     setName("");
-    
-    if(clientId,name,email,password){
-        history.push('/order')
-    }
+
+  
 }
  
     useEffect(()=>{
@@ -50,6 +53,12 @@ export default function OrderSignup() {
 
     const placeHolderName = client.name ? client.name : "Vul uw naam in"
     const placeHolderEmail = client.email ? client.email : "Vul uw email in"
+
+    if(clientId,name,email,password,client.isVerified){
+     history.push('/order')
+    
+    }
+
     return (
         <Container>
           <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">

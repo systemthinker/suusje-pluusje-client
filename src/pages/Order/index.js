@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
 import AddressOrderCard from '../../components/AddressOrderCard'
 
-export default function Bestelling() {
+export default function Order() {
     return (
         <div>
             <Container fluid>
