@@ -1,0 +1,67 @@
+.form-inline {
+    display: inline-flex;
+    margin-left: 50px;
+    padding-left: 50px;
+    text-decoration: none;
+}
+
+.right {
+    margin-left: 30px;
+}
+
+.rightControl {
+    margin-left: 10px;
+    text-decoration: none;
+
+}
+
+.leftControl {
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.rightControl:focus {
+    
+    outline: none !important;
+    outline-offset: none !important;
+
+}
+
+.leftControl:focus{
+    
+    outline: none !important;
+    outline-offset: none !important;
+}
+
+.mevr {
+    margin-left: 70px;
+}
+
+.name {
+    margin-left: 2px;
+   
+
+}
+
+.align-left {
+    text-align: left;
+    margin-left: 100px;
+}
+
+.smaller {
+    max-width: 100px;
+    margin-left: 5px;
+}
+
+.small {
+    max-width: 150px;
+    margin-left: 5px;
+}
+
+.huisnr {
+    margin-left: 20px
+}
+
+.firstElement {
+    margin-left:-20 px;
+}

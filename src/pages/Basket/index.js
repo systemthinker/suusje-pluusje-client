@@ -13,7 +13,7 @@ import BasketCard from '../../components/BasketCard'
 import ProductCardBasket from '../../components/ProductCardBasket'
 import InfoProductBasketCard from '../../components/InfoProductBasketCard'
 import './index.css'
-import { deliveryCosts } from '../../config/constants'
+import { deliveryCosts, productIdForExtraProductsOne, productIdForExtraProductsTwo } from '../../config/constants'
 import DeliveryInfo from '../../components/DeliveryInfo'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -115,7 +115,7 @@ const verified = client.isVerified && client.name && client.email && token ? ord
                 </div>
                 <h3 className="h3">Voeg Toe:</h3>
                 {products.map((product,index)=>{
-                    if (index > 11 && index <= 15) {
+                    if (index == productIdForExtraProductsOne || index == productIdForExtraProductsTwo || index == 14) {
                     return <div sm={3} className="column" key={product.id}>
                         <ProductCardBasket  {...product} dispatchOnClick={dispatchOnClick}/>
                     </div>
