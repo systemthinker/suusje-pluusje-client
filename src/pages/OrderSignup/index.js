@@ -8,6 +8,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Col } from "react-bootstrap";
 import { orderSignUp } from "../../store/clients/actions";
+import Email from '../../components/FormErrorMessages/Email'
 
 export default function OrderSignup() {
     const token = useSelector(selectToken)
@@ -83,6 +84,7 @@ export default function OrderSignup() {
               <Form.Text className="text-muted">
                 Wij delen uw email nooit.
               </Form.Text>
+              
             </Form.Group>
     
             <Form.Group controlId="formBasicPassword">

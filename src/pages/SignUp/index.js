@@ -7,6 +7,7 @@ import { selectToken } from "../../store/clients/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
+import Password from '../../components/FormErrorMessages/Password'
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -58,6 +59,7 @@ export default function SignUp() {
           <Form.Text className="text-muted">
           Wij delen uw email nooit.
           </Form.Text>
+          <Password />
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
