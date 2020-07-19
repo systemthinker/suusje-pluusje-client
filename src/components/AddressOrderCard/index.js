@@ -264,16 +264,26 @@ export default function AddressOrderCard() {
          
        
         <Form.Group className="mt-5">
-          <Link to="/construction">
-            <Button variant="success" size="lg"></Button>
-            </Link>
+        
             {/* <Button variant="success" type="submit" size="lg" onClick={submitForm}>
               Doorgaan
             </Button> */}
+
+          <div>
+          <Link to="/construction">
+            <Button variant="success" size="lg">Doorgaan</Button>
+            </Link>
+          </div>
           
         </Form.Group>
        
       </Form>
-        </div>
+
+          
+           
+     
+         
+
+          </div>
     )
 }
