@@ -9,7 +9,7 @@ export const fetchProductsAction = products => ({
 export const fetchProducts = () => {
     return async (dispatch) => {
 
-    const response = await Axios.get(`${apiUrl}/product`)
+    const response = await Axios.get(`${apiUrl}/product`)                                                                                    
 
         dispatch(fetchProductsAction(response.data))
 }
