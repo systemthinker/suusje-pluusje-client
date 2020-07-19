@@ -50,6 +50,10 @@
 
   .plusMinus {
       display: inline-flex;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      z-index: 1;
   }
 
   #btnPlus{
@@ -64,10 +68,7 @@
     max-height: 40px;
     margin-top: 1px;
     width: 32px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: 1;
+  
   }
 
   .name{

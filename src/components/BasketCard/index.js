@@ -53,7 +53,7 @@ export default function BasketCard(props) {
                     <p className="grid-item">prijs </p>
                 </Col>
                 <Col>    
-                    <p className="grid-item"> &#8364; {totalPrice.toString().replace('.',',')}</p>
+                    <p className="grid-item"> &#8364; {totalPrice.toFixed(2).toString().replace('.',',')}</p>
                 </Col> 
             </Row>
         </div>
