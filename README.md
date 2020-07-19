@@ -13,4 +13,4 @@ ReactJS, React Bootstrap, custom CSS and HTML for frontend. Node JS for backend,
 
 ### App Demo
 
-![SuusjePluusje](https://github.com/systemthinker/suusje-pluusje-client/SuusjePluusje.gif)
+![SuusjePluusje](https://github.com/systemthinker/suusje-pluusje-client/blob/master/SuusjePluusje.gif)
