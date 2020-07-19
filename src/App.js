@@ -19,6 +19,7 @@ import OrderSignup from './pages/OrderSignup'
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/clients/actions";
+import UnderContruction from "./pages/UnderContruction";
 
 
 
@@ -48,6 +49,7 @@ function App() {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/basket/:id" component={Basket} />
         <Route path="/product/:id" component={ProductDetails}/>
+        <Route path="/construction" component={UnderContruction}/>
       </Switch>
     </div>
   );

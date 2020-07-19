@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import './index.css'
+import UnderContruction from '../../pages/UnderContruction';
 
 export default function AddressOrderCard() {
 
@@ -34,7 +35,9 @@ export default function AddressOrderCard() {
   }, [token, history]);
 
   function submitForm(event) {
-    // event.preventDefault();
+    event.preventDefault();
+    
+    window.location.replace('/construction')
 
     // dispatch(signUp(name, email, password));
 
@@ -261,9 +264,11 @@ export default function AddressOrderCard() {
          
        
         <Form.Group className="mt-5">
-          <Button variant="success" type="submit" size="lg" onClick={submitForm}>
-            Doorgaan
-          </Button>
+          <Link to="/construction">
+            <Button variant="success" type="submit" size="lg" onClick={submitForm}>
+              Doorgaan
+            </Button>
+          </Link>
         </Form.Group>
        
       </Form>
