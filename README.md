@@ -1,42 +1,16 @@
-# Frontend template
+# What this app is about
+Captain Morse is a little word-guessing game using Morse Code. The app outlines the imaginative situation where Captain Morse is on his boat and sinking due to a storm. Signaling 'SOS' in Morse Code does not work ( ... ___ ...) - so the urgent riddle is: which message does work to the lives of Captain Morse and his crew.
 
-This is a simple react/redux/jwt template to start a project quickly
+### Live working version
+[Click here](https://suusje-pluusje.netlify.app)
 
-## Table of contents:
+### Goals of this project
+Helping my sister with selling her great merchandise. She is a true craftsman and makes the greatest "babynestjes".
+This is also part of an individual project for Codaisseur in order to practise building a React JS app, total time spend on this project is 80 hour.
 
-- **[Setup](#setup-how-to-use-this-template)**
-- **[Create React App docs](#cra-docs)**
+### Tech used in the project
+ReactJS, React Bootstrap, custom CSS and HTML for frontend. Node JS for backend, deployed with Netlify, Heroku and the database is ElephantSQL.
 
-## SETUP How to use this template
+### App Demo
 
-1. Create a new project based on this template using the `Use this template` button
-
-![HOW_TO_USE](https://user-images.githubusercontent.com/20372832/77003323-70966180-695d-11ea-8abe-b362d57135f3.gif)
-
-2. Clone the app
-
-```
-git clone git@github.com:YOUR_GITHUB_NAME/YOUR_PROJECT_NAME.git
-```
-
-3. cd into your project
-
-```
-cd YOUR_PROJECT_NAME
-```
-
-4. install dependencies
-
-```
-npm install
-```
-
-5. Start development server with npm start
-
-```
-npm start
-```
-
-## CRA docs
-
-The normal Create React App docs can be found in [CRA_DOCS.md](./CRA_DOCS.md)
+![SuusjePluusje](https://github.com/tdijkmans/morse-code-masters/blob/development/readme-assets/Captain-morse.gif)
