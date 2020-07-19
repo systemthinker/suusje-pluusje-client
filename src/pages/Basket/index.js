@@ -76,13 +76,13 @@ const verified = client.isVerified && client.name && client.email && token ? ord
 
             <Row className="row-bg">
                 <Col sm={{ span: 6, offset: 6 }}>
-                    <span className="priceName"> verzendkosten &nbsp; &nbsp; &nbsp; &#8364; {deliveryCosts.toFixed(2).replace('.',',')}</span>
+                    <span className="priceName"> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;verzendkosten &nbsp; &nbsp; &nbsp; &#8364; {deliveryCosts.toFixed(2).replace('.',',')}</span>
                 </Col>
             </Row>
 
             <Row className="row-bg">
                 <Col sm={{ span: 6, offset: 6 }}>
-                    <span className="priceName"> Totaal Bedrag &nbsp; &nbsp; &nbsp; &#8364; {totalBasketPrice.toFixed(2).replace('.',',')}</span>
+                    <span className="priceName"> &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; Totaal Bedrag &nbsp; &nbsp; &nbsp; &#8364; {totalBasketPrice.toFixed(2).replace('.',',')}</span>
                 </Col>
             </Row>
            
