@@ -3,6 +3,7 @@ Suusje Pluusje is a webshop where you can buy the best "babynestjes" in the worl
 
 ### Live working version
 [Click here](https://suusje-pluusje.netlify.app)
+*** please note that the site is still in development and is not fully functional yet
 
 ### Goals of this project
 Helping my sister with selling her great merchandise. She is a true craftsman and makes the greatest "babynestjes".
