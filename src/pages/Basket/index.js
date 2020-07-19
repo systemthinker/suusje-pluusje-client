@@ -65,7 +65,7 @@ const verified = client.isVerified && client.name && client.email && token ? ord
 // go from css grid to bootstrap col
     return (
         <div>
-            <h1 className='App'>Winkelwagen</h1>
+            <h2 className='winkelwagen'>Winkelwagen</h2>
             <Container fluid>
             <Row>
                  <Col lg={1}></Col>

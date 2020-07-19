@@ -69,3 +69,9 @@ display: flex;
 justify-content: center;
 align-items: center;
 }
+
+.winkelwagen {
+  margin-top: 0;
+  margin-bottom: 5px;
+  text-align: center;
+}

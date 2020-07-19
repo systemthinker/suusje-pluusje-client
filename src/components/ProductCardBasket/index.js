@@ -17,15 +17,16 @@ export default function ProductCardBasket({id, name, description, price, imageUr
 
         
         <div className="card">
-            
-                <img height="130" width="140" className="center-block" src={imageUrl} alt=""></img>
+            <Button variant="success" onClick={e=>dispatchOnClick(id)} block>In Winkelwagen</Button>
                 <p>{name}</p>
+                <img height="130" width="140" className="center-block" src={imageUrl} alt=""></img>
+                
                
                 <p className="description">{description}</p>
                 <p className="price"> {price}</p>
                 
                 
-                <Button variant="success" onClick={e=>dispatchOnClick(id)} block>In Winkelwagen</Button>
+                
              
             
             
