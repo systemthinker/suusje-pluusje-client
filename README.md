@@ -13,4 +13,4 @@ ReactJS, React Bootstrap, custom CSS and HTML for frontend. Node JS for backend,
 
 ### App Demo
 
-
+![SuusjePluusje](https://github.com/tdijkmans/morse-code-masters/blob/development/readme-assets/Captain-morse.gif)
