@@ -74,25 +74,21 @@ const verified = client.isVerified && client.name && client.email && token ? ord
                      return <BasketCard {...basketProduct} key={basketProduct.id} onClickAddItemToCard={onClickAddItemToCard} onClickRemoveItemCard={onClickRemoveItemCard}/>
                      })}
 
-        <div className="grid-container">
-            <div className="grid-item"></div>
-            <div className="grid-item name"></div>
-            <div className="grid-item"></div>
-            
-            <p className="grid-item priceName"> verzendkosten  &nbsp; &nbsp;&#8364;</p>
-            <p className="grid-item priceShipping">{deliveryCosts.toFixed(2).replace('.',',')}</p>
+            <Row className="row-bg">
+                <Col sm={{ span: 6, offset: 6 }}>
+                    <span className="priceName"> verzendkosten &nbsp; &nbsp; &nbsp; &#8364; {deliveryCosts.toFixed(2).replace('.',',')}</span>
+                </Col>
+            </Row>
 
-        </div>
+            <Row className="row-bg">
+                <Col sm={{ span: 6, offset: 6 }}>
+                    <span className="priceName"> Totaal Bedrag &nbsp; &nbsp; &nbsp; &#8364; {totalBasketPrice.toFixed(2).replace('.',',')}</span>
+                </Col>
+            </Row>
+           
+        
 
-        <div className="grid-container">
-            <div className="grid-item"></div>
-            <div className="grid-item name"></div>
-            <div className="grid-item"></div>
-            
-            <p className="grid-item priceName"> Totaal Bedrag  &nbsp; &nbsp;&#8364;</p>
-            <p className="grid-item priceShipping">{totalBasketPrice.toFixed(2).replace('.',',')}</p>
-
-        </div>
+        
                  </Col>
                  <Col lg={1}></Col>
                  <Col md={3}><DeliveryInfo/>
