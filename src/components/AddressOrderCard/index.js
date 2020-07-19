@@ -265,10 +265,12 @@ export default function AddressOrderCard() {
        
         <Form.Group className="mt-5">
           <Link to="/construction">
-            <Button variant="success" type="submit" size="lg" onClick={submitForm}>
+            <Button variant="success"></Button>
+            </Link>
+            {/* <Button variant="success" type="submit" size="lg" onClick={submitForm}>
               Doorgaan
-            </Button>
-          </Link>
+            </Button> */}
+          
         </Form.Group>
        
       </Form>
