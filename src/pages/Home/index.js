@@ -43,9 +43,9 @@ const id = client.id
     return (
         
       
-      <Container fluid>
+      <Container fluid >
             <h1 className="App">Welkom op SuusjePluusje!</h1>
-            <Row>
+            <Row id="row">
                 {products.map((product,index)=>{
                     if (index <= 3) {
                     return <Col sm={3} className="column" key={product.id}>
@@ -54,7 +54,7 @@ const id = client.id
                     }
                 })}
             </Row>
-            <Row>
+            <Row id="row" style={{marginTop :'40px'}}>
                 {products.map((product,index)=>{
                     if (index > 3 && index <= 7) {
                     return <Col sm={3} className="column" key={product.id}>
@@ -63,7 +63,7 @@ const id = client.id
                     }
                 })}
             </Row>
-            <Row>
+            <Row id="row" style={{marginTop :'40px'}}>
                 {products.map((product,index)=>{
                     if (index > 7 && index <= 11) {
                     return <Col sm={3} className="column" key={product.id}>
@@ -72,7 +72,7 @@ const id = client.id
                     }
                 })}
             </Row>
-            <Row>
+            <Row id="row" style={{marginTop :'40px'}}>
                 {/* {products.map((product,index)=>{
                     if (index > 11 && index <= 15) {
                     return <Col sm={3} className="column" key={product.id}>

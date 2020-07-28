@@ -11,12 +11,14 @@ import LoggedOut from "./LoggedOut";
 import './index.css'
 import { FaBeer, FaShoppingCart } from 'react-icons/fa';
 import { IconContext } from "react-icons";
+import logoSuusjePluusje from '../../images/logoSuusjePluusje.png'
 
 export default function Navigation() {
   const token = useSelector(selectToken);
   const client = useSelector(selectClient)
   const basket = useSelector(selectBasket)
   const clientId = client.id
+  const size = 60;
   console.log('basket is', basket)
   console.log('basketL' ,basket.length)
   function counterValue(){
@@ -33,7 +35,7 @@ export default function Navigation() {
   const shoppingCardControls = token ?   <Navbar.Brand as={NavLink} to={`/basket/${clientId}`}>
                                                       <IconContext.Provider value={{ color: "blue", className: "global-class-name" }}>
                                                         <div>
-                                                              <FaShoppingCart size={80} value={{ style: { className: 'react-icons' } }}/>
+                                                              <FaShoppingCart size={size} id='shoppingCart' style={{color: 'rgb(1,122,253)'}} value={{ style: { className: 'react-icons' } }}/>
                                                               <h4 className="counter">{counterValue()}</h4>
                                                         </div>
                                                     </IconContext.Provider>
@@ -42,7 +44,7 @@ export default function Navigation() {
   : <Navbar.Brand>
   <IconContext.Provider value={{ color: "blue", className: "global-class-name" }}>
     <div>
-          <FaShoppingCart size={80} value={{ style: { className: 'react-icons' } }}/>
+          <FaShoppingCart size={size} id="shoppingCart" value={{ style: { className: 'react-icons' } }}/>
           
     </div>
 </IconContext.Provider>
@@ -50,8 +52,8 @@ export default function Navigation() {
 
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand as={NavLink} to="/">
-        <img src={`${'http://www.robbertvandenoutenaar.com/images/logoSuusjePluusje.png'}`} alt="" height="140px" width="250px"/>
+      <Navbar.Brand as={NavLink} className="brand" to="/">
+        <img src={`${logoSuusjePluusje}`} alt="" height="126px" width="300px"/>
         
         
       </Navbar.Brand>

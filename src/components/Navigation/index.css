@@ -4,16 +4,28 @@
 
 .react-icons {
     vertical-align: middle;
-    color: blue;
-    background-color: blueviolet;
+    color: lightblue;
+    
    
   }
 
 .counter {
     position: relative;
-    left: 20px;
-    top: -65px;
+    left: 15px;
+    top: -53px;
     font-weight: bolder;
-    font-size: 30px;
+    font-size: 28px;
     color: rgb(243, 135, 11);
 }  
+
+.brand {
+    margin-left: 10px;
+    position: relative;
+    top: -12px;
+    left: 45px;
+    
+}
+
+#shoppingCart {
+    margin-top: -10px;
+}
