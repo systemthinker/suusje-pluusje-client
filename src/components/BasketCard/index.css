@@ -52,7 +52,7 @@
       display: inline-flex;
       position: absolute;
       left: 0px;
-      top: 0px;
+      top: -22px;
       z-index: 1;
   }
 
@@ -102,4 +102,5 @@ input[type=number] {
     display: flex;
   justify-content: center;
   align-items: center;
+  height: 100px;
 }

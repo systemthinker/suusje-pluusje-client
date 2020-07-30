@@ -7,7 +7,7 @@ import { selectToken } from "../../store/clients/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
-import Password from '../../components/FormErrorMessages/Password'
+import Password from "../../components/FormErrorMessages/Password";
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -41,7 +41,7 @@ export default function SignUp() {
           <Form.Label>Name</Form.Label>
           <Form.Control
             value={name}
-            onChange={event => setName(event.target.value)}
+            onChange={(event) => setName(event.target.value)}
             type="text"
             placeholder="Vul uw naam in"
             required
@@ -51,13 +51,13 @@ export default function SignUp() {
           <Form.Label>Email address</Form.Label>
           <Form.Control
             value={email}
-            onChange={event => setEmail(event.target.value)}
+            onChange={(event) => setEmail(event.target.value)}
             type="email"
             placeholder="Vul uw email in"
             required
           />
           <Form.Text className="text-muted">
-          Wij delen uw email nooit.
+            Wij delen uw email nooit.
           </Form.Text>
           <Password />
         </Form.Group>
@@ -66,7 +66,7 @@ export default function SignUp() {
           <Form.Label>Password</Form.Label>
           <Form.Control
             value={password}
-            onChange={event => setPassword(event.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
             type="password"
             placeholder="Wachtwoord"
             required

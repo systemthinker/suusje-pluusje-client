@@ -1,31 +1,26 @@
 .card {
-    text-align: center;
-    margin-top: 10px;
-    
-        
-   
+  text-align: center;
+  margin-top: 10px;
 }
 
 .price {
-    font-weight: bold;
-    text-align: center;
-  
-    font-size: 24px;
-    color: black
+  font-weight: bold;
+  text-align: center;
 
+  font-size: 24px;
+  color: black;
 }
 
 .center-block {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
- }
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
- .description {
-    margin-left: 60px;
-    max-width: 20ch;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-   
- }
+.description {
+  margin-left: 60px;
+  max-width: 20ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

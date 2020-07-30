@@ -3,7 +3,7 @@ import { LOG_OUT, LOGIN_SUCCESS, TOKEN_STILL_VALID } from "./actions";
 const initialState = {
   token: localStorage.getItem("token"),
   name: null,
-  email: null
+  email: null,
 };
 
 export default (state = initialState, action) => {
@@ -19,8 +19,8 @@ export default (state = initialState, action) => {
     case TOKEN_STILL_VALID:
       return { ...state, ...action.payload };
 
-      case "CREATE_ANONYMOUS_CLIENT":
-        return { ...state, ...action.payload}
+    case "CREATE_ANONYMOUS_CLIENT":
+      return { ...state, ...action.payload };
 
     default:
       return state;

@@ -1,49 +1,30 @@
 .grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    border: 0.3px solid black;
-    background-color: #c2e1f8;
-    margin: auto;
-    
-  }
-  .grid-item {
-    
-    padding: 0.5px;
-    padding-top: auto;
-    font-size: 18px;
-    text-align: center;
-    
-    
-    margin: auto;
-  }
-
-  .priceShipping {
-    font-size: 18px;
-    font-weight: bolder;
-    margin-bottom: 3px;
-    margin-right: 3px;
-  }
-
-.priceName {
-    font-weight: bold;
-    font-size: 18px;
-    height: 100px;
-    
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  border: 0.3px solid black;
+  background-color: #c2e1f8;
+  margin: auto;
 }
 
 .priceShipping {
-   margin-left: -15px;
-   margin-right: -10px;
+  font-size: 18px;
+  font-weight: bolder;
+  margin-bottom: 3px;
+  margin-right: 3px;
+}
+
+.priceShipping {
+  margin-left: -15px;
+  margin-right: -10px;
 }
 
 .name {
-    min-width: 300px;
+  min-width: 300px;
 }
 
 .orderButtonBasket {
   width: 100%;
   margin-top: 20px;
-  
 }
 
 .orderButtonUnderDelivery {
@@ -51,23 +32,14 @@
 }
 
 .extraProducts {
-  position:relative; top:-800px; left: -200px;
+  position: relative;
+  top: -800px;
+  left: -200px;
   display: inline-flex;
-  
 }
 
 .h3 {
   margin-top: 20px;
-}
-
-.row-bg {
-border: 0.3px solid black;
-background-color: #c2e1f8;
-padding: 0;
-text-align: center;
-display: flex;
-justify-content: center;
-align-items: center;
 }
 
 .winkelwagen {

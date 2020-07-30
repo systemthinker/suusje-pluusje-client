@@ -5,44 +5,42 @@ import {
   appLoading,
   appDoneLoading,
   showMessageWithTimeout,
-  setMessage
+  setMessage,
 } from "../appState/actions";
-
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
 
-const loginSuccess = clientWithToken => {
+const loginSuccess = (clientWithToken) => {
   return {
     type: LOGIN_SUCCESS,
-    payload: clientWithToken
+    payload: clientWithToken,
   };
 };
 
-const tokenStillValid = clientWithoutToken => ({
+const tokenStillValid = (clientWithoutToken) => ({
   type: TOKEN_STILL_VALID,
-  payload: clientWithoutToken
+  payload: clientWithoutToken,
 });
 
-const addProductToBasketAction = products => ({
+const addProductToBasketAction = (products) => ({
   type: "ADD_PRODUCT_TO_BASKET",
-  payload: products
-})
+  payload: products,
+});
 
-export const createAnonymousClient = (productId)=>{
+export const createAnonymousClient = (productId) => {
   return async (dispatch) => {
-    const response = await axios.post(`${apiUrl}/client/create`,{
-      productId
-    })
+    const response = await axios.post(`${apiUrl}/client/create`, {
+      productId,
+    });
 
-    console.log('response is', response.data.basket)
+    console.log("response is", response.data.basket);
 
-    
-    dispatch(loginSuccess(response.data))
-    dispatch(addProductToBasketAction(response.data.basket.products))
-  }
-}
+    dispatch(loginSuccess(response.data));
+    dispatch(addProductToBasketAction(response.data.basket.products));
+  };
+};
 export const logOut = () => ({ type: LOG_OUT });
 
 export const signUp = (name, email, password) => {
@@ -52,7 +50,7 @@ export const signUp = (name, email, password) => {
       const response = await axios.post(`${apiUrl}/signup`, {
         name,
         email,
-        password
+        password,
       });
 
       dispatch(loginSuccess(response.data));
@@ -77,7 +75,7 @@ export const login = (email, password) => {
     try {
       const response = await axios.post(`${apiUrl}/login`, {
         email,
-        password
+        password,
       });
 
       dispatch(loginSuccess(response.data));
@@ -109,7 +107,7 @@ export const getUserWithStoredToken = () => {
       // if we do have a token,
       // check wether it is still valid or if it is expired
       const response = await axios.get(`${apiUrl}/me`, {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       // token is still valid
@@ -129,29 +127,30 @@ export const getUserWithStoredToken = () => {
   };
 };
 
-export const orderSignUp = (id,name, email, password) => {
+export const orderSignUp = (id, name, email, password) => {
   return async (dispatch, getState) => {
     const token = selectToken(getState());
-    
-   
+
     // if we have no token, stop
     if (token === null) return;
     dispatch(appLoading());
     try {
-      const response = await axios.patch(`${apiUrl}/order/signup`, {
-        id,
-        name,
-        email,
-        password,
-        
-      },{
-        headers: { Authorization: `Bearer ${token}` }
-      });
+      const response = await axios.patch(
+        `${apiUrl}/order/signup`,
+        {
+          id,
+          name,
+          email,
+          password,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       dispatch(loginSuccess(response.data));
       dispatch(showMessageWithTimeout("success", true, "gegevens verwerkt"));
       dispatch(appDoneLoading());
-      
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
@@ -164,4 +163,3 @@ export const orderSignUp = (id,name, email, password) => {
     }
   };
 };
-

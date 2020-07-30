@@ -3,10 +3,10 @@
 
 // export default function Email() {
 //     return (
-       
+
 //        <Form.Text>
 //             <span className="spanErrorMessage">Vul alstublieft een gelding emailadres in</span>
 //         </Form.Text>
-       
+
 //     )
 // }
