@@ -12,6 +12,8 @@ export default function LoggedIn() {
     minWidth: "120px",
     padding: ".5rem 1rem",
     height: "60px",
+    marginTop: "15px",
+    marginLeft: "50px",
   };
   return (
     <>

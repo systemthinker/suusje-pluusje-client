@@ -65,14 +65,19 @@ export default function Navigation() {
   );
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar expand="lg" id="navbar-main" fixed="top">
       <Navbar.Brand as={NavLink} className="brand" to="/">
-        <img src={`${logoSuusjePluusje}`} alt="" height="126px" width="300px" />
+        <img src={`${logoSuusjePluusje}`} alt="" height="100px" width="240px" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
-          <NavbarItem className="nav-item" path="/" linkText="Home" />
+          <NavbarItem
+            id="nav-item"
+            path="/"
+            style={{ color: "purple" }}
+            linkText="Home"
+          />
           <NavbarItem path="/about" linkText="Over" />
           <NavbarItem path="/info" linkText="Meer Info" />
           {shoppingCardControls}

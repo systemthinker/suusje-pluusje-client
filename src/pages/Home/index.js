@@ -30,8 +30,8 @@ export default function Home() {
   }
 
   return (
-    <Container fluid>
-      <h1 className="App">Welkom op SuusjePluusje!</h1>
+    <Container fluid className="App">
+      <h1 id="h1">Welkom op SuusjePluusje!</h1>
       <Row id="row">
         {products.map((product, index) => {
           if (index <= 3) {

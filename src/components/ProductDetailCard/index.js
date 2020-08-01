@@ -64,7 +64,7 @@ export default function ProductDetailCard({
 
   return (
     <Container fluid>
-      <div height="200px"></div>
+      <div className="App" height="200px"></div>
       <h1>{name}</h1>
       <img height="400px" src={`${imageUrl}`} alt=""></img>
       <p>{description}</p>
