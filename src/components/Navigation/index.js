@@ -57,6 +57,7 @@ export default function Navigation() {
           <FaShoppingCart
             size={size}
             id="shoppingCart"
+            style={{ color: "rgb(1,122,253)" }}
             value={{ style: { className: "react-icons" } }}
           />
         </div>
