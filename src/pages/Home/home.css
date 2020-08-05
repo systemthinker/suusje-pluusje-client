@@ -11,3 +11,28 @@
 #row {
   margin-left: 60px;
 }
+
+.content {
+  position: absolute;
+  z-index: 1;
+  top: 200px;
+  left: 46%;
+  text-align: center;
+  font-family: "Dancing Script";
+  font-weight: 700;
+  letter-spacing: -1px;
+  font-size: 50px;
+  font-weight: bolder;
+}
+
+#babyNestjes {
+  position: absolute;
+  z-index: 1;
+  color: rgb(7, 241, 18);
+  top: 40px;
+  left: -19px;
+}
+
+#handgemaakt {
+  font-size: 30px;
+}

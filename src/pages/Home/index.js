@@ -7,6 +7,7 @@ import { selectProducts } from "../../store/products/selectors";
 import { selectClient } from "../../store/clients/selectors";
 import ProductCard from "../../components/ProductCard";
 import { Container, Row, Col } from "react-bootstrap";
+
 import "./home.css";
 
 export default function Home() {
@@ -31,7 +32,21 @@ export default function Home() {
 
   return (
     <Container fluid className="App">
-      <h1 id="h1">Welkom op SuusjePluusje!</h1>
+      <Row>
+        <Col offset={3}>
+          <div>
+            <video width="100%" height="500" autoPlay muted loop controls>
+              <source src="./Videos/homeVideo.mp4" type="video/mp4"></source>
+            </video>
+          </div>
+          <div className="content">
+            <p>Prachtige</p>
+            <p id="babyNestjes">BabyNestjes</p>
+            <p id="handgemaakt">Handgemaakt!</p>
+          </div>
+        </Col>
+      </Row>
+
       <Row id="row">
         {products.map((product, index) => {
           if (index <= 3) {
