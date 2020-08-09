@@ -51,7 +51,12 @@ export default function Home() {
         {products.map((product, index) => {
           if (index <= 3) {
             return (
-              <Col sm={3} className="column" key={product.id}>
+              <Col
+                sm={3}
+                style={{ maxWidth: "100%" }}
+                className="column"
+                key={product.id}
+              >
                 <ProductCard
                   {...product}
                   dispatchOnClick={dispatchOnClick}
@@ -66,7 +71,12 @@ export default function Home() {
         {products.map((product, index) => {
           if (index > 3 && index <= 7) {
             return (
-              <Col sm={3} className="column" key={product.id}>
+              <Col
+                sm={3}
+                className="column"
+                key={product.id}
+                style={{ maxWidth: "100%" }}
+              >
                 <ProductCard
                   {...product}
                   dispatchOnClick={dispatchOnClick}
@@ -81,7 +91,12 @@ export default function Home() {
         {products.map((product, index) => {
           if (index > 7 && index <= 11) {
             return (
-              <Col sm={3} className="column" key={product.id}>
+              <Col
+                sm={3}
+                className="column"
+                key={product.id}
+                style={{ maxWidth: "100%" }}
+              >
                 <ProductCard
                   {...product}
                   dispatchOnClick={dispatchOnClick}
@@ -95,7 +110,8 @@ export default function Home() {
       <Row id="row" style={{ marginTop: "40px" }}>
         {/* {products.map((product,index)=>{
                     if (index > 11 && index <= 15) {
-                    return <Col sm={3} className="column" key={product.id}>
+                    return <Col sm={3} className="column" key={product.id}
+                     style={{ maxWidth: "100%" }}>
                         <ProductCard  {...product} dispatchOnClick={dispatchOnClick}/>
                     </Col>
                     }

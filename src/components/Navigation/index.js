@@ -9,7 +9,7 @@ import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 import "./index.css";
-import { FaBeer, FaShoppingCart } from "react-icons/fa";
+import { FaBeer, FaShoppingCart, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import logoSuusjePluusje from "../../images/logoSuusjePluusje.png";
 
@@ -66,11 +66,12 @@ export default function Navigation() {
   );
 
   return (
-    <Navbar expand="lg" id="navbar-main" fixed="top">
+    <Navbar expand="sm" id="navbar-main" fixed="top">
       <Navbar.Brand as={NavLink} className="brand" to="/">
         <img src={`${logoSuusjePluusje}`} alt="" height="100px" width="240px" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem

@@ -15,8 +15,7 @@ export default function ProductCard({
     <div className="card">
       <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
         <img
-          height="200"
-          width="180"
+          id="productImage"
           className="center-block"
           src={imageUrl}
           alt=""

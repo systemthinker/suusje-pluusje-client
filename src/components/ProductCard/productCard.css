@@ -24,3 +24,15 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+#productImage {
+  height: 200px;
+  width: 180px;
+}
+
+@media only screen and (max-width: 576) {
+  #productImage {
+    height: 400px;
+    width: 280px;
+  }
+}
