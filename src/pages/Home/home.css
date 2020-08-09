@@ -12,11 +12,17 @@
   margin-left: 60px;
 }
 
+@media screen and (max-width: 576px) {
+  #row {
+    margin-left: 10px;
+  }
+}
+
 .content {
   position: absolute;
   z-index: 1;
   top: 200px;
-  left: 46%;
+  left: 43%;
   text-align: center;
   font-family: "Dancing Script";
   font-weight: 700;
@@ -25,7 +31,7 @@
   font-weight: bolder;
 }
 
-#babyNestjes {
+#babyNestjesVideoText {
   position: absolute;
   z-index: 1;
   color: rgb(7, 241, 18);
@@ -33,6 +39,17 @@
   left: -19px;
 }
 
-#handgemaakt {
+#handMadeVideoText {
   font-size: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    left: 35%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .content {
+    left: 25%;
+  }
 }

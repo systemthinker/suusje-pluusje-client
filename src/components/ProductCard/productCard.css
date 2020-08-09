@@ -30,9 +30,9 @@
   width: 180px;
 }
 
-@media only screen and (max-width: 576) {
+@media screen and (max-width: 576px) {
   #productImage {
-    height: 400px;
-    width: 280px;
+    height: 80vw;
+    width: 80vw;
   }
 }

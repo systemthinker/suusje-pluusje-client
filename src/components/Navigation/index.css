@@ -33,6 +33,24 @@
   }
 }
 
+@media screen and (max-width: 576px) {
+  .brand {
+    margin-left: -10px;
+    position: relative;
+    top: -15px;
+    left: 10px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .brand {
+    margin-left: -140px;
+    position: relative;
+    top: -15px;
+    left: 10px;
+  }
+}
+
 #shoppingCart {
   margin-top: 15px;
   line-height: 100px;

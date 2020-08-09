@@ -41,8 +41,8 @@ export default function Home() {
           </div>
           <div className="content">
             <p>Prachtige</p>
-            <p id="babyNestjes">BabyNestjes</p>
-            <p id="handgemaakt">Handgemaakt!</p>
+            <p id="babyNestjesVideoText">BabyNestjes</p>
+            <p id="handMadeVideoText">Handgemaakt!</p>
           </div>
         </Col>
       </Row>

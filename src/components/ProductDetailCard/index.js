@@ -6,6 +6,7 @@ import { selectBasket } from "../../store/baskets/selectors";
 import { selectAppLoading } from "../../store/appState/selectors";
 import OrderButton from "../OrderButton";
 import AddToBasket from "../AddToBasket";
+import "./productDetailCard.css";
 
 export default function ProductDetailCard({
   id,
@@ -16,11 +17,7 @@ export default function ProductDetailCard({
   dispatchOnClick,
 }) {
   const isLoading = useSelector(selectAppLoading);
-  const mystyle = {
-    marginTop: "10px",
-    height: "70px",
-    width: "30%",
-  };
+
   const basket = useSelector(selectBasket);
 
   function loading() {
@@ -51,12 +48,13 @@ export default function ProductDetailCard({
     loadingOrderButton()
   ) : (
     <Button
-      style={mystyle}
-      size="lg"
+      id="mystyle"
       onClick={(e) => {
         loading();
       }}
       variant="success"
+      size="lg"
+      style={{ minWidth: "200px", width: "40%", marginTop: "10px" }}
     >
       Voeg Toe Aan Winkelwagen
     </Button>
@@ -72,7 +70,11 @@ export default function ProductDetailCard({
       {isInBasket}
       <div>
         <Link to="/">
-          <Button style={mystyle} variant="outline-primary" size="lg">
+          <Button
+            variant="outline-primary"
+            size="lg"
+            style={{ minWidth: "200px", width: "40%", marginTop: "10px" }}
+          >
             {"<<"} Verder Winkelen{" "}
           </Button>
         </Link>
