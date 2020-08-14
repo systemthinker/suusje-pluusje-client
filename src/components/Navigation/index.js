@@ -9,8 +9,9 @@ import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 import "./index.css";
-import { FaBeer, FaShoppingCart, FaTimes } from "react-icons/fa";
+import { FaBabyCarriage, FaBaby } from "react-icons/fa";
 import { IconContext } from "react-icons";
+
 import logoSuusjePluusje from "../../images/logoSuusjePluusje.png";
 
 export default function Navigation() {
@@ -18,16 +19,22 @@ export default function Navigation() {
   const client = useSelector(selectClient);
   const basket = useSelector(selectBasket);
   const clientId = client.id;
-  const size = 60;
+  const size = 42;
+  const sizeBaby = 18;
+  let numberOfItemsInCartHiddenElements = [
+    "hidden",
+    "hidden",
+    "hidden",
+    "hidden",
+  ];
   console.log("basket is", basket);
   console.log("basketL", basket.length);
-  function counterValue() {
-    if (basket.length === 0) {
-      return null;
-    } else {
-      return basket.length;
-    }
+
+  for (let i = 0; i < basket.length; i++) {
+    numberOfItemsInCartHiddenElements[i] = "show";
+    console.log("number is", numberOfItemsInCartHiddenElements[i], "i is", i);
   }
+
   // add token for admin later
   // add logic for showing basket later if needed
 
@@ -38,14 +45,40 @@ export default function Navigation() {
         value={{ color: "blue", className: "global-class-name" }}
       >
         <div>
-          <FaShoppingCart
+          <FaBabyCarriage
             size={size}
             id="shoppingCart"
-            style={{ color: "rgb(1,122,253)" }}
+            style={{ color: "rgb(173, 24, 144)" }}
             value={{ style: { className: "react-icons" } }}
           />
-          <h4 className="counter">{counterValue()}</h4>
         </div>
+
+        <FaBaby
+          className={`baby1 ${numberOfItemsInCartHiddenElements[0]}`}
+          size={sizeBaby}
+          style={{ color: "black" }}
+          aria-hidden="true"
+        ></FaBaby>
+
+        <FaBaby
+          className={`baby2 ${numberOfItemsInCartHiddenElements[1]}`}
+          size={sizeBaby}
+          style={{ color: "black" }}
+          aria-hidden="true"
+        ></FaBaby>
+
+        <FaBaby
+          className={`baby3 ${numberOfItemsInCartHiddenElements[2]}`}
+          size={sizeBaby}
+          style={{ color: "black" }}
+          aria-hidden="true"
+        ></FaBaby>
+        <FaBaby
+          className={`baby4 ${numberOfItemsInCartHiddenElements[3]}`}
+          size={sizeBaby}
+          style={{ color: "black" }}
+          aria-hidden="true"
+        ></FaBaby>
       </IconContext.Provider>
     </Navbar.Brand>
   ) : (
@@ -54,10 +87,10 @@ export default function Navigation() {
         value={{ color: "blue", className: "global-class-name" }}
       >
         <div>
-          <FaShoppingCart
+          <FaBabyCarriage
             size={size}
             id="shoppingCart"
-            style={{ color: "rgb(1,122,253)" }}
+            style={{ color: "rgb(173, 24, 144)" }}
             value={{ style: { className: "react-icons" } }}
           />
         </div>

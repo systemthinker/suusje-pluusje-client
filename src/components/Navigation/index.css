@@ -7,14 +7,45 @@
   color: lightblue;
 }
 
-.counter {
+.baby1 {
   position: relative;
-  left: 15px;
-  top: -35px;
-  font-weight: bolder;
+  left: 28px;
+  top: -43px;
+
   font-size: 28px;
-  color: rgb(243, 135, 11);
+
   line-height: 0px;
+  clip-path: polygon(100% 0%, 50% 90%, 50% 90%, 0% 0%);
+}
+
+.baby2 {
+  position: relative;
+  font-size: 28px;
+  left: 6px;
+  top: -52px;
+
+  line-height: 0px;
+  clip-path: polygon(100% 0%, 50% 90%, 50% 90%, 0% 0%);
+}
+
+.baby3 {
+  position: relative;
+  font-size: 28px;
+  left: 0px;
+  top: -48px;
+
+  line-height: 0px;
+  clip-path: polygon(100% 0%, 50% 90%, 50% 90%, 0% 0%);
+}
+
+.baby4 {
+  position: relative;
+  font-size: 28px;
+  left: -23px;
+  top: -56px;
+
+  line-height: 0px;
+  clip-path: polygon(100% 0%, 50% 90%, 50% 90%, 0% 0%);
 }
 
 .brand {
@@ -52,7 +83,7 @@
 }
 
 #shoppingCart {
-  margin-top: 15px;
+  margin-top: 26px;
   line-height: 100px;
   padding: 0;
   text-align: center;
@@ -90,4 +121,8 @@ a.navbar-brand:hover {
 
 div.navbar-collapse.collapse.show {
   background-color: rgba(146, 212, 195, 0.9);
+}
+
+.hidden {
+  display: none;
 }
