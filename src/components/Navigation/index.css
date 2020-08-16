@@ -124,5 +124,5 @@ div.navbar-collapse.collapse.show {
 }
 
 .hidden {
-  display: none;
+  visibility: hidden;
 }

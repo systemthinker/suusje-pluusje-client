@@ -57,27 +57,24 @@ export default function Navigation() {
           className={`baby1 ${numberOfItemsInCartHiddenElements[0]}`}
           size={sizeBaby}
           style={{ color: "black" }}
-          aria-hidden="true"
+          role="none"
         ></FaBaby>
 
         <FaBaby
           className={`baby2 ${numberOfItemsInCartHiddenElements[1]}`}
           size={sizeBaby}
           style={{ color: "black" }}
-          aria-hidden="true"
         ></FaBaby>
 
         <FaBaby
           className={`baby3 ${numberOfItemsInCartHiddenElements[2]}`}
           size={sizeBaby}
           style={{ color: "black" }}
-          aria-hidden="true"
         ></FaBaby>
         <FaBaby
           className={`baby4 ${numberOfItemsInCartHiddenElements[3]}`}
           size={sizeBaby}
           style={{ color: "black" }}
-          aria-hidden="true"
         ></FaBaby>
       </IconContext.Provider>
     </Navbar.Brand>
