@@ -98,7 +98,7 @@ export default function Navigation() {
   return (
     <Navbar expand="sm" id="navbar-main" fixed="top">
       <Navbar.Brand as={NavLink} className="brand" to="/">
-        <img src={`${logoSuusjePluusje}`} alt="" height="100px" width="240px" />
+        <img src={`${logoSuusjePluusje}`} alt="" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
@@ -111,7 +111,7 @@ export default function Navigation() {
             linkText="Home"
           />
           <NavbarItem path="/about" linkText="Over" />
-          <NavbarItem path="/info" linkText="Meer Info" />
+          <NavbarItem path="/info" linkText="Info" />
           {shoppingCardControls}
           {loginLogoutControls}
         </Nav>

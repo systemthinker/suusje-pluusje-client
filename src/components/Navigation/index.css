@@ -53,6 +53,12 @@
   position: relative;
   top: -1px;
   left: 55px;
+  transition: ease all 0.5s;
+}
+
+.brand img {
+  height: 100px;
+  width: 240px;
 }
 
 @media screen and (max-width: 720px) {
@@ -64,21 +70,40 @@
   }
 }
 
+@media screen and (max-width: 918px) {
+  .brand {
+    margin-left: -5px;
+    position: relative;
+    top: -1px;
+    left: 10px;
+  }
+}
+
 @media screen and (max-width: 576px) {
   .brand {
     margin-left: -10px;
     position: relative;
-    top: -15px;
+    top: -5px;
     left: 10px;
+  }
+
+  .brand img {
+    height: 75px;
+    width: 180px;
   }
 }
 
 @media screen and (max-width: 350px) {
   .brand {
-    margin-left: -140px;
+    margin-left: -30px;
     position: relative;
-    top: -15px;
+    top: 0px;
     left: 10px;
+  }
+
+  .brand img {
+    height: 50px;
+    width: 120px;
   }
 }
 

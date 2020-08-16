@@ -34,9 +34,17 @@ export default function Home() {
     <Container fluid className="App">
       <Row>
         <Col offset={3}>
-          <div>
-            <video width="100%" height="500" autoPlay muted loop controls>
-              <source src="./Videos/homeVideo.mp4" type="video/mp4"></source>
+          <div maxHeight="300px">
+            <video
+              style={{ width: "100%", height: "auto", maxHeight: "500px" }}
+              autoPlay
+              muted
+              loop
+            >
+              <source
+                src="./Videos/Homevideo-1(1).mp4"
+                type="video/mp4"
+              ></source>
             </video>
           </div>
           <div className="content">
