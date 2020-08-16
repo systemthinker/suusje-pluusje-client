@@ -7,22 +7,22 @@ import Loading from "./components/Loading";
 import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import About from './pages/About'
+import MoreInfo from './pages/MoreInfo'
+import Order from './pages/Order'
+import Dashboard from './pages/Dashboard'
+import Basket from './pages/Basket'
+import ProductDetails from './pages/ProductDetails'
+import Home from './pages/Home'
+import OrderSignup from './pages/OrderSignup'
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
-import { getUserWithStoredToken } from "./store/user/actions";
-import { Jumbotron } from "react-bootstrap";
+import { getUserWithStoredToken } from "./store/clients/actions";
 
-const Home = () => (
-  <Jumbotron>
-    <h1>Home</h1>
-  </Jumbotron>
-);
-const Other = () => (
-  <Jumbotron>
-    <h1>Other</h1>
-  </Jumbotron>
-);
+
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -39,9 +39,15 @@ function App() {
       {isLoading ? <Loading /> : null}
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/other" component={Other} />
+        <Route path="/about" component={About} />
+        <Route path="/info" component={MoreInfo} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        <Route exact path="/order" component={Order} />
+        <Route exact path="/order/signup" component={OrderSignup} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/basket/:id" component={Basket} />
+        <Route path="/product/:id" component={ProductDetails}/>
       </Switch>
     </div>
   );

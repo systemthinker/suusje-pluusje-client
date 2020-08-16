@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { signUp } from "../../store/user/actions";
-import { selectToken } from "../../store/user/selectors";
+import { signUp } from "../../store/clients/actions";
+import { selectToken } from "../../store/clients/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
+import Password from '../../components/FormErrorMessages/Password'
 
 export default function SignUp() {
   const [name, setName] = useState("");
@@ -42,7 +43,7 @@ export default function SignUp() {
             value={name}
             onChange={event => setName(event.target.value)}
             type="text"
-            placeholder="Enter name"
+            placeholder="Vul uw naam in"
             required
           />
         </Form.Group>
@@ -52,12 +53,13 @@ export default function SignUp() {
             value={email}
             onChange={event => setEmail(event.target.value)}
             type="email"
-            placeholder="Enter email"
+            placeholder="Vul uw email in"
             required
           />
           <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
+          Wij delen uw email nooit.
           </Form.Text>
+          <Password />
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
@@ -66,16 +68,16 @@ export default function SignUp() {
             value={password}
             onChange={event => setPassword(event.target.value)}
             type="password"
-            placeholder="Password"
+            placeholder="Wachtwoord"
             required
           />
         </Form.Group>
         <Form.Group className="mt-5">
           <Button variant="primary" type="submit" onClick={submitForm}>
-            Sign up
+            Maak Account
           </Button>
         </Form.Group>
-        <Link to="/login">Click here to log in</Link>
+        <Link to="/login">Klik hier om in te loggen</Link>
       </Form>
     </Container>
   );

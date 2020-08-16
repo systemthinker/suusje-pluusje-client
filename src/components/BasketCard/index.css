@@ -1,0 +1,88 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    border: 0.3px solid black;
+    background-color: #c2e1f8;
+    margin: auto;
+    
+  }
+  .grid-item {
+    
+    padding: 0.5px;
+    padding-top: auto;
+    font-size: 18px;
+    text-align: center;
+    
+    
+    margin: auto;
+  }
+
+  .priceBasket {
+    all: revert;
+    font-size: 24px;
+    font-weight: bolder;
+    
+    margin-bottom: 30px;
+    padding-bottom: 50px;
+    
+    
+  }
+
+  .btnBasket{
+      max-width: 25px; 
+      min-width: 25px;
+      
+      border-radius: 5px;
+      text-align: center;
+      padding: auto;
+      
+  }
+
+  #numberCol {
+      max-width: 45px;
+      border-radius: 0;
+      margin-top: 1px;
+      padding-right: 10px;
+     
+  }
+
+  .plusMinus {
+      display: inline-flex;
+  }
+
+  #btnPlus{
+      padding-left: 6px;
+      max-height: 40px;
+      margin-top: 1px;
+      width: 32px;
+      
+  }
+
+  #btnMinus{
+    max-height: 40px;
+    margin-top: 1px;
+    width: 32px;
+  }
+
+  .name{
+      min-width: 180px;
+      max-width: 22ch;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+  }
+
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.column {
+  display: inline-flex;
+}
