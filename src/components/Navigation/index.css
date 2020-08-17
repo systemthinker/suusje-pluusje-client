@@ -151,3 +151,14 @@ div.navbar-collapse.collapse.show {
 .hidden {
   visibility: hidden;
 }
+
+@media (max-width: 767px) {
+  .navbar-collapse {
+    max-width: 51%;
+    background-color: rgba(146, 212, 195, 0.7);
+  }
+  /* span.navbar-toggler-icon:active {
+    transform: rotate(90deg);
+    transition: ease 0.5s;
+  } */
+}
