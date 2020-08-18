@@ -32,11 +32,7 @@ export default function Navigation() {
 
   for (let i = 0; i < basket.length; i++) {
     numberOfItemsInCartHiddenElements[i] = "show";
-    console.log("number is", numberOfItemsInCartHiddenElements[i], "i is", i);
   }
-
-  // add token for admin later
-  // add logic for showing basket later if needed
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
   const shoppingCardControls = token ? (

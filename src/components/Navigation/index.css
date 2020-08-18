@@ -144,21 +144,21 @@ a.navbar-brand:hover {
   background-color: rgb(255, 255, 255, 0.5);
 }
 
-div.navbar-collapse.collapse.show {
-  background-color: rgba(146, 212, 195, 0.9);
-}
-
 .hidden {
   visibility: hidden;
 }
 
-@media (max-width: 767px) {
+span.navbar-toggler-icon {
+  transition: ease 0.5s;
+}
+
+@media (max-width: 576px) {
   .navbar-collapse {
-    max-width: 51%;
+    max-width: 55%;
     background-color: rgba(146, 212, 195, 0.7);
   }
-  /* span.navbar-toggler-icon:active {
+  .rotate {
     transform: rotate(90deg);
     transition: ease 0.5s;
-  } */
+  }
 }

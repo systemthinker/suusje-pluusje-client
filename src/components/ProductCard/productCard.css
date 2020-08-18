@@ -11,6 +11,10 @@
   color: black;
 }
 
+.price:hover {
+  border: 2px solid rgba(0, 0, 0, 0.15);
+}
+
 .center-block {
   display: block;
   margin-left: auto;
@@ -25,9 +29,17 @@
   text-overflow: ellipsis;
 }
 
+.description:hover {
+  border: 2px solid rgba(0, 0, 0, 0.15);
+}
+
 #productImage {
   height: 200px;
   width: 180px;
+}
+
+#productImage:hover {
+  border: 2px solid rgba(0, 0, 0, 0.15);
 }
 
 @media screen and (max-width: 576px) {
