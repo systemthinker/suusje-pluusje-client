@@ -7,6 +7,7 @@ import { selectProducts } from "../../store/products/selectors";
 import { selectClient } from "../../store/clients/selectors";
 import ProductCard from "../../components/ProductCard";
 import { Container, Row, Col } from "react-bootstrap";
+import Footer from "../../components/Footer";
 
 import "./home.css";
 
@@ -125,6 +126,8 @@ export default function Home() {
                     }
                 })} */}
       </Row>
+
+      <Footer />
     </Container>
   );
 }
