@@ -2,6 +2,8 @@ import React from "react";
 import "./productCard.css";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import nestje7 from "../../assets/nestje7.png";
+import LazyLoad from "react-lazy-load";
 
 export default function ProductCard({
   id,
@@ -14,12 +16,15 @@ export default function ProductCard({
   return (
     <div className="card">
       <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
-        <img
-          id="productImage"
-          className="center-block"
-          src={imageUrl}
-          alt=""
-        ></img>
+        <LazyLoad debounce={false}>
+          <img
+            id="productImage"
+            className="center-block"
+            src={nestje7}
+            alt=""
+          ></img>
+        </LazyLoad>
+
         <p>{name}</p>
 
         <p className="description">{description}</p>
