@@ -8,94 +8,97 @@ export default function Footer() {
       <div class="container">
         <div class="row text-center text-xs-center text-sm-left text-md-left">
           <div class="col-xs-12 col-sm-4 col-md-4">
-            <h5>Quick links</h5>
+            <h5>Snel koppelingen</h5>
             <ul class="list-unstyled quick-links">
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
+                <a href={`${siteUrl}`}>
                   <i class="fa fa-angle-double-right"></i>Home
                 </a>
               </li>
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
-                  <i class="fa fa-angle-double-right"></i>About
+                <a href={`${siteUrl}`}>
+                  <i class="fa fa-angle-double-right"></i>Over
                 </a>
               </li>
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
-                  <i class="fa fa-angle-double-right"></i>FAQ
+                <a href={`${siteUrl}`}>
+                  <i class="fa fa-angle-double-right"></i>Info
                 </a>
               </li>
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
-                  <i class="fa fa-angle-double-right"></i>Get Started
+                <a href={`${siteUrl}`}>
+                  <i class="fa fa-angle-double-right"></i>Verzending {"&"}{" "}
+                  Bezorging
                 </a>
               </li>
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
-                  <i class="fa fa-angle-double-right"></i>Videos
+                <a href={`${siteUrl}`}>
+                  <i class="fa fa-angle-double-right"></i>Retourneren {"&"}{" "}
+                  Ruilen
                 </a>
               </li>
             </ul>
           </div>
           <div class="col-xs-12 col-sm-4 col-md-4">
-            <h5>Quick links</h5>
+            <h5>Snel koppelingen</h5>
             <ul class="list-unstyled quick-links">
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
+                <a href={`${siteUrl}`}>
                   <i class="fa fa-angle-double-right"></i>Home
                 </a>
               </li>
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
-                  <i class="fa fa-angle-double-right"></i>About
+                <a href={`${siteUrl}`}>
+                  <i class="fa fa-angle-double-right"></i>Over
                 </a>
               </li>
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
-                  <i class="fa fa-angle-double-right"></i>FAQ
+                <a href={`${siteUrl}`}>
+                  <i class="fa fa-angle-double-right"></i>Info
                 </a>
               </li>
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
-                  <i class="fa fa-angle-double-right"></i>Get Started
+                <a href={`${siteUrl}`}>
+                  <i class="fa fa-angle-double-right"></i>Verzending {"&"}{" "}
+                  Bezorging
                 </a>
               </li>
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
-                  <i class="fa fa-angle-double-right"></i>Videos
+                <a href={`${siteUrl}`}>
+                  <i class="fa fa-angle-double-right"></i>Retourneren {"&"}{" "}
+                  Ruilen
                 </a>
               </li>
             </ul>
           </div>
           <div class="col-xs-12 col-sm-4 col-md-4">
-            <h5>Quick links</h5>
+            <h5>Snel koppelingen</h5>
             <ul class="list-unstyled quick-links">
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
+                <a href={`${siteUrl}`}>
                   <i class="fa fa-angle-double-right"></i>Home
                 </a>
               </li>
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
-                  <i class="fa fa-angle-double-right"></i>About
+                <a href={`${siteUrl}`}>
+                  <i class="fa fa-angle-double-right"></i>Over
                 </a>
               </li>
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
-                  <i class="fa fa-angle-double-right"></i>FAQ
+                <a href={`${siteUrl}`}>
+                  <i class="fa fa-angle-double-right"></i>Info
                 </a>
               </li>
               <li>
-                <a href="https://www.fiverr.com/share/qb8D02">
-                  <i class="fa fa-angle-double-right"></i>Get Started
+                <a href={`${siteUrl}`}>
+                  <i class="fa fa-angle-double-right"></i>Verzending {"&"}{" "}
+                  Bezorging
                 </a>
               </li>
               <li>
-                <a
-                  href="https://wwwe.sunlimetech.com"
-                  title="Design and developed by"
-                >
-                  <i class="fa fa-angle-double-right"></i>Imprint
+                <a href={`${siteUrl}`} title="Design and developed by">
+                  <i class="fa fa-angle-double-right"></i>Retourneren {"&"}{" "}
+                  Ruilen
                 </a>
               </li>
             </ul>
@@ -105,7 +108,10 @@ export default function Footer() {
           <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
             <ul class="list-unstyled list-inline social text-center">
               <li class="list-inline-item">
-                <a href={`${siteUrl}`}>
+                <a
+                  href="https://nl-nl.facebook.com/suusjepluusjebabynestjes/"
+                  target="blank"
+                >
                   <i class="fa fa-facebook"></i>
                 </a>
               </li>
