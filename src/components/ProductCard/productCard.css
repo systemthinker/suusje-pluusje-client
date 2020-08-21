@@ -1,6 +1,8 @@
 .card {
   text-align: center;
   margin-top: 10px;
+  margin-left: 12%;
+  transition: ease-in-out 0.5s;
 }
 
 .price {
@@ -11,10 +13,6 @@
   color: black;
 }
 
-.price:hover {
-  border: 2px solid rgba(0, 0, 0, 0.15);
-}
-
 .center-block {
   display: block;
   margin-left: auto;
@@ -23,28 +21,51 @@
 
 .description {
   margin-left: 60px;
-  max-width: 20ch;
+  max-width: 30ch;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.description:hover {
-  border: 2px solid rgba(0, 0, 0, 0.15);
-}
-
 #productImage {
-  height: 200px;
-  width: 180px;
+  height: 35vw;
+  width: 35vw;
+  margin: 0;
 }
 
 #productImage:hover {
   border: 2px solid rgba(0, 0, 0, 0.15);
 }
 
-@media screen and (max-width: 576px) {
+.itemTextBlock:hover {
+  border: 2px solid rgba(0, 0, 0, 0.15);
+}
+@media screen and (max-width: 955px) {
+  #productImage {
+    height: 40vw;
+    width: 40vw;
+    margin-left: 0;
+  }
+
+  .card {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 778px) {
   #productImage {
     height: 80vw;
     width: 80vw;
+    margin-left: 0;
+  }
+
+  .card {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .card {
+    margin-left: 0;
   }
 }

@@ -58,10 +58,10 @@ export default function Home() {
 
       <Row id="row">
         {products.map((product, index) => {
-          if (index <= 3) {
+          if (index <= 1) {
             return (
               <Col
-                sm={3}
+                sm={6}
                 style={{ maxWidth: "100%" }}
                 className="column"
                 key={product.id}
@@ -78,10 +78,10 @@ export default function Home() {
       </Row>
       <Row id="row" style={{ marginTop: "40px" }}>
         {products.map((product, index) => {
-          if (index > 3 && index <= 7) {
+          if (index > 1 && index <= 3) {
             return (
               <Col
-                sm={3}
+                sm={6}
                 className="column"
                 key={product.id}
                 style={{ maxWidth: "100%" }}
@@ -98,10 +98,10 @@ export default function Home() {
       </Row>
       <Row id="row" style={{ marginTop: "40px" }}>
         {products.map((product, index) => {
-          if (index > 7 && index <= 11) {
+          if (index > 3 && index <= 5) {
             return (
               <Col
-                sm={3}
+                sm={6}
                 className="column"
                 key={product.id}
                 style={{ maxWidth: "100%" }}
