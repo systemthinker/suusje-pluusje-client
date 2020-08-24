@@ -76,3 +76,7 @@
     top: 80%;
   }
 }
+
+video {
+  max-height: 500px;
+}

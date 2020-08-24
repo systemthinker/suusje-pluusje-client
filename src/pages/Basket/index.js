@@ -69,7 +69,7 @@ export default function Basket() {
       : orderSignUpPath;
 
   // add assecories later in second row.
-  // go from css grid to bootstrap col
+
   return (
     <div>
       <h2 className="winkelwagen">Winkelwagen</h2>

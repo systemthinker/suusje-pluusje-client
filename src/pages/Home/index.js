@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/products/actions";
 import { addProductToBasket, createBasket } from "../../store/baskets/actions";
 import { createAnonymousClient } from "../../store/clients/actions";
+import { appLoading, appDoneLoading } from "../../store/appState/actions";
+import { selectAppLoading } from "../../store/appState/selectors";
 import { selectProducts } from "../../store/products/selectors";
 import { selectClient } from "../../store/clients/selectors";
 import ProductCard from "../../components/ProductCard";
 import { Container, Row, Col } from "react-bootstrap";
 import Footer from "../../components/Footer";
-
+import HomeLoadingPage from "../../components/HomeLoadingPage";
 import "./home.css";
 
 export default function Home() {
@@ -16,9 +18,14 @@ export default function Home() {
   const dispatch = useDispatch();
   const client = useSelector(selectClient);
   const id = client.id;
+  let isAppLoading = true;
 
   useEffect(() => {
+    dispatch(appLoading);
+    console.log("loading..");
     dispatch(fetchProducts());
+    dispatch(appDoneLoading);
+    console.log("done loading..");
   }, [dispatch]);
 
   function dispatchOnClick(productId) {
@@ -31,13 +38,15 @@ export default function Home() {
     }
   }
 
+  const loadingControls = isAppLoading ? console.log("hi") : console.log("hi1");
+
   return (
     <Container fluid className="App">
       <Row>
         <Col offset={3}>
-          <div maxHeight="300px">
+          <div>
             <video
-              style={{ width: "100%", height: "auto", maxHeight: "500px" }}
+              style={{ width: "100%", height: "auto" }}
               autoPlay
               muted
               loop
@@ -55,6 +64,8 @@ export default function Home() {
           </div>
         </Col>
       </Row>
+
+      {loadingControls}
 
       <Row id="row">
         {products.map((product, index) => {
