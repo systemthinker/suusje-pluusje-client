@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/products/actions";
 import { addProductToBasket, createBasket } from "../../store/baskets/actions";
@@ -11,21 +11,19 @@ import ProductCard from "../../components/ProductCard";
 import { Container, Row, Col } from "react-bootstrap";
 import Footer from "../../components/Footer";
 import HomeLoadingPage from "../../components/HomeLoadingPage";
+import Loading from "../../components/Loading";
 import "./home.css";
 
 export default function Home() {
   const products = useSelector(selectProducts);
   const dispatch = useDispatch();
   const client = useSelector(selectClient);
+  const loading = useSelector(selectAppLoading);
+
   const id = client.id;
-  let isAppLoading = true;
 
   useEffect(() => {
-    dispatch(appLoading);
-    console.log("loading..");
     dispatch(fetchProducts());
-    dispatch(appDoneLoading);
-    console.log("done loading..");
   }, [dispatch]);
 
   function dispatchOnClick(productId) {
@@ -38,7 +36,17 @@ export default function Home() {
     }
   }
 
-  const loadingControls = isAppLoading ? console.log("hi") : console.log("hi1");
+  const isAppLoading = () => {
+    console.log("what is loading", loading);
+    if (loading) {
+      console.log("loading was returned");
+      return <h1>loading...</h1>;
+    }
+
+    // else {
+    //   return <h1> loading done... </h1>;
+    // }
+  };
 
   return (
     <Container fluid className="App">
@@ -65,7 +73,9 @@ export default function Home() {
         </Col>
       </Row>
 
-      {loadingControls}
+      <Row>
+        <Col>{isAppLoading()}</Col>
+      </Row>
 
       <Row id="row">
         {products.map((product, index) => {

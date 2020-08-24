@@ -13,10 +13,11 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case APP_LOADING:
-      console.log("was called");
+      console.log("loading was called");
       return { ...state, loading: true };
 
     case APP_DONE_LOADING:
+      console.log("app done loading was called");
       return { ...state, loading: false };
 
     case SET_MESSAGE:
