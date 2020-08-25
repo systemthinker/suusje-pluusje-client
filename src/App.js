@@ -33,7 +33,7 @@ function App() {
     <div className="App">
       <Navigation />
       <MessageBox />
-      {isLoading ? <Loading /> : null}
+      {/* {isLoading ? <Loading /> : null} */}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
