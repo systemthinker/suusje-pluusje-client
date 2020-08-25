@@ -23,7 +23,6 @@ import UnderContruction from "./pages/UnderContruction";
 
 function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectAppLoading);
 
   useEffect(() => {
     dispatch(getUserWithStoredToken());
@@ -33,7 +32,7 @@ function App() {
     <div className="App">
       <Navigation />
       <MessageBox />
-      {/* {isLoading ? <Loading /> : null} */}
+
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />

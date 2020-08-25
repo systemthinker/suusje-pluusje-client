@@ -6,4 +6,5 @@
   background-color: rgb(146, 212, 195, 0.5);
   text-align: center;
   margin-left: 60px;
+  transition: ease 0.3s;
 }

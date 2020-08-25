@@ -7,6 +7,8 @@ import store from "./store";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 ReactDOM.render(
   <Router>
@@ -16,6 +18,8 @@ ReactDOM.render(
   </Router>,
   document.getElementById("root")
 );
+
+AOS.init();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

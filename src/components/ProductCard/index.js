@@ -42,7 +42,7 @@ export default function ProductCard({
   }
 
   return (
-    <div className="card">
+    <div className="card" data-aos="fade-up">
       <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
         <LazyLoad debounce={false}>
           <img
