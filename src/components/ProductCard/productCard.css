@@ -41,6 +41,18 @@
 .itemTextBlock:hover {
   border: 2px solid rgba(0, 0, 0, 0.15);
 }
+
+@media screen and (max-width: 1350px) {
+  .card {
+    margin-left: 0;
+  }
+  #productImage {
+    height: 35vw;
+    width: 35vw;
+    margin: 0;
+  }
+}
+
 @media screen and (max-width: 955px) {
   #productImage {
     height: 40vw;
@@ -62,16 +74,5 @@
 
   .card {
     margin-left: 0;
-  }
-}
-
-@media screen and (max-width: 1350px) {
-  .card {
-    margin-left: 0;
-  }
-  #productImage {
-    height: 35vw;
-    width: 35vw;
-    margin: 0;
   }
 }
