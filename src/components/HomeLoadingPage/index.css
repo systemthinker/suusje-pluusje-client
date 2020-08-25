@@ -1,0 +1,9 @@
+.imageBoxLoading {
+  height: 28vh;
+  width: 28vw;
+  margin: 0;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  background-color: rgb(146, 212, 195, 0.5);
+  text-align: center;
+  margin-left: 60px;
+}

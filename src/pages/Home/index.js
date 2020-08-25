@@ -40,11 +40,7 @@ export default function Home() {
     console.log("what is loading", loading);
     if (loading) {
       console.log("loading was returned");
-      return (
-        <h1 style={{ backgroundColor: "purple", heigth: "1000px" }}>
-          loading...
-        </h1>
-      );
+      return <HomeLoadingPage />;
       // } else {
       //   return <h1 style={{ backgroundColor: "purple" }}> loading done... </h1>;
     }
