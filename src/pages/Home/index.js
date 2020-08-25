@@ -11,7 +11,7 @@ import ProductCard from "../../components/ProductCard";
 import { Container, Row, Col } from "react-bootstrap";
 import Footer from "../../components/Footer";
 import HomeLoadingPage from "../../components/HomeLoadingPage";
-import Loading from "../../components/Loading";
+
 import "./home.css";
 
 export default function Home() {
@@ -40,12 +40,14 @@ export default function Home() {
     console.log("what is loading", loading);
     if (loading) {
       console.log("loading was returned");
-      return <h1>loading...</h1>;
+      return (
+        <h1 style={{ backgroundColor: "purple", heigth: "1000px" }}>
+          loading...
+        </h1>
+      );
+      // } else {
+      //   return <h1 style={{ backgroundColor: "purple" }}> loading done... </h1>;
     }
-
-    // else {
-    //   return <h1> loading done... </h1>;
-    // }
   };
 
   return (

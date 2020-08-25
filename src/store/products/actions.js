@@ -13,6 +13,9 @@ export const fetchProducts = () => {
     const response = await Axios.get(`${apiUrl}/product`);
 
     dispatch(fetchProductsAction(response.data));
-    dispatch(appDoneLoading());
+
+    setTimeout(function () {
+      dispatch(appDoneLoading());
+    }, 7000);
   };
 };
