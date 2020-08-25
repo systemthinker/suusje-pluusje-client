@@ -44,14 +44,12 @@ export default function ProductCard({
   return (
     <div className="card" data-aos="fade-up">
       <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
-        <LazyLoad debounce={false}>
-          <img
-            id="productImage"
-            className="center-block"
-            src={getId(id)}
-            alt=""
-          ></img>
-        </LazyLoad>
+        <img
+          id="productImage"
+          className="center-block"
+          src={getId(id)}
+          alt=""
+        ></img>
 
         <div className="itemTextBlock">
           <p>{name}</p>
