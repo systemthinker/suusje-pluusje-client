@@ -1,92 +1,82 @@
 .grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    border: 0.3px solid black;
-    background-color: #c2e1f8;
-    margin: auto;
-    
-  }
-  .grid-item {
-    
-    padding: 0.5px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  border: 0.3px solid black;
+  background-color: #c2e1f8;
+  margin: auto;
+}
+.grid-item {
+  padding: 0.5px;
 
-    font-size: 18px;
-    text-align: center;
-    font-weight: bolder;
-    
-    margin: auto;
-  }
+  font-size: 18px;
+  text-align: center;
+  font-weight: bolder;
 
-  .priceBasket {
-    all: revert;
-    font-size: 24px;
-    font-weight: bolder;
-    
-    margin-bottom: 30px;
-    padding-bottom: 50px;
-    
-    
-  }
+  margin: auto;
+}
 
-  .btnBasket{
-      max-width: 25px; 
-      min-width: 25px;
-      
-      border-radius: 5px;
-      text-align: center;
-      padding: auto;
-      
-  }
+.priceBasket {
+  all: revert;
+  font-size: 24px;
+  font-weight: bolder;
 
-  #numberCol {
-      width: 40px;
-      border-radius: 0;
-      margin-top: 1px;
-      padding-right: 10px;
+  margin-bottom: 30px;
+  padding-bottom: 50px;
+}
 
-   
-      
-  }
+.btnBasket {
+  max-width: 25px;
+  min-width: 25px;
 
-  .plusMinus {
-      display: inline-flex;
-      position: absolute;
-      left: 0px;
-      top: -22px;
-      z-index: 1;
-  }
+  border-radius: 5px;
+  text-align: center;
+  padding: auto;
+}
 
-  #btnPlus{
-      padding-left: 6px;
-      max-height: 40px;
-      margin-top: 1px;
-      width: 32px;
-      
-  }
+#numberCol {
+  width: 40px;
+  border-radius: 0;
+  margin-top: 1px;
+  padding-right: 10px;
+}
 
-  #btnMinus{
-    max-height: 40px;
-    margin-top: 1px;
-    width: 32px;
-  
-  }
+.plusMinus {
+  display: inline-flex;
+  position: absolute;
+  left: 0px;
+  top: -22px;
+  z-index: 1;
+}
 
-  .name{
-      min-width: 180px;
-      max-width: 22ch;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-  }
+#btnPlus {
+  padding-left: 6px;
+  max-height: 40px;
+  margin-top: 1px;
+  width: 32px;
+}
 
-  input::-webkit-outer-spin-button,
+#btnMinus {
+  max-height: 40px;
+  margin-top: 1px;
+  width: 32px;
+}
+
+.name {
+  min-width: 180px;
+  max-width: 22ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -96,11 +86,60 @@ input[type=number] {
 
 .row-bg {
   border: 0.3px solid black;
-    background-color: #c2e1f8;
-    padding: 0;
-    text-align: center;
-    display: flex;
+  background-color: #c2e1f8;
+  padding: 0;
+  text-align: center;
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
+}
+
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5px;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.containerOverlay:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+@media screen and (max-width: 431px) {
+  #priceBasketCard {
+    display: none;
+  }
+  .itemName {
+    display: none;
+  }
+  .overlay {
+    left: 5px;
+  }
 }

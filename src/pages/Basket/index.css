@@ -47,3 +47,21 @@
   margin-bottom: 5px;
   text-align: center;
 }
+
+@media screen and (max-width: 991px) {
+  #deliveryInfoButton {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 328px) {
+  .deliveryCosts {
+    visibility: hidden;
+  }
+  .totalAmount {
+    visibility: hidden;
+  }
+  #euroSign {
+    visibility: hidden;
+  }
+}

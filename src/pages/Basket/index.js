@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import "./index.css";
 import { Container, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectBasket } from "../../store/baskets/selectors";
@@ -15,7 +16,7 @@ import { useParams } from "react-router-dom";
 import BasketCard from "../../components/BasketCard";
 import ProductCardBasket from "../../components/ProductCardBasket";
 import InfoProductBasketCard from "../../components/InfoProductBasketCard";
-import "./index.css";
+
 import {
   deliveryCosts,
   productIdForExtraProductsOne,
@@ -76,7 +77,7 @@ export default function Basket() {
       <Container fluid>
         <Row>
           <Col lg={1}></Col>
-          <Col md={5}>
+          <Col lg={5}>
             {filtedBasket.map((basketProduct) => {
               return (
                 <BasketCard
@@ -87,9 +88,39 @@ export default function Basket() {
                 />
               );
             })}
+            <Row className="row-bg">
+              <Col></Col>
+              <Col></Col>
+              <Col></Col>
+              <Col>
+                <p className="grid-item deliveryCosts"> verzend</p>
+                <p className="grid-item deliveryCosts"> kosten</p>
+              </Col>
+              <Col>
+                <p className="grid-item">
+                  <span id="euroSign">&#8364;</span> &nbsp;{" "}
+                  {deliveryCosts.toFixed(2).replace(".", ",")}
+                </p>
+              </Col>
+            </Row>
+            <Row className="row-bg">
+              <Col></Col>
+              <Col></Col>
+              <Col></Col>
+              <Col>
+                <p className="grid-item totalAmount">Totaal</p>
+                <p className="grid-item totalAmount">Bedrag</p>
+              </Col>
+              <Col>
+                <p className="grid-item">
+                  <span id="euroSign">&#8364;</span>
+                  {totalBasketPrice.toFixed(2).replace(".", ",")}
+                </p>
+              </Col>
+            </Row>
           </Col>
           <Col lg={1}></Col>
-          <Col md={3}>
+          <Col lg={3}>
             <DeliveryInfo />
             <div>
               <Link to={`${verified}`}>
@@ -97,6 +128,7 @@ export default function Basket() {
                   className="orderButtonUnderDelivery"
                   variant="success"
                   size="lg"
+                  id="deliveryInfoButton"
                 >
                   {" "}
                   Ik ga bestellen {">>"}{" "}
@@ -111,52 +143,13 @@ export default function Basket() {
           <Col lg={1}></Col>
 
           <Col md={5}>
-            <Row className="row-bg">
-              <Col></Col>
-              <Col></Col>
-              <Col></Col>
-              <Col>
-                <p className="grid-item"> verzendkosten</p>
-              </Col>
-              <Col>
-                <p className="grid-item">
-                  &#8364; &nbsp; {deliveryCosts.toFixed(2).replace(".", ",")}
-                </p>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col lg={1}></Col>
-
-          <Col md={5}>
-            <Row className="row-bg">
-              <Col></Col>
-              <Col></Col>
-              <Col></Col>
-              <Col>
-                <p className="grid-item">Totaal Bedrag</p>
-              </Col>
-              <Col>
-                <p className="grid-item">
-                  &#8364;{totalBasketPrice.toFixed(2).replace(".", ",")}
-                </p>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col lg={1}></Col>
-
-          <Col md={5}>
             <div>
               <Link to={`${verified}`}>
                 <Button
                   className="orderButtonBasket"
                   variant="success"
                   size="lg"
+                  className="block"
                 >
                   {" "}
                   Ik ga bestellen {">>"}{" "}

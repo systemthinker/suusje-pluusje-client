@@ -9,14 +9,13 @@ import nestje4 from "../../assets/nestje4.jpg";
 import nestje5 from "../../assets/nestje5.jpg";
 import nestje6 from "../../assets/nestje6.jpg";
 import nestje7 from "../../assets/nestje7.png";
-import LazyLoad from "react-lazy-load";
 
 export default function ProductCard({
   id,
   name,
   description,
   price,
-  imageUrl,
+
   dispatchOnClick,
 }) {
   function getId(id) {
