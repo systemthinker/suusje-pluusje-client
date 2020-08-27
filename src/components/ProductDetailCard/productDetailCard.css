@@ -6,8 +6,19 @@
   transition: ease 0.5s;
 }
 
+#description {
+  width: 40%;
+  margin-left: 30%;
+  transition: ease 0.5s;
+  text-align: center;
+}
+
 @media screen and (max-width: 990px) {
   .buttonStyleDetailCard {
     width: 80%;
+  }
+  #description {
+    width: 80%;
+    margin-left: 5%;
   }
 }
