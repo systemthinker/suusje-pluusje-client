@@ -1,5 +1,13 @@
-#mystyle {
-  margin-top: "10px";
-  height: "70px";
-  width: "80%";
+.buttonStyleDetailCard {
+  margin-top: 10px;
+  height: 70px;
+  width: 40%;
+  min-width: 200px;
+  transition: ease 0.5s;
+}
+
+@media screen and (max-width: 990px) {
+  .buttonStyleDetailCard {
+    width: 80%;
+  }
 }

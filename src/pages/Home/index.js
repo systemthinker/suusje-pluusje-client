@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/products/actions";
-import { addProductToBasket, createBasket } from "../../store/baskets/actions";
+import { addProductToBasket } from "../../store/baskets/actions";
 import { createAnonymousClient } from "../../store/clients/actions";
-import { appLoading, appDoneLoading } from "../../store/appState/actions";
 import { selectAppLoading } from "../../store/appState/selectors";
 import { selectProducts } from "../../store/products/selectors";
 import { selectClient } from "../../store/clients/selectors";
@@ -37,12 +36,8 @@ export default function Home() {
   }
 
   const isAppLoading = () => {
-    console.log("what is loading", loading);
     if (loading) {
-      console.log("loading was returned");
       return <HomeLoadingPage />;
-      // } else {
-      //   return <h1 style={{ backgroundColor: "purple" }}> loading done... </h1>;
     }
   };
 
@@ -135,16 +130,7 @@ export default function Home() {
           }
         })}
       </Row>
-      <Row id="row" style={{ marginTop: "40px" }}>
-        {/* {products.map((product,index)=>{
-                    if (index > 11 && index <= 15) {
-                    return <Col sm={3} className="column" key={product.id}
-                     style={{ maxWidth: "100%" }}>
-                        <ProductCard  {...product} dispatchOnClick={dispatchOnClick}/>
-                    </Col>
-                    }
-                })} */}
-      </Row>
+      <Row id="row" style={{ marginTop: "40px" }}></Row>
 
       <Footer />
     </Container>

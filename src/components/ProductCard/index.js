@@ -15,7 +15,6 @@ export default function ProductCard({
   name,
   description,
   price,
-
   dispatchOnClick,
 }) {
   function getId(id) {
