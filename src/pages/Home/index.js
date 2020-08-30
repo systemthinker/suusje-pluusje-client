@@ -46,12 +46,7 @@ export default function Home() {
       <Row>
         <Col offset={3}>
           <div>
-            <video
-              style={{ width: "100%", height: "auto" }}
-              autoPlay
-              muted
-              loop
-            >
+            <video id="video" autoPlay muted loop>
               <source
                 src="./Videos/Homevideo-1(1).mp4"
                 type="video/mp4"
