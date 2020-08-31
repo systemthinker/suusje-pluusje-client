@@ -2,12 +2,11 @@ import React from "react";
 import "../index.css";
 import { Form } from "react-bootstrap";
 
-export default function Password() {
+export default function FirstName() {
   return (
     <Form.Text>
       <span className="spanErrorMessage">
-        Zorg dat uw wachtwoord minimaal 8 tekens bevat, minimaal 1 Hoofdletter
-        en minimaal 1 kleine letter en minimaal 1 cijfer.
+        Vul alstublieft uw naam in met minimaal 3 tekens
       </span>
     </Form.Text>
   );
