@@ -22,19 +22,20 @@ export default function SignUp() {
   const history = useHistory();
 
   useEffect(() => {
-    if (token !== null) {
-      history.push("/");
-    }
+    // if (token !== null) {
+    //   history.push("/");
+    // }
   }, [token, history]);
 
   function submitForm(event) {
     event.preventDefault();
-    if (name.length > 2 && testPasword() && isRFC822ValidEmail()) {
+    if (name.length > 2 && testPassword() && isRFC822ValidEmail()) {
       dispatch(signUp(name, email, password));
 
       setEmail("");
       setPassword("");
       setName("");
+      history.goBack();
     } else {
       dispatch(
         showMessageWithTimeout(
@@ -56,7 +57,7 @@ export default function SignUp() {
     }
   }
 
-  function testPasword(value) {
+  function testPassword(value) {
     if (
       password.match(/[a-z]/g) &&
       password.match(/[A-Z]/g) &&
@@ -143,10 +144,10 @@ export default function SignUp() {
             onChange={(event) => setPassword(event.target.value)}
             type="password"
             placeholder="Vul uw wachtwoord in"
-            id={testPasword("id")}
+            id={testPassword("id")}
             required
           />
-          {testPasword()}
+          {testPassword()}
         </Form.Group>
         <Form.Group className="mt-5">
           <Button variant="primary" type="submit" onClick={submitForm}>

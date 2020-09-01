@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { login } from "../../store/clients/actions";
-import { selectToken } from "../../store/clients/selectors";
+import { selectToken, selectClient } from "../../store/clients/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
@@ -13,22 +13,29 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
+  const client = useSelector(selectClient);
   const history = useHistory();
 
   useEffect(() => {
-    if (token !== null) {
+    if (token !== null && client.email !== null && client.password !== null) {
       history.push("/");
     }
-  }, [token, history]);
-
+  }, []);
   function submitForm(event) {
-    console.log("hi");
     event.preventDefault();
 
     dispatch(login(email, password));
 
     setEmail("");
     setPassword("");
+  }
+
+  function placeHolder() {
+    if (client.email) {
+      return client.email;
+    } else {
+      return "Enter Email";
+    }
   }
 
   return (
@@ -41,7 +48,7 @@ export default function SignUp() {
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             type="email"
-            placeholder="Enter email"
+            placeholder={placeHolder()}
             required
           />
         </Form.Group>
