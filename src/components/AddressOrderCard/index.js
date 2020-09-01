@@ -81,7 +81,7 @@ export default function AddressOrderCard() {
         <h5 className="align-left nameTitle">Type Bestelling</h5>
 
         <Form.Group controlId="formBasicName" className="form-inline">
-          <Form.Label>Particulier</Form.Label>
+          <Form.Label className="particulier">Particulier</Form.Label>
           <Form.Control
             value={typeOrder}
             onChange={(event) => setTypeOrder(event.target.value)}
@@ -90,7 +90,7 @@ export default function AddressOrderCard() {
             name="radioTypeBestelling"
             checked
           />
-          <Form.Label className="right">Zakelijk</Form.Label>
+          <Form.Label className="right zakelijk">Zakelijk</Form.Label>
           <Form.Control
             value={typeOrder}
             onChange={(event) => setTypeOrder(event.target.value)}
@@ -102,7 +102,7 @@ export default function AddressOrderCard() {
 
         <h5 className="align-left nameTitle">Aanhef</h5>
         <Form.Group controlId="formBasicName" className="form-inline">
-          <Form.Label>Dhr.</Form.Label>
+          <Form.Label className="Dhr">Dhr.</Form.Label>
           <Form.Control
             value={name}
             onChange={(event) => setName(event.target.value)}
@@ -129,6 +129,7 @@ export default function AddressOrderCard() {
             id={borderControls(name)}
             input="sm"
             className="small firstElement"
+            placeholder="voornaam"
             required
           />
 
@@ -137,6 +138,7 @@ export default function AddressOrderCard() {
             onChange={(event) => setMiddleName(event.target.value)}
             type="text"
             className="smaller"
+            placeholder="van"
             id={borderControlsOptional(middleName)}
           />
 
@@ -146,13 +148,13 @@ export default function AddressOrderCard() {
             type="text"
             id={borderControls(lastName)}
             className="small"
+            placeholder="achternaam"
             required
           />
         </Form.Group>
 
         <p className="align-left nameTitle">
           <span>Postcode</span>
-          <span className="houseNumber">huisnummer</span>
         </p>
 
         <Form.Group controlId="formBasicEmail" className="form-inline">
@@ -185,23 +187,21 @@ export default function AddressOrderCard() {
           />
         </Form.Group>
 
-        <Col sm={{ span: 6, offset: 1 }}>
-          <div className="adresDiv textBlockMargin">
-            <p className="bolder">Bezorgadres</p>
-            <p>
-              {streetNameApi} {houseNumberApi}
-            </p>
-            <p>
-              {postalCode} {cityApi}
-            </p>
-          </div>
-          <div className="adresDiv">
-            <p className="bolder">
-              Factuuradres <span className="optional">optioneel</span>
-            </p>
-            <p>Hetzelfde als bezorgadres</p>
-          </div>
-        </Col>
+        <div className="align-left adresDiv">
+          <p className="bolder">Bezorgadres</p>
+          <p>
+            {streetNameApi} {houseNumberApi}
+          </p>
+          <p>
+            {postalCode} {cityApi}
+          </p>
+        </div>
+        <div className=" align-left adresDiv">
+          <p className="bolder">
+            Factuuradres <span className="optional">optioneel</span>
+          </p>
+          <p>Hetzelfde als bezorgadres</p>
+        </div>
 
         <div>
           <Form.Group controlId="formBasicEmail" className="checkBox">
@@ -222,7 +222,7 @@ export default function AddressOrderCard() {
 
           <div>
             <Link to="/construction">
-              <Button variant="success" size="lg">
+              <Button variant="success" size="block">
                 Doorgaan
               </Button>
             </Link>

@@ -6,7 +6,7 @@
 }
 
 .right {
-  margin-left: 30px;
+  margin-left: 10%;
 }
 
 .rightControl {
@@ -32,7 +32,7 @@
 
 .align-left {
   text-align: left;
-  margin-left: 100px;
+  margin-left: 10%;
 }
 
 .smaller {
@@ -90,9 +90,7 @@
 }
 
 .adresDiv {
-  text-align: left;
   margin-top: 10px;
-  margin-left: 10%;
 }
 
 .optional {
@@ -114,4 +112,50 @@ input[type="checkbox"] {
   -webkit-transform: scale(0.5); /* Safari and Chrome */
   -o-transform: scale(0.5); /* Opera */
   padding: 10px;
+}
+@media screen and (max-width: 500px) {
+  .particulier {
+    position: absolute;
+    top: 4%;
+    left: 20%;
+  }
+  .zakelijk {
+    position: absolute;
+    top: 9%;
+    left: 11%;
+  }
+
+  .mevr {
+    position: absolute;
+    top: 24%;
+    left: 12%;
+  }
+  .Dhr {
+    position: absolute;
+    top: 19%;
+    left: 20%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .particulier {
+    position: absolute;
+    top: 6%;
+    left: 20%;
+  }
+  .zakelijk {
+    position: absolute;
+    top: 11%;
+    left: 11%;
+  }
+
+  .mevr {
+    position: absolute;
+    top: 26%;
+    left: 12%;
+  }
+  .Dhr {
+    position: absolute;
+    top: 21%;
+    left: 20%;
+  }
 }
