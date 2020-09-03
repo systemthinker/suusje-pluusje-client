@@ -18,10 +18,10 @@ export default function AddressOrderCard() {
   const [lastName, setLastName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [email, setEmail] = useState("");
-  const [postalCode, setPostalCode] = useState("1487Mc".toUpperCase());
-  const [houseNumber, setHouseNumber] = useState(1);
+  const [postalCode, setPostalCode] = useState("");
+  const [houseNumber, setHouseNumber] = useState();
   const [returnAdres, setReturnAdres] = useState(false);
-  const [houseNumberAddition, setHouseNumberAddition] = useState("a");
+  const [houseNumberAddition, setHouseNumberAddition] = useState("");
   const [postalCodeFilled, setPostalCodeFilled] = useState(false);
 
   const [statusPostalCodeApi, setTogglePostalCodeApi] = useState(true);
@@ -124,7 +124,8 @@ export default function AddressOrderCard() {
   }
   console.log("city from selector is ", cityNameFromApi);
   console.log("streetname from selector is ", streetNameFromApi);
-
+  console.log("postalcode", postalCode);
+  console.log("iteger?", houseNumber);
   return (
     <div>
       <Form as={Col} sm={{ span: 6, offset: 3 }} className="mt-5">
@@ -203,7 +204,9 @@ export default function AddressOrderCard() {
         <Form.Group id="formBasicEmail" className="form-inline">
           <Form.Control
             value={postalCode}
-            onChange={(event) => setPostalCode(event.target.value)}
+            onChange={(event) =>
+              setPostalCode(event.target.value.toUpperCase())
+            }
             type="text"
             className={`${borderPostalCode(
               postalCode
@@ -213,7 +216,7 @@ export default function AddressOrderCard() {
 
           <Form.Control
             value={houseNumber}
-            onChange={(event) => setHouseNumber(event.target.value)}
+            onChange={(event) => setHouseNumber(parseInt(event.target.value))}
             type="number"
             className={`${borderHouseNumber(
               houseNumber

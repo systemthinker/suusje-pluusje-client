@@ -22,13 +22,17 @@ const setStreetName = (streetName) => {
 
 export const getCityName = (postalCode, houseNumber) => {
   return async (dispatch) => {
-    dispatch(appLoading());
-    const response = await axios.get(
-      `http://geodata.nationaalgeoregister.nl/locatieserver/free?fq=postcode:${postalCode}&fq=huisnummer~${houseNumber}*`
-    );
+    try {
+      dispatch(appLoading());
+      const response = await axios.get(
+        `http://geodata.nationaalgeoregister.nl/locatieserver/free?fq=postcode:${postalCode}&fq=huisnummer~${houseNumber}*`
+      );
 
-    dispatch(setCity(response.data.response.docs[0].woonplaatsnaam));
-    dispatch(setStreetName(response.data.response.docs[0].straatnaam));
-    dispatch(appDoneLoading());
+      dispatch(setCity(response.data.response.docs[0].woonplaatsnaam));
+      dispatch(setStreetName(response.data.response.docs[0].straatnaam));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log("error", e);
+    }
   };
 };
