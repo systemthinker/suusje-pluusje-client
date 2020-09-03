@@ -128,7 +128,7 @@ export default function OrderSignup() {
             value={name}
             onChange={(event) => setName(event.target.value)}
             type="text"
-            id={testFirstName("id")}
+            className={testFirstName("id")}
             placeholder={placeHolderName}
             required
           />
@@ -142,7 +142,7 @@ export default function OrderSignup() {
             type="email"
             placeholder={placeHolderEmail}
             required
-            id={isRFC822ValidEmail("id")}
+            className={isRFC822ValidEmail("id")}
           />
           {isRFC822ValidEmail()}
           <Form.Text className="text-muted">
@@ -158,7 +158,7 @@ export default function OrderSignup() {
             type="password"
             placeholder="Wachtwoord"
             required
-            id={testPassword("id")}
+            className={testPassword("id")}
           />
           {testPassword}
         </Form.Group>
