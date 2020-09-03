@@ -1,0 +1,13 @@
+.borderOrangeRed {
+  border: 0.4px solid rgb(241, 99, 5);
+  border-bottom: 3px solid rgb(241, 99, 5);
+}
+
+.borderGreen {
+  border: 0.4px solid rgb(14, 231, 61);
+  border-bottom: 3px solid rgb(14, 231, 61);
+}
+
+.borderGrey {
+  border: 0.4px solid rgba(119, 121, 119);
+}

@@ -116,7 +116,7 @@ export default function SignUp() {
             onChange={(event) => setName(event.target.value)}
             type="text"
             placeholder="Vul uw naam in"
-            id={testFirstName("id")}
+            className={testFirstName("id")}
             required
           />
           {testFirstName()}
@@ -128,7 +128,7 @@ export default function SignUp() {
             onChange={(event) => setEmail(event.target.value)}
             type="email"
             placeholder="Vul uw email in"
-            id={isRFC822ValidEmail("id")}
+            className={isRFC822ValidEmail("id")}
             required
           />
           {isRFC822ValidEmail()}
@@ -144,7 +144,7 @@ export default function SignUp() {
             onChange={(event) => setPassword(event.target.value)}
             type="password"
             placeholder="Vul uw wachtwoord in"
-            id={testPassword("id")}
+            className={testPassword("id")}
             required
           />
           {testPassword()}
