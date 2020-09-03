@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { signUp } from "../../store/clients/actions";
+import { getCityName } from "../../store/orders/actions";
 import { selectToken } from "../../store/clients/selectors";
+import { selectCity, selectStreetName } from "../../store/orders/selectors";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
@@ -16,16 +18,21 @@ export default function AddressOrderCard() {
   const [lastName, setLastName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [streetNameApi, setStreetNameApi] = useState("Oost-Graftdijk");
-  const [houseNumberApi, setHouseNumberApi] = useState(51);
-  const [cityApi, setCityApi] = useState("Oost-Graftdijk");
   const [postalCode, setPostalCode] = useState("1487Mc".toUpperCase());
-  const [houseNumber, setHouseNumber] = useState(51);
+  const [houseNumber, setHouseNumber] = useState(1);
+  const [returnAdres, setReturnAdres] = useState(false);
   const [houseNumberAddition, setHouseNumberAddition] = useState("a");
+  const [postalCodeFilled, setPostalCodeFilled] = useState(false);
+
+  const [statusPostalCodeApi, setTogglePostalCodeApi] = useState(true);
+  const togglePostalCodeApi = () =>
+    setTogglePostalCodeApi(!statusPostalCodeApi);
+  // create selector for City.
 
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
+  const cityNameFromApi = useSelector(selectCity);
+  const streetNameFromApi = useSelector(selectStreetName);
   const history = useHistory();
 
   useEffect(() => {}, [token, history]);
@@ -67,6 +74,11 @@ export default function AddressOrderCard() {
     }
   }
 
+  function fetchCity(postalCodeValue, houseNumberValue) {
+    dispatch(getCityName(postalCodeValue, houseNumberValue));
+    console.log("fetchCity() called");
+  }
+
   function borderHouseNumber(value) {
     // add better validation later
     if (Number.isInteger(value)) {
@@ -75,12 +87,49 @@ export default function AddressOrderCard() {
       return "borderOrangeRed";
     }
   }
+
+  document.addEventListener("click", (evt) => {
+    const flyoutElement = document.getElementById("flyout-example");
+    let targetElement = evt.target;
+
+    do {
+      if (targetElement == flyoutElement) {
+        console.log("clicked inside");
+        return;
+      }
+
+      targetElement = targetElement.parentNode;
+    } while (targetElement);
+    console.log("Clicked outside!");
+
+    if (postalCode.length === 6 && Number.isInteger(houseNumber)) {
+      fetchCity(postalCode, houseNumber);
+      setReturnAdres(true);
+      console.log("return adres", returnAdres);
+    }
+  });
+
+  function returnAdresInfo() {
+    return (
+      <div className="align-left adresDiv">
+        <p className="bolder deliveryAdressHide">Bezorgadres</p>
+        <p>
+          {streetNameFromApi} {houseNumber} {houseNumberAddition}
+        </p>
+        <p>
+          {postalCode} {cityNameFromApi}
+        </p>
+      </div>
+    );
+  }
+  console.log("city from selector is ", cityNameFromApi);
+  console.log("streetname from selector is ", streetNameFromApi);
+
   return (
     <div>
       <Form as={Col} sm={{ span: 6, offset: 3 }} className="mt-5">
         <h5 className="align-left nameTitle">Type Bestelling</h5>
-
-        <Form.Group controlId="formBasicName" className="form-inline">
+        <Form.Group id="formBasicName" className="form-inline">
           <Form.Label className="particulier">Particulier</Form.Label>
           <Form.Control
             value={typeOrder}
@@ -99,9 +148,8 @@ export default function AddressOrderCard() {
             name="radioTypeBestelling"
           />
         </Form.Group>
-
         <h5 className="align-left nameTitle">Aanhef</h5>
-        <Form.Group controlId="formBasicName" className="form-inline">
+        <Form.Group id="formBasicName" className="form-inline">
           <Form.Label className="Dhr">Dhr.</Form.Label>
           <Form.Control
             value={name}
@@ -121,14 +169,13 @@ export default function AddressOrderCard() {
           />
         </Form.Group>
         <p className="align-left nameTitle">Uw Naam</p>
-        <Form.Group controlId="formBasicEmail" className="form-inline">
+        <Form.Group className="formBasicEmail" className="form-inline">
           <Form.Control
             value={name}
             onChange={(event) => setName(event.target.value)}
             type="text"
-            id={borderControls(name)}
+            className={`small firstElement ${borderControls(name)}`}
             input="sm"
-            className="small firstElement"
             placeholder="voornaam"
             required
           />
@@ -137,33 +184,30 @@ export default function AddressOrderCard() {
             value={middleName}
             onChange={(event) => setMiddleName(event.target.value)}
             type="text"
-            className="smaller"
             placeholder="van"
-            id={borderControlsOptional(middleName)}
+            className={`smaller ${borderControlsOptional(middleName)}`}
           />
 
           <Form.Control
             value={lastName}
             onChange={(event) => setLastName(event.target.value)}
             type="text"
-            id={borderControls(lastName)}
-            className="small"
+            className={`small ${borderControls(lastName)}`}
             placeholder="achternaam"
             required
           />
         </Form.Group>
-
         <p className="align-left nameTitle">
           <span>Postcode</span>
         </p>
-
-        <Form.Group controlId="formBasicEmail" className="form-inline">
+        <Form.Group id="formBasicEmail" className="form-inline">
           <Form.Control
             value={postalCode}
             onChange={(event) => setPostalCode(event.target.value)}
             type="text"
-            className="small firstElement"
-            id={borderPostalCode(postalCode)}
+            className={`${borderPostalCode(
+              postalCode
+            )} flyout-example small firstElement`}
             required
           />
 
@@ -171,8 +215,9 @@ export default function AddressOrderCard() {
             value={houseNumber}
             onChange={(event) => setHouseNumber(event.target.value)}
             type="number"
-            id={borderHouseNumber(houseNumber)}
-            className="smaller"
+            className={`${borderHouseNumber(
+              houseNumber
+            )} flyout-example smaller`}
           />
 
           <Form.Control
@@ -181,30 +226,21 @@ export default function AddressOrderCard() {
             type="text"
             placeholder="toev"
             text="muted"
-            className="smaller"
-            id={borderControlsOptional(houseNumberAddition)}
+            className={`${borderControlsOptional(
+              houseNumberAddition
+            )} flyout-example smaller`}
             required
           />
         </Form.Group>
-
-        <div className="align-left adresDiv">
-          <p className="bolder">Bezorgadres</p>
-          <p>
-            {streetNameApi} {houseNumberApi}
-          </p>
-          <p>
-            {postalCode} {cityApi}
-          </p>
-        </div>
+        {returnAdres ? returnAdresInfo() : null}
         <div className=" align-left adresDiv">
           <p className="bolder">
             Factuuradres <span className="optional">optioneel</span>
           </p>
           <p>Hetzelfde als bezorgadres</p>
         </div>
-
         <div>
-          <Form.Group controlId="formBasicEmail" className="checkBox">
+          <Form.Group id="formBasicEmail" className="checkBox">
             <Form.Control
               value={email}
               onChange={(event) => setEmail(event.target.value)}
@@ -214,7 +250,6 @@ export default function AddressOrderCard() {
             />
           </Form.Group>
         </div>
-
         <Form.Group className="mt-5">
           {/* <Button variant="success" type="submit" size="lg" onClick={submitForm}>
               Doorgaan

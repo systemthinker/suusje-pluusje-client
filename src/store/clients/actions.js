@@ -35,8 +35,6 @@ export const createAnonymousClient = (productId) => {
       productId,
     });
 
-    console.log("response is", response.data.basket);
-
     dispatch(loginSuccess(response.data));
     dispatch(addProductToBasketAction(response.data.basket.products));
   };

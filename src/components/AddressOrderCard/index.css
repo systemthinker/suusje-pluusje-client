@@ -63,18 +63,18 @@
 .mt-5 {
 }
 
-#borderOrangeRed {
-  border: 0.4px solid rgb(241, 99, 5);
-  border-bottom: 3px solid rgb(241, 99, 5);
+.borderOrangeRed {
+  border: 0.4px solid rgb(241, 99, 5) !important;
+  border-bottom: 3px solid rgb(241, 99, 5) !important;
 }
 
-#borderGreen {
-  border: 0.4px solid rgb(14, 231, 61);
-  border-bottom: 3px solid rgb(14, 231, 61);
+.borderGreen {
+  border: 0.4px solid rgb(14, 231, 61) !important;
+  border-bottom: 3px solid rgb(14, 231, 61) !important;
 }
 
-#borderGrey {
-  border: 0.4px solid rgba(119, 121, 119);
+.borderGrey {
+  border: 0.4px solid rgba(119, 121, 119) !important;
 }
 
 .PostalCodeTitle {
