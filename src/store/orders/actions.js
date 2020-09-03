@@ -25,7 +25,7 @@ export const getCityName = (postalCode, houseNumber) => {
     try {
       dispatch(appLoading());
       const response = await axios.get(
-        `http://geodata.nationaalgeoregister.nl/locatieserver/free?fq=postcode:${postalCode}&fq=huisnummer~${houseNumber}*`
+        `https://geodata.nationaalgeoregister.nl/locatieserver/free?fq=postcode:${postalCode}&fq=huisnummer~${houseNumber}*`
       );
 
       dispatch(setCity(response.data.response.docs[0].woonplaatsnaam));
