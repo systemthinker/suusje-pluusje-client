@@ -64,17 +64,15 @@
 }
 
 .borderOrangeRed {
-  border: 0.4px solid rgb(241, 99, 5) !important;
   border-bottom: 3px solid rgb(241, 99, 5) !important;
 }
 
 .borderGreen {
-  border: 0.4px solid rgb(14, 231, 61) !important;
   border-bottom: 3px solid rgb(14, 231, 61) !important;
 }
 
 .borderGrey {
-  border: 0.4px solid rgba(119, 121, 119) !important;
+  border-bottom: 0.6px solid rgba(119, 121, 119) !important;
 }
 
 .PostalCodeTitle {
@@ -113,49 +111,29 @@ input[type="checkbox"] {
   -o-transform: scale(0.5); /* Opera */
   padding: 10px;
 }
-@media screen and (max-width: 500px) {
-  .particulier {
-    position: absolute;
-    top: 4%;
-    left: 20%;
-  }
-  .zakelijk {
-    position: absolute;
-    top: 9%;
-    left: 11%;
-  }
-
-  .mevr {
-    position: absolute;
-    top: 24%;
-    left: 12%;
-  }
+@media screen and (max-width: 550px) {
   .Dhr {
     position: absolute;
-    top: 19%;
-    left: 20%;
+    top: 6%;
+    left: 31%;
+    font-weight: bolder;
+  }
+  .mevr {
+    position: absolute;
+    top: 13%;
+    left: 23%;
+    font-weight: bolder;
   }
 }
 @media screen and (max-width: 400px) {
-  .particulier {
-    position: absolute;
-    top: 6%;
-    left: 20%;
-  }
-  .zakelijk {
-    position: absolute;
-    top: 11%;
-    left: 11%;
-  }
-
   .mevr {
     position: absolute;
-    top: 26%;
+    top: 12%;
     left: 12%;
   }
   .Dhr {
     position: absolute;
-    top: 21%;
+    top: 6%;
     left: 20%;
   }
 }

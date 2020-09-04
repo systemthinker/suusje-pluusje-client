@@ -5,24 +5,28 @@ import Button from "react-bootstrap/Button";
 import { getCityName } from "../../store/orders/actions";
 import { selectToken } from "../../store/clients/selectors";
 import { selectCity, selectStreetName } from "../../store/orders/selectors";
-
+import { selectClient } from "../../store/clients/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import "./index.css";
 import UnderContruction from "../../pages/UnderContruction";
+import Email from "../../components/FormErrorMessages/Email";
 
 export default function AddressOrderCard() {
+  const client = useSelector(selectClient);
+
   const [typeOrder, setTypeOrder] = useState("");
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [middleName, setMiddleName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("uwemail@email.com");
   const [postalCode, setPostalCode] = useState("");
   const [houseNumber, setHouseNumber] = useState();
   const [returnAdres, setReturnAdres] = useState(false);
   const [houseNumberAddition, setHouseNumberAddition] = useState("");
   const [postalCodeFilled, setPostalCodeFilled] = useState(false);
+  const [billingAddress, setBillingAddress] = useState();
 
   const [statusPostalCodeApi, setTogglePostalCodeApi] = useState(true);
   const togglePostalCodeApi = () =>
@@ -35,7 +39,11 @@ export default function AddressOrderCard() {
   const streetNameFromApi = useSelector(selectStreetName);
   const history = useHistory();
 
-  useEffect(() => {}, [token, history]);
+  useEffect(() => {
+    if (client.email) {
+      setEmail(client.email);
+    }
+  }, [client]);
 
   function submitForm(event) {
     event.preventDefault();
@@ -122,34 +130,41 @@ export default function AddressOrderCard() {
       </div>
     );
   }
-  console.log("city from selector is ", cityNameFromApi);
-  console.log("streetname from selector is ", streetNameFromApi);
-  console.log("postalcode", postalCode);
-  console.log("iteger?", houseNumber);
+  function isRFC822ValidEmail(value) {
+    var sQtext = "[^\\x0d\\x22\\x5c\\x80-\\xff]";
+    var sDtext = "[^\\x0d\\x5b-\\x5d\\x80-\\xff]";
+    var sAtom =
+      "[^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+";
+    var sQuotedPair = "\\x5c[\\x00-\\x7f]";
+    var sDomainLiteral = "\\x5b(" + sDtext + "|" + sQuotedPair + ")*\\x5d";
+    var sQuotedString = "\\x22(" + sQtext + "|" + sQuotedPair + ")*\\x22";
+    var sDomain_ref = sAtom;
+    var sSubDomain = "(" + sDomain_ref + "|" + sDomainLiteral + ")";
+    var sWord = "(" + sAtom + "|" + sQuotedString + ")";
+    var sDomain = sSubDomain + "(\\x2e" + sSubDomain + ")*";
+    var sLocalPart = sWord + "(\\x2e" + sWord + ")*";
+    var sAddrSpec = sLocalPart + "\\x40" + sDomain; // complete RFC822 email address spec
+    var sValidEmail = "^" + sAddrSpec + "$"; // as whole string
+
+    var reValidEmail = new RegExp(sValidEmail);
+
+    if (reValidEmail.test(email)) {
+      if (value === "id") {
+        return "borderGreen";
+      }
+      return true;
+    } else if (value === "id") {
+      return "borderOrangeRed";
+    } else if (email.length > 0) {
+      return <Email />;
+    }
+  }
+  console.log("client is", client);
+  console.log("email is", email);
   return (
     <div>
       <Form as={Col} sm={{ span: 6, offset: 3 }} className="mt-5">
-        <h5 className="align-left nameTitle">Type Bestelling</h5>
-        <Form.Group id="formBasicName" className="form-inline">
-          <Form.Label className="particulier">Particulier</Form.Label>
-          <Form.Control
-            value={typeOrder}
-            onChange={(event) => setTypeOrder(event.target.value)}
-            type="radio"
-            className="leftControl"
-            name="radioTypeBestelling"
-            checked
-          />
-          <Form.Label className="right zakelijk">Zakelijk</Form.Label>
-          <Form.Control
-            value={typeOrder}
-            onChange={(event) => setTypeOrder(event.target.value)}
-            type="radio"
-            className="rightControl"
-            name="radioTypeBestelling"
-          />
-        </Form.Group>
-        <h5 className="align-left nameTitle">Aanhef</h5>
+        <h6 className="align-left nameTitle">Aanhef</h6>
         <Form.Group id="formBasicName" className="form-inline">
           <Form.Label className="Dhr">Dhr.</Form.Label>
           <Form.Control
@@ -169,7 +184,7 @@ export default function AddressOrderCard() {
             name="radioAanhef"
           />
         </Form.Group>
-        <p className="align-left nameTitle">Uw Naam</p>
+        <h6 className="align-left nameTitle">Uw Naam</h6>
         <Form.Group className="formBasicEmail" className="form-inline">
           <Form.Control
             value={name}
@@ -198,12 +213,13 @@ export default function AddressOrderCard() {
             required
           />
         </Form.Group>
-        <p className="align-left nameTitle">
+        <h6 className="align-left nameTitle">
           <span>Postcode</span>
-        </p>
+        </h6>
         <Form.Group id="formBasicEmail" className="form-inline">
           <Form.Control
             value={postalCode}
+            placeholder="0000AA"
             onChange={(event) =>
               setPostalCode(event.target.value.toUpperCase())
             }
@@ -217,6 +233,7 @@ export default function AddressOrderCard() {
           <Form.Control
             value={houseNumber}
             onChange={(event) => setHouseNumber(parseInt(event.target.value))}
+            placeholder="10"
             type="number"
             className={`${borderHouseNumber(
               houseNumber
@@ -245,19 +262,32 @@ export default function AddressOrderCard() {
         <div>
           <Form.Group id="formBasicEmail" className="checkBox">
             <Form.Control
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              value={"adjust"}
+              onChange={(event) => setBillingAddress(event.target.value)}
               type="checkbox"
               className="small"
               checked
             />
           </Form.Group>
         </div>
-        <Form.Group className="mt-5">
-          {/* <Button variant="success" type="submit" size="lg" onClick={submitForm}>
-              Doorgaan
-            </Button> */}
+        <h6 className="align-left nameTitle">Email</h6>
+        <div>
+          <Form.Group id="formBasicEmail" className="checkBox">
+            <Form.Control
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              type="text"
+              className={`${isRFC822ValidEmail("id")}`}
+              required
+            />
+            {isRFC822ValidEmail()}
+            <Form.Text className="text-muted">
+              Wij delen uw email nooit.
+            </Form.Text>
+          </Form.Group>
+        </div>
 
+        <Form.Group className="mt-5">
           <div>
             <Link to="/construction">
               <Button variant="success" size="block">
