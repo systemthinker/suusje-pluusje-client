@@ -163,6 +163,12 @@ export default function AddressOrderCard() {
   console.log("email is", email);
   return (
     <div>
+      <div key={`inline-radio`} className="mb-3">
+        <Form.Check inline type="radio" id={`inline-radio-1`} />
+        <Form.Check inline type="radio" id={`inline-radio-2`} />
+        <Form.Check inline type="radio" id={`inline-radio-3`} />
+      </div>
+
       <Form as={Col} sm={{ span: 6, offset: 3 }} className="mt-5">
         <h6 className="align-left nameTitle">Aanhef</h6>
         <Form.Group id="formBasicName" className="form-inline">
