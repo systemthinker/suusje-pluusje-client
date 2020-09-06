@@ -42,13 +42,11 @@
 .smaller {
   max-width: 100px;
   margin-left: 5px;
-  border: 1.4px solid rgb(241, 99, 5);
 }
 
 .small {
   max-width: 150px;
   margin-left: 5px;
-  border: 1.4px solid rgb(241, 99, 5);
 }
 
 .huisnr {
@@ -93,6 +91,7 @@
 
 .adresDiv {
   margin-top: 10px;
+  transition: ease 0.5s;
 }
 
 .optional {
