@@ -14,24 +14,22 @@ import UnderContruction from "../../pages/UnderContruction";
 import Email from "../../components/FormErrorMessages/Email";
 
 export default function AddressOrderCard() {
+  // use REdux --> appstate later to set postalCode state, to insure fetchCity() doesn't get called more then necessary
+  // also add error handling if postal code is not found
   const client = useSelector(selectClient);
 
   const [typeOrder, setTypeOrder] = useState("");
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [middleName, setMiddleName] = useState("");
-  const [email, setEmail] = useState("uwemail@email.com");
+  const [email, setEmail] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [houseNumber, setHouseNumber] = useState();
   const [returnAdres, setReturnAdres] = useState(false);
   const [houseNumberAddition, setHouseNumberAddition] = useState("");
-  const [postalCodeFilled, setPostalCodeFilled] = useState(false);
   const [billingAddress, setBillingAddress] = useState();
 
-  const [statusPostalCodeApi, setTogglePostalCodeApi] = useState(true);
-  const togglePostalCodeApi = () =>
-    setTogglePostalCodeApi(!statusPostalCodeApi);
-  // create selector for City.
+  const [postalCodeApi, setPostalCodeApi] = useState(true);
 
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
@@ -96,9 +94,9 @@ export default function AddressOrderCard() {
     }
   }
 
-  document.addEventListener("click", (evt) => {
+  document.addEventListener("click", (e) => {
     const flyoutElement = document.getElementById("flyout-example");
-    let targetElement = evt.target;
+    let targetElement = e.target;
 
     do {
       if (targetElement == flyoutElement) {
@@ -108,12 +106,41 @@ export default function AddressOrderCard() {
 
       targetElement = targetElement.parentNode;
     } while (targetElement);
-    console.log("Clicked outside!");
 
-    if (postalCode.length === 6 && Number.isInteger(houseNumber)) {
+    if (
+      postalCode.length === 6 &&
+      Number.isInteger(houseNumber) &&
+      postalCodeApi === true
+    ) {
       fetchCity(postalCode, houseNumber);
+      setPostalCodeApi(false);
       setReturnAdres(true);
-      console.log("return adres", returnAdres);
+    }
+  });
+
+  document.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      const flyoutElement = document.getElementById("flyout-example");
+      let targetElement = e.target;
+
+      do {
+        if (targetElement == flyoutElement) {
+          console.log("clicked inside");
+          return;
+        }
+
+        targetElement = targetElement.parentNode;
+      } while (targetElement);
+
+      if (
+        postalCode.length === 6 &&
+        Number.isInteger(houseNumber) &&
+        postalCodeApi === true
+      ) {
+        fetchCity(postalCode, houseNumber);
+        setPostalCodeApi(false);
+        setReturnAdres(true);
+      }
     }
   });
 
@@ -122,7 +149,11 @@ export default function AddressOrderCard() {
       <div className="align-left adresDiv">
         <p className="bolder deliveryAdressHide">Bezorgadres</p>
         <p>
-          {streetNameFromApi} {houseNumber} {houseNumberAddition}
+          {streetNameFromApi}{" "}
+          {houseNumber && Number.isInteger(houseNumber) ? houseNumber : null}{" "}
+          {houseNumberAddition && houseNumberAddition.length > 0
+            ? houseNumberAddition
+            : null}
         </p>
         <p>
           {postalCode} {cityNameFromApi}
@@ -159,8 +190,12 @@ export default function AddressOrderCard() {
       return <Email />;
     }
   }
-  console.log("client is", client);
-  console.log("email is", email);
+
+  function onChangePostalCodeHandler(event) {
+    setPostalCode(event.target.value.toUpperCase());
+    setReturnAdres(false);
+    setPostalCodeApi(true);
+  }
   return (
     <div>
       <Form as={Col} sm={{ span: 6, offset: 3 }} className="mt-5">
@@ -220,9 +255,7 @@ export default function AddressOrderCard() {
           <Form.Control
             value={postalCode}
             placeholder="0000AA"
-            onChange={(event) =>
-              setPostalCode(event.target.value.toUpperCase())
-            }
+            onChange={(event) => onChangePostalCodeHandler(event)}
             type="text"
             className={`${borderPostalCode(
               postalCode
@@ -252,7 +285,9 @@ export default function AddressOrderCard() {
             required
           />
         </Form.Group>
-        {returnAdres ? returnAdresInfo() : null}
+        {returnAdres && postalCode.length === 6 && Number.isInteger(houseNumber)
+          ? returnAdresInfo()
+          : null}
         <div className=" align-left adresDiv">
           <p className="bolder">
             Factuuradres <span className="optional">optioneel</span>
@@ -278,6 +313,7 @@ export default function AddressOrderCard() {
               onChange={(event) => setEmail(event.target.value)}
               type="text"
               className={`${isRFC822ValidEmail("id")}`}
+              placeholder="uwemail@email.com"
               required
             />
             {isRFC822ValidEmail()}
