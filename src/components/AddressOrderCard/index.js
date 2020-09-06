@@ -325,7 +325,7 @@ export default function AddressOrderCard() {
 
         <Form.Group className="mt-5">
           <div>
-            <Link to="/construction">
+            <Link to="/order/overview">
               <Button variant="success" size="block">
                 Doorgaan
               </Button>
