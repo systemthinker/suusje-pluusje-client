@@ -113,7 +113,7 @@ export default function OrderSignup() {
       return true;
     } else if (value === "id") {
       return "borderOrangeRed";
-    } else if (email.length > 0) {
+    } else {
       return <Email />;
     }
   }
@@ -160,7 +160,7 @@ export default function OrderSignup() {
             required
             className={testPassword("id")}
           />
-          {testPassword}
+          {testPassword()}
         </Form.Group>
         <Form.Group className="mt-5">
           <Button variant="success" type="submit" onClick={submitForm}>
