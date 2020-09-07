@@ -18,6 +18,7 @@ import OrderSignup from "./pages/OrderSignup";
 import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/clients/actions";
 import UnderContruction from "./pages/UnderContruction";
+import OrderOverview from "./pages/OrderOverview";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route exact path="/order" component={Order} />
         <Route exact path="/order/signup" component={OrderSignup} />
+        <Route exact path="/order/overview" component={OrderOverview} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/basket/:id" component={Basket} />
         <Route path="/product/:id" component={ProductDetails} />
