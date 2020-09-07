@@ -2,9 +2,19 @@ import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { getCityName } from "../../store/orders/actions";
+import {
+  getCityName,
+  getCityNameBilling,
+  signUp,
+} from "../../store/orders/actions";
+
 import { selectToken } from "../../store/clients/selectors";
-import { selectCity, selectStreetName } from "../../store/orders/selectors";
+import {
+  selectCity,
+  selectStreetName,
+  selectCityBilling,
+  selectStreetNameBilling,
+} from "../../store/orders/selectors";
 import { selectClient } from "../../store/clients/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
@@ -17,24 +27,32 @@ export default function AddressOrderCard() {
   // use REdux --> appstate later to set postalCode state, to insure fetchCity() doesn't get called more then necessary
   // also add error handling if postal code is not found
   const client = useSelector(selectClient);
-
+  const [checked, setChecked] = useState(true);
   const [typeOrder, setTypeOrder] = useState("");
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [email, setEmail] = useState("");
   const [postalCode, setPostalCode] = useState("");
+  const [postalCodeBilling, setPostalCodeBilling] = useState("");
   const [houseNumber, setHouseNumber] = useState();
+  const [houseNumberBilling, setHouseNumberBilling] = useState();
   const [returnAdres, setReturnAdres] = useState(false);
+  const [returnAddressBilling, setReturnAddressBilling] = useState(false);
   const [houseNumberAddition, setHouseNumberAddition] = useState("");
-  const [billingAddress, setBillingAddress] = useState();
+  const [houseNumberAdditionBilling, setHouseNumberAdditionBilling] = useState(
+    ""
+  );
 
   const [postalCodeApi, setPostalCodeApi] = useState(true);
+  const [postalCodeApiBilling, setPostalCodeApiBilling] = useState(true);
 
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const cityNameFromApi = useSelector(selectCity);
   const streetNameFromApi = useSelector(selectStreetName);
+  const cityNameFromApiBilling = useSelector(selectCityBilling);
+  const streetNameFromApiBilling = useSelector(selectStreetNameBilling);
   const history = useHistory();
 
   useEffect(() => {
@@ -48,7 +66,17 @@ export default function AddressOrderCard() {
 
     window.location.replace("/construction");
 
-    // dispatch(signUp(name, email, password));
+    dispatch(
+      signUp(
+        name,
+        lastName,
+        middleName,
+        email,
+        postalCode,
+        houseNumber,
+        houseNumberAddition
+      )
+    );
 
     // setEmail("");
     // setPassword("");
@@ -85,6 +113,11 @@ export default function AddressOrderCard() {
     console.log("fetchCity() called");
   }
 
+  function fetchCityBilling(postalCodeValue, houseNumberValue) {
+    dispatch(getCityNameBilling(postalCodeValue, houseNumberValue));
+    console.log("fetchCity() called");
+  }
+
   function borderHouseNumber(value) {
     // add better validation later
     if (Number.isInteger(value)) {
@@ -115,6 +148,31 @@ export default function AddressOrderCard() {
       fetchCity(postalCode, houseNumber);
       setPostalCodeApi(false);
       setReturnAdres(true);
+    }
+  });
+
+  //billing
+  document.addEventListener("click", (e) => {
+    const flyoutElement = document.getElementById("flyout-example");
+    let targetElement = e.target;
+
+    do {
+      if (targetElement == flyoutElement) {
+        console.log("clicked inside");
+        return;
+      }
+
+      targetElement = targetElement.parentNode;
+    } while (targetElement);
+
+    if (
+      postalCodeBilling.length === 6 &&
+      Number.isInteger(houseNumberBilling) &&
+      postalCodeApiBilling === true
+    ) {
+      fetchCityBilling(postalCodeBilling, houseNumberBilling);
+      setPostalCodeApiBilling(false);
+      setReturnAddressBilling(true);
     }
   });
 
@@ -161,6 +219,26 @@ export default function AddressOrderCard() {
       </div>
     );
   }
+
+  function returnAdresInfoBilling() {
+    return (
+      <div className="align-left adresDiv">
+        <p className="bolder deliveryAdressHide">Factuuradres</p>
+        <p>
+          {streetNameFromApiBilling}{" "}
+          {houseNumberBilling && Number.isInteger(houseNumberBilling)
+            ? houseNumberBilling
+            : null}{" "}
+          {houseNumberAdditionBilling && houseNumberAdditionBilling.length > 0
+            ? houseNumberAdditionBilling
+            : null}
+        </p>
+        <p>
+          {postalCodeBilling} {cityNameFromApiBilling}
+        </p>
+      </div>
+    );
+  }
   function isRFC822ValidEmail(value) {
     var sQtext = "[^\\x0d\\x22\\x5c\\x80-\\xff]";
     var sDtext = "[^\\x0d\\x5b-\\x5d\\x80-\\xff]";
@@ -195,6 +273,67 @@ export default function AddressOrderCard() {
     setPostalCode(event.target.value.toUpperCase());
     setReturnAdres(false);
     setPostalCodeApi(true);
+  }
+
+  function onChangePostalCodeHandlerBilling(event) {
+    setPostalCodeBilling(event.target.value.toUpperCase());
+    setReturnAdres(false);
+    setPostalCodeApi(true);
+  }
+
+  function onChangeBillingAddressHandler() {
+    if (!checked) {
+      return (
+        <div>
+          <h6 className="align-left nameTitle">
+            <span>Postcode</span>
+          </h6>
+          <Form.Group id="formBasicEmail" className="form-inline">
+            <Form.Control
+              value={postalCodeBilling}
+              placeholder="0000AA"
+              onChange={(event) => onChangePostalCodeHandlerBilling(event)}
+              type="text"
+              className={`${borderPostalCode(
+                postalCodeBilling
+              )} flyout-example small firstElement`}
+              required
+            />
+
+            <Form.Control
+              value={houseNumberBilling}
+              onChange={(event) =>
+                setHouseNumberBilling(parseInt(event.target.value))
+              }
+              placeholder="10"
+              type="number"
+              className={`${borderHouseNumber(
+                houseNumberBilling
+              )} flyout-example smaller`}
+            />
+
+            <Form.Control
+              value={houseNumberAdditionBilling}
+              onChange={(event) =>
+                setHouseNumberAdditionBilling(event.target.value)
+              }
+              type="text"
+              placeholder="toev"
+              text="muted"
+              className={`${borderControlsOptional(
+                houseNumberAdditionBilling
+              )} flyout-example smaller`}
+              required
+            />
+          </Form.Group>
+          {returnAddressBilling &&
+          postalCodeBilling.length === 6 &&
+          Number.isInteger(houseNumberBilling)
+            ? returnAdresInfoBilling()
+            : null}
+        </div>
+      );
+    }
   }
   return (
     <div>
@@ -288,23 +427,27 @@ export default function AddressOrderCard() {
         {returnAdres && postalCode.length === 6 && Number.isInteger(houseNumber)
           ? returnAdresInfo()
           : null}
+
         <div className=" align-left adresDiv">
           <p className="bolder">
             Factuuradres <span className="optional">optioneel</span>
           </p>
           <p>Hetzelfde als bezorgadres</p>
         </div>
+
         <div>
           <Form.Group id="formBasicEmail" className="checkBox">
             <Form.Control
               value={"adjust"}
-              onChange={(event) => setBillingAddress(event.target.value)}
               type="checkbox"
               className="small"
-              checked
+              checked={checked}
+              onChange={() => setChecked(!checked)}
             />
           </Form.Group>
         </div>
+        {onChangeBillingAddressHandler()}
+
         <h6 className="align-left nameTitle">Email</h6>
         <div>
           <Form.Group id="formBasicEmail" className="checkBox">
@@ -326,7 +469,11 @@ export default function AddressOrderCard() {
         <Form.Group className="mt-5">
           <div>
             <Link to="/order/overview">
-              <Button variant="success" size="block">
+              <Button
+                variant="success"
+                size="block"
+                // onCLick={(event) => submitForm(event)}
+              >
                 Doorgaan
               </Button>
             </Link>
