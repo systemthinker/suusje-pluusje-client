@@ -7,7 +7,6 @@ import {
   getCityNameBilling,
   signUp,
 } from "../../store/orders/actions";
-import useToggle from "../../components/Toggler/index.js";
 
 import { selectToken } from "../../store/clients/selectors";
 import {
@@ -31,8 +30,6 @@ export default function AddressOrderCard() {
 
   const salutationMevr = "Mevr.";
   const salutationDhr = "Dhr.";
-  const [isOn, toggleIsOn] = useToggle();
-  const [isToggledMevrOn, setToggleMevr] = useState(false);
 
   const [checked, setChecked] = useState(true);
   const [typeOrder, setTypeOrder] = useState("");
@@ -92,7 +89,6 @@ export default function AddressOrderCard() {
   }
 
   console.log("salutation is", salutation);
-  console.log("toggled?", isOn);
 
   function borderControls(value) {
     if (value.length >= 2) {
@@ -292,11 +288,6 @@ export default function AddressOrderCard() {
     setPostalCodeApi(true);
   }
 
-  // function onChangeSalutationHandler(event) {
-  //   toggleIsOn;
-  //   setSalutation(event.target.value);
-  // }
-
   function onChangeBillingAddressHandler() {
     if (!checked) {
       return (
@@ -371,14 +362,14 @@ export default function AddressOrderCard() {
             type="radio"
             className="leftControl"
             name="radioAanhef"
-            checked={salutation === "Dhr."}
+            checked={salutation === salutationDhr}
             defaultChecked
           />
 
           <Form.Label className="right mevr">Mevr.</Form.Label>
           <Form.Control
             value={salutationMevr}
-            checked={salutation === "Mevr."}
+            checked={salutation === salutationMevr}
             type="radio"
             className="rightControl "
             name="radioAanhef"
