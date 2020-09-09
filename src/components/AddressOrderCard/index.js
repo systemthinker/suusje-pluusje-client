@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, createRef } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -7,6 +7,7 @@ import {
   getCityNameBilling,
   signUp,
 } from "../../store/orders/actions";
+import useToggle from "../../components/Toggler/index.js";
 
 import { selectToken } from "../../store/clients/selectors";
 import {
@@ -27,8 +28,15 @@ export default function AddressOrderCard() {
   // use REdux --> appstate later to set postalCode state, to insure fetchCity() doesn't get called more then necessary
   // also add error handling if postal code is not found
   const client = useSelector(selectClient);
+
+  const salutationMevr = "Mevr.";
+  const salutationDhr = "Dhr.";
+  const [isOn, toggleIsOn] = useToggle();
+  const [isToggledMevrOn, setToggleMevr] = useState(false);
+
   const [checked, setChecked] = useState(true);
   const [typeOrder, setTypeOrder] = useState("");
+  const [salutation, setSalutation] = useState("");
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [middleName, setMiddleName] = useState("");
@@ -82,6 +90,9 @@ export default function AddressOrderCard() {
     // setPassword("");
     // setName("");
   }
+
+  console.log("salutation is", salutation);
+  console.log("toggled?", isOn);
 
   function borderControls(value) {
     if (value.length >= 2) {
@@ -281,6 +292,11 @@ export default function AddressOrderCard() {
     setPostalCodeApi(true);
   }
 
+  // function onChangeSalutationHandler(event) {
+  //   toggleIsOn;
+  //   setSalutation(event.target.value);
+  // }
+
   function onChangeBillingAddressHandler() {
     if (!checked) {
       return (
@@ -292,7 +308,7 @@ export default function AddressOrderCard() {
             <Form.Control
               value={postalCodeBilling}
               placeholder="0000AA"
-              onChange={(event) => onChangePostalCodeHandlerBilling(event)}
+              onClick={(event) => onChangePostalCodeHandlerBilling(event)}
               type="text"
               className={`${borderPostalCode(
                 postalCodeBilling
@@ -335,24 +351,34 @@ export default function AddressOrderCard() {
       );
     }
   }
+
+  function onChangeSalutationHandler(event) {
+    setSalutation(event.target.value);
+  }
+
   return (
     <div>
       <Form as={Col} sm={{ span: 6, offset: 3 }} className="mt-5">
         <h6 className="align-left nameTitle">Aanhef</h6>
-        <Form.Group id="formBasicName" className="form-inline">
+        <Form.Group
+          onChange={(event) => onChangeSalutationHandler(event)}
+          id="formBasicName"
+          className="form-inline"
+        >
           <Form.Label className="Dhr">Dhr.</Form.Label>
           <Form.Control
-            value={name}
-            onChange={(event) => setName(event.target.value)}
+            value={salutationDhr}
             type="radio"
             className="leftControl"
             name="radioAanhef"
-            checked
+            checked={salutation === "Dhr."}
+            defaultChecked
           />
+
           <Form.Label className="right mevr">Mevr.</Form.Label>
           <Form.Control
-            value={name}
-            onChange={(event) => setName(event.target.value)}
+            value={salutationMevr}
+            checked={salutation === "Mevr."}
             type="radio"
             className="rightControl "
             name="radioAanhef"
@@ -448,7 +474,9 @@ export default function AddressOrderCard() {
         </div>
         {onChangeBillingAddressHandler()}
 
-        <h6 className="align-left nameTitle">Email</h6>
+        <h6 style={{ marginTop: "10px" }} className="align-left nameTitle">
+          Email
+        </h6>
         <div>
           <Form.Group id="formBasicEmail" className="checkBox">
             <Form.Control
