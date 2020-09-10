@@ -20,7 +20,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import "./index.css";
-import UnderContruction from "../../pages/UnderContruction";
 import Email from "../../components/FormErrorMessages/Email";
 
 export default function AddressOrderCard() {
