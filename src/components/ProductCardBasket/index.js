@@ -1,6 +1,5 @@
 import React from "react";
 import "./productCard.css";
-import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import toppertje13 from "../../assets/toppertje13.jpg";
 import dekentje14 from "../../assets/dekentje14.jpg";

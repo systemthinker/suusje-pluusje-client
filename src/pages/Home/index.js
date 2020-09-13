@@ -82,6 +82,8 @@ export default function Home() {
                 />
               </Col>
             );
+          } else {
+            return null;
           }
         })}
       </Row>
@@ -102,6 +104,8 @@ export default function Home() {
                 />
               </Col>
             );
+          } else {
+            return null;
           }
         })}
       </Row>
@@ -122,6 +126,8 @@ export default function Home() {
                 />
               </Col>
             );
+          } else {
+            return null;
           }
         })}
       </Row>

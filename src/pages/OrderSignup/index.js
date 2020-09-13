@@ -51,7 +51,7 @@ export default function OrderSignup() {
     if ((clientId, name, email, password, client.isVerified)) {
       history.push("/order");
     }
-  }, [dispatch]);
+  }, [dispatch, clientId, name, email, password, client, history, token]);
 
   const placeHolderName = client.name ? client.name : "Vul uw naam in";
   const placeHolderEmail = client.email ? client.email : "Vul uw email in";

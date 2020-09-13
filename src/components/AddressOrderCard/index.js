@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useRef, createRef } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import {
   getCityName,
   getCityNameBilling,
-  signUp,
+  // signUp,
 } from "../../store/orders/actions";
 
-import { selectToken } from "../../store/clients/selectors";
 import {
   selectCity,
   selectStreetName,
@@ -17,7 +15,7 @@ import {
 } from "../../store/orders/selectors";
 import { selectClient } from "../../store/clients/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import "./index.css";
 import Email from "../../components/FormErrorMessages/Email";
@@ -31,7 +29,7 @@ export default function AddressOrderCard() {
   const salutationDhr = "Dhr.";
 
   const [checked, setChecked] = useState(true);
-  const [typeOrder, setTypeOrder] = useState("");
+
   const [salutation, setSalutation] = useState("");
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -52,12 +50,11 @@ export default function AddressOrderCard() {
   const [postalCodeApiBilling, setPostalCodeApiBilling] = useState(true);
 
   const dispatch = useDispatch();
-  const token = useSelector(selectToken);
+
   const cityNameFromApi = useSelector(selectCity);
   const streetNameFromApi = useSelector(selectStreetName);
   const cityNameFromApiBilling = useSelector(selectCityBilling);
   const streetNameFromApiBilling = useSelector(selectStreetNameBilling);
-  const history = useHistory();
 
   useEffect(() => {
     if (client.email) {
@@ -65,29 +62,27 @@ export default function AddressOrderCard() {
     }
   }, [client]);
 
-  function submitForm(event) {
-    event.preventDefault();
+  // function submitForm(event) {
+  //   event.preventDefault();
 
-    window.location.replace("/construction");
+  //   window.location.replace("/construction");
 
-    dispatch(
-      signUp(
-        name,
-        lastName,
-        middleName,
-        email,
-        postalCode,
-        houseNumber,
-        houseNumberAddition
-      )
-    );
+  //   dispatch(
+  //     signUp(
+  //       name,
+  //       lastName,
+  //       middleName,
+  //       email,
+  //       postalCode,
+  //       houseNumber,
+  //       houseNumberAddition
+  //     )
+  //   );
 
-    // setEmail("");
-    // setPassword("");
-    // setName("");
-  }
-
-  console.log("salutation is", salutation);
+  //   setEmail("");
+  //   setPassword("");
+  //   setName("");
+  // }
 
   function borderControls(value) {
     if (value.length >= 2) {
@@ -134,12 +129,11 @@ export default function AddressOrderCard() {
   }
 
   document.addEventListener("click", (e) => {
-    const flyoutElement = document.getElementById("flyout-example");
+    const insideElementConstant = document.getElementById("insideElement");
     let targetElement = e.target;
 
     do {
-      if (targetElement == flyoutElement) {
-        console.log("clicked inside");
+      if (targetElement === insideElementConstant) {
         return;
       }
 
@@ -159,12 +153,11 @@ export default function AddressOrderCard() {
 
   //billing
   document.addEventListener("click", (e) => {
-    const flyoutElement = document.getElementById("flyout-example");
+    const insideElementConstant = document.getElementById("insideElement");
     let targetElement = e.target;
 
     do {
-      if (targetElement == flyoutElement) {
-        console.log("clicked inside");
+      if (targetElement === insideElementConstant) {
         return;
       }
 
@@ -184,12 +177,11 @@ export default function AddressOrderCard() {
 
   document.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
-      const flyoutElement = document.getElementById("flyout-example");
+      const insideElementConstant = document.getElementById("insideElement");
       let targetElement = e.target;
 
       do {
-        if (targetElement == flyoutElement) {
-          console.log("clicked inside");
+        if (targetElement === insideElementConstant) {
           return;
         }
 
@@ -294,7 +286,7 @@ export default function AddressOrderCard() {
           <h6 className="align-left nameTitle">
             <span>Postcode</span>
           </h6>
-          <Form.Group id="formBasicEmail" className="form-inline">
+          <Form.Group id="insideElement" className="form-inline">
             <Form.Control
               value={postalCodeBilling}
               placeholder="0000AA"
@@ -302,7 +294,7 @@ export default function AddressOrderCard() {
               type="text"
               className={`${borderPostalCode(
                 postalCodeBilling
-              )} flyout-example small firstElement`}
+              )}  small firstElement`}
               required
             />
 
@@ -313,9 +305,7 @@ export default function AddressOrderCard() {
               }
               placeholder="10"
               type="number"
-              className={`${borderHouseNumber(
-                houseNumberBilling
-              )} flyout-example smaller`}
+              className={`${borderHouseNumber(houseNumberBilling)} smaller`}
             />
 
             <Form.Control
@@ -328,7 +318,7 @@ export default function AddressOrderCard() {
               text="muted"
               className={`${borderControlsOptional(
                 houseNumberAdditionBilling
-              )} flyout-example smaller`}
+              )}  smaller`}
               required
             />
           </Form.Group>
@@ -362,7 +352,7 @@ export default function AddressOrderCard() {
             className="leftControl"
             name="radioAanhef"
             checked={salutation === salutationDhr}
-            defaultChecked
+            readOnly
           />
 
           <Form.Label className="right mevr">Mevr.</Form.Label>
@@ -372,10 +362,11 @@ export default function AddressOrderCard() {
             type="radio"
             className="rightControl "
             name="radioAanhef"
+            readOnly
           />
         </Form.Group>
         <h6 className="align-left nameTitle">Uw Naam</h6>
-        <Form.Group className="formBasicEmail" className="form-inline">
+        <Form.Group className=" form-inline">
           <Form.Control
             value={name}
             onChange={(event) => setName(event.target.value)}
@@ -406,15 +397,13 @@ export default function AddressOrderCard() {
         <h6 className="align-left nameTitle">
           <span>Postcode</span>
         </h6>
-        <Form.Group id="formBasicEmail" className="form-inline">
+        <Form.Group id="insideElement" className="form-inline">
           <Form.Control
             value={postalCode}
             placeholder="0000AA"
             onChange={(event) => onChangePostalCodeHandler(event)}
             type="text"
-            className={`${borderPostalCode(
-              postalCode
-            )} flyout-example small firstElement`}
+            className={`${borderPostalCode(postalCode)}  small firstElement`}
             required
           />
 
@@ -423,9 +412,7 @@ export default function AddressOrderCard() {
             onChange={(event) => setHouseNumber(parseInt(event.target.value))}
             placeholder="10"
             type="number"
-            className={`${borderHouseNumber(
-              houseNumber
-            )} flyout-example smaller`}
+            className={`${borderHouseNumber(houseNumber)}  smaller`}
           />
 
           <Form.Control
@@ -436,7 +423,7 @@ export default function AddressOrderCard() {
             text="muted"
             className={`${borderControlsOptional(
               houseNumberAddition
-            )} flyout-example smaller`}
+            )}  smaller`}
             required
           />
         </Form.Group>
@@ -452,7 +439,7 @@ export default function AddressOrderCard() {
         </div>
 
         <div>
-          <Form.Group id="formBasicEmail" className="checkBox">
+          <Form.Group id="" className="checkBox">
             <Form.Control
               value={"adjust"}
               type="checkbox"
@@ -468,7 +455,7 @@ export default function AddressOrderCard() {
           Email
         </h6>
         <div>
-          <Form.Group id="formBasicEmail" className="checkBox">
+          <Form.Group id="" className="checkBox">
             <Form.Control
               value={email}
               onChange={(event) => setEmail(event.target.value)}

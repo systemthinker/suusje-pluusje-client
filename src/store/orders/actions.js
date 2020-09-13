@@ -1,10 +1,5 @@
 import axios from "axios";
-import {
-  appLoading,
-  appDoneLoading,
-  showMessageWithTimeout,
-  setMessage,
-} from "../appState/actions";
+import { appLoading, appDoneLoading } from "../appState/actions";
 
 const setCity = (city) => {
   return {

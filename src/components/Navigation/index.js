@@ -27,8 +27,6 @@ export default function Navigation() {
     "hidden",
     "hidden",
   ];
-  console.log("basket is", basket);
-  console.log("basketL", basket.length);
 
   for (let i = 0; i < basket.length; i++) {
     numberOfItemsInCartHiddenElements[i] = "show";

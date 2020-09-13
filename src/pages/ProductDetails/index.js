@@ -32,7 +32,7 @@ export default function ProductDetails() {
 
   useEffect(() => {
     dispatch(fetchProductDetailPage(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
   return (
     <div>
       <ProductDetailCard {...product} dispatchOnClick={dispatchOnClick} />
