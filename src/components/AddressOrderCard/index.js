@@ -4,7 +4,15 @@ import Button from "react-bootstrap/Button";
 import {
   getCityName,
   getCityNameBilling,
-  // signUp,
+  orderOverview,
+  setDisplayPostalCode,
+  setDisplayPostalCodeBilling,
+  setPostalCode,
+  setPostalCodeBilling,
+  setHouseNumber,
+  setHouseNumberBilling,
+  setHouseNumberAddition,
+  setHouseNumberAdditionBilling,
 } from "../../store/orders/actions";
 
 import {
@@ -12,7 +20,16 @@ import {
   selectStreetName,
   selectCityBilling,
   selectStreetNameBilling,
+  selectDisplayPostalCode,
+  selectDisplayPostalCodeBilling,
+  selectHouseNumber,
+  selectHouseNumberBilling,
+  selectHouseNumberAddition,
+  selectHouseNumberAdditionBilling,
+  selectPostalCode,
+  selectPostalCodeBilling,
 } from "../../store/orders/selectors";
+import { selectAppLoading } from "../../store/appState/selectors";
 import { selectClient } from "../../store/clients/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -21,40 +38,41 @@ import "./index.css";
 import Email from "../../components/FormErrorMessages/Email";
 
 export default function AddressOrderCard() {
-  // use REdux --> appstate later to set postalCode state, to insure fetchCity() doesn't get called more then necessary
   // also add error handling if postal code is not found
   const client = useSelector(selectClient);
 
-  const salutationMevr = "Mevr.";
-  const salutationDhr = "Dhr.";
+  const salutationMevr = "mevrouw";
+  const salutationDhr = "heer";
 
   const [checked, setChecked] = useState(true);
 
-  const [salutation, setSalutation] = useState("");
+  const [salutation, setSalutation] = useState("mevrouw/heer");
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [email, setEmail] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [postalCodeBilling, setPostalCodeBilling] = useState("");
-  const [houseNumber, setHouseNumber] = useState();
-  const [houseNumberBilling, setHouseNumberBilling] = useState();
-  const [returnAdres, setReturnAdres] = useState(false);
-  const [returnAddressBilling, setReturnAddressBilling] = useState(false);
-  const [houseNumberAddition, setHouseNumberAddition] = useState("");
-  const [houseNumberAdditionBilling, setHouseNumberAdditionBilling] = useState(
-    ""
-  );
 
-  const [postalCodeApi, setPostalCodeApi] = useState(true);
-  const [postalCodeApiBilling, setPostalCodeApiBilling] = useState(true);
+  const billingAddressText = "Hetzelfde als bezorg adres";
 
   const dispatch = useDispatch();
 
   const cityNameFromApi = useSelector(selectCity);
-  const streetNameFromApi = useSelector(selectStreetName);
   const cityNameFromApiBilling = useSelector(selectCityBilling);
+  const streetNameFromApi = useSelector(selectStreetName);
   const streetNameFromApiBilling = useSelector(selectStreetNameBilling);
+  const displayPostalCode = useSelector(selectDisplayPostalCode);
+  const displayPostalCodeBilling = useSelector(selectDisplayPostalCodeBilling);
+  const postalCode = useSelector(selectPostalCode);
+  const postalCodeBilling = useSelector(selectPostalCodeBilling);
+  const isLoading = useSelector(selectAppLoading);
+  const houseNumber = useSelector(selectHouseNumber);
+  const houseNumberBilling = useSelector(selectHouseNumberBilling);
+  const houseNumberAddition = useSelector(selectHouseNumberAddition);
+  const houseNumberAdditionBilling = useSelector(
+    selectHouseNumberAdditionBilling
+  );
+
+  console.log(" displayPostalCodebil", displayPostalCodeBilling);
 
   useEffect(() => {
     if (client.email) {
@@ -62,27 +80,23 @@ export default function AddressOrderCard() {
     }
   }, [client]);
 
-  // function submitForm(event) {
-  //   event.preventDefault();
+  function submitForm(event) {
+    event.preventDefault();
 
-  //   window.location.replace("/construction");
+    dispatch();
+    // orderOverview(
+    //   salutation,
+    //   name,
+    //   lastName,
+    //   middleName,
+    //   email,
+    //   postalCode,
+    //   houseNumber,
+    //   houseNumberAddition
+    // )
 
-  //   dispatch(
-  //     signUp(
-  //       name,
-  //       lastName,
-  //       middleName,
-  //       email,
-  //       postalCode,
-  //       houseNumber,
-  //       houseNumberAddition
-  //     )
-  //   );
-
-  //   setEmail("");
-  //   setPassword("");
-  //   setName("");
-  // }
+    console.log("submitForm called");
+  }
 
   function borderControls(value) {
     if (value.length >= 2) {
@@ -109,16 +123,6 @@ export default function AddressOrderCard() {
     }
   }
 
-  function fetchCity(postalCodeValue, houseNumberValue) {
-    dispatch(getCityName(postalCodeValue, houseNumberValue));
-    console.log("fetchCity() called");
-  }
-
-  function fetchCityBilling(postalCodeValue, houseNumberValue) {
-    dispatch(getCityNameBilling(postalCodeValue, houseNumberValue));
-    console.log("fetchCity() called");
-  }
-
   function borderHouseNumber(value) {
     // add better validation later
     if (Number.isInteger(value)) {
@@ -128,12 +132,16 @@ export default function AddressOrderCard() {
     }
   }
 
+  //billing
   document.addEventListener("click", (e) => {
     const insideElementConstant = document.getElementById("insideElement");
+
     let targetElement = e.target;
 
     do {
       if (targetElement === insideElementConstant) {
+        console.log("clicked inside");
+
         return;
       }
 
@@ -143,21 +151,24 @@ export default function AddressOrderCard() {
     if (
       postalCode.length === 6 &&
       Number.isInteger(houseNumber) &&
-      postalCodeApi === true
+      cityNameFromApi.length < 2
     ) {
-      fetchCity(postalCode, houseNumber);
-      setPostalCodeApi(false);
-      setReturnAdres(true);
+      console.log("dispatch called");
+      dispatch(getCityName());
+    } else {
     }
   });
 
-  //billing
   document.addEventListener("click", (e) => {
-    const insideElementConstant = document.getElementById("insideElement");
+    const insideElementConstantBilling = document.getElementById(
+      "insideElementBilling"
+    );
     let targetElement = e.target;
 
     do {
-      if (targetElement === insideElementConstant) {
+      if (targetElement === insideElementConstantBilling) {
+        console.log("clicked inside");
+
         return;
       }
 
@@ -166,76 +177,79 @@ export default function AddressOrderCard() {
 
     if (
       postalCodeBilling.length === 6 &&
-      Number.isInteger(houseNumberBilling) &&
-      postalCodeApiBilling === true
+      Number.isInteger(houseNumberBilling)
     ) {
-      fetchCityBilling(postalCodeBilling, houseNumberBilling);
-      setPostalCodeApiBilling(false);
-      setReturnAddressBilling(true);
+      dispatch(getCityNameBilling());
+    } else {
     }
   });
 
   document.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
-      const insideElementConstant = document.getElementById("insideElement");
-      let targetElement = e.target;
-
-      do {
-        if (targetElement === insideElementConstant) {
-          return;
-        }
-
-        targetElement = targetElement.parentNode;
-      } while (targetElement);
-
+      if (postalCode.length === 6 && Number.isInteger(houseNumber)) {
+        dispatch(getCityName());
+      }
       if (
-        postalCode.length === 6 &&
-        Number.isInteger(houseNumber) &&
-        postalCodeApi === true
+        postalCodeBilling.length === 6 &&
+        Number.isInteger(houseNumberBilling)
       ) {
-        fetchCity(postalCode, houseNumber);
-        setPostalCodeApi(false);
-        setReturnAdres(true);
+        dispatch(getCityNameBilling());
+      } else {
       }
     }
   });
 
-  function returnAdresInfo() {
-    return (
-      <div className="align-left adresDiv">
-        <p className="bolder deliveryAdressHide">Bezorgadres</p>
-        <p>
-          {streetNameFromApi}{" "}
-          {houseNumber && Number.isInteger(houseNumber) ? houseNumber : null}{" "}
-          {houseNumberAddition && houseNumberAddition.length > 0
-            ? houseNumberAddition
-            : null}
-        </p>
-        <p>
-          {postalCode} {cityNameFromApi}
-        </p>
-      </div>
-    );
+  function returnAddressInfo() {
+    if (isLoading) {
+      return null;
+    } else if (
+      displayPostalCode &&
+      postalCode.length === 6 &&
+      Number.isInteger(houseNumber)
+    ) {
+      return (
+        <div className="align-left AddressDiv">
+          <p className="bolder deliveryAddresssHide">Bezorg adres</p>
+          <p>
+            {streetNameFromApi} {houseNumber}{" "}
+            {houseNumberAddition && houseNumberAddition.length > 0
+              ? houseNumberAddition
+              : null}
+          </p>
+          <p>
+            {postalCode} {cityNameFromApi}
+          </p>
+        </div>
+      );
+    }
   }
 
-  function returnAdresInfoBilling() {
-    return (
-      <div className="align-left adresDiv">
-        <p className="bolder deliveryAdressHide">Factuuradres</p>
-        <p>
-          {streetNameFromApiBilling}{" "}
-          {houseNumberBilling && Number.isInteger(houseNumberBilling)
-            ? houseNumberBilling
-            : null}{" "}
-          {houseNumberAdditionBilling && houseNumberAdditionBilling.length > 0
-            ? houseNumberAdditionBilling
-            : null}
-        </p>
-        <p>
-          {postalCodeBilling} {cityNameFromApiBilling}
-        </p>
-      </div>
-    );
+  function returnAddressInfoBilling() {
+    if (isLoading) {
+      return null;
+    } else if (
+      displayPostalCodeBilling &&
+      postalCodeBilling.length === 6 &&
+      Number.isInteger(houseNumberBilling)
+    ) {
+      return (
+        <div className="align-left AddressDiv">
+          <p className="bolder deliveryAddresssHide">Factuur adres</p>
+          <p>
+            {streetNameFromApiBilling}{" "}
+            {houseNumberBilling && Number.isInteger(houseNumberBilling)
+              ? houseNumberBilling
+              : null}{" "}
+            {houseNumberAdditionBilling && houseNumberAdditionBilling.length > 0
+              ? houseNumberAdditionBilling
+              : null}
+          </p>
+          <p>
+            {postalCodeBilling} {cityNameFromApiBilling}
+          </p>
+        </div>
+      );
+    }
   }
   function isRFC822ValidEmail(value) {
     var sQtext = "[^\\x0d\\x22\\x5c\\x80-\\xff]";
@@ -268,15 +282,13 @@ export default function AddressOrderCard() {
   }
 
   function onChangePostalCodeHandler(event) {
-    setPostalCode(event.target.value.toUpperCase());
-    setReturnAdres(false);
-    setPostalCodeApi(true);
+    dispatch(setPostalCode(event.target.value.toUpperCase()));
+    dispatch(setDisplayPostalCode(false));
   }
 
   function onChangePostalCodeHandlerBilling(event) {
-    setPostalCodeBilling(event.target.value.toUpperCase());
-    setReturnAdres(false);
-    setPostalCodeApi(true);
+    dispatch(setPostalCodeBilling(event.target.value.toUpperCase()));
+    dispatch(setDisplayPostalCodeBilling(false));
   }
 
   function onChangeBillingAddressHandler() {
@@ -286,11 +298,11 @@ export default function AddressOrderCard() {
           <h6 className="align-left nameTitle">
             <span>Postcode</span>
           </h6>
-          <Form.Group id="insideElement" className="form-inline">
+          <Form.Group id="insideElementBilling" className="form-inline">
             <Form.Control
               value={postalCodeBilling}
-              placeholder="0000AA"
-              onClick={(event) => onChangePostalCodeHandlerBilling(event)}
+              placeholder="1111BB"
+              onChange={(event) => onChangePostalCodeHandlerBilling(event)}
               type="text"
               className={`${borderPostalCode(
                 postalCodeBilling
@@ -301,9 +313,9 @@ export default function AddressOrderCard() {
             <Form.Control
               value={houseNumberBilling}
               onChange={(event) =>
-                setHouseNumberBilling(parseInt(event.target.value))
+                dispatch(setHouseNumberBilling(parseInt(event.target.value)))
               }
-              placeholder="10"
+              placeholder="20"
               type="number"
               className={`${borderHouseNumber(houseNumberBilling)} smaller`}
             />
@@ -322,11 +334,7 @@ export default function AddressOrderCard() {
               required
             />
           </Form.Group>
-          {returnAddressBilling &&
-          postalCodeBilling.length === 6 &&
-          Number.isInteger(houseNumberBilling)
-            ? returnAdresInfoBilling()
-            : null}
+          {returnAddressInfoBilling()}
         </div>
       );
     }
@@ -334,6 +342,10 @@ export default function AddressOrderCard() {
 
   function onChangeSalutationHandler(event) {
     setSalutation(event.target.value);
+  }
+
+  function onChangeCheckHandler(event) {
+    setChecked(!checked);
   }
 
   return (
@@ -364,6 +376,7 @@ export default function AddressOrderCard() {
             name="radioAanhef"
             readOnly
           />
+          <span className="optional"> &nbsp;&nbsp;optioneel</span>
         </Form.Group>
         <h6 className="align-left nameTitle">Uw Naam</h6>
         <Form.Group className=" form-inline">
@@ -397,7 +410,7 @@ export default function AddressOrderCard() {
         <h6 className="align-left nameTitle">
           <span>Postcode</span>
         </h6>
-        <Form.Group id="insideElement" className="form-inline">
+        <Form.Group id="insideElement" className="form-inline ">
           <Form.Control
             value={postalCode}
             placeholder="0000AA"
@@ -409,15 +422,20 @@ export default function AddressOrderCard() {
 
           <Form.Control
             value={houseNumber}
-            onChange={(event) => setHouseNumber(parseInt(event.target.value))}
+            onChange={(event) =>
+              dispatch(setHouseNumber(parseInt(event.target.value)))
+            }
             placeholder="10"
             type="number"
             className={`${borderHouseNumber(houseNumber)}  smaller`}
+            required
           />
 
           <Form.Control
             value={houseNumberAddition}
-            onChange={(event) => setHouseNumberAddition(event.target.value)}
+            onChange={(event) =>
+              dispatch(setHouseNumberAddition(event.target.value))
+            }
             type="text"
             placeholder="toev"
             text="muted"
@@ -427,15 +445,15 @@ export default function AddressOrderCard() {
             required
           />
         </Form.Group>
-        {returnAdres && postalCode.length === 6 && Number.isInteger(houseNumber)
-          ? returnAdresInfo()
-          : null}
+        <div>{returnAddressInfo()}</div>
 
-        <div className=" align-left adresDiv">
+        <div className=" align-left AddressDiv">
           <p className="bolder">
-            Factuuradres <span className="optional">optioneel</span>
+            Factuur adres <span className="optional">optioneel</span>
           </p>
-          <p>Hetzelfde als bezorgadres</p>
+          <p className="billingAddressTextField">
+            {checked ? billingAddressText : " "}
+          </p>
         </div>
 
         <div>
@@ -445,7 +463,7 @@ export default function AddressOrderCard() {
               type="checkbox"
               className="small"
               checked={checked}
-              onChange={() => setChecked(!checked)}
+              onChange={(event) => onChangeCheckHandler(event)}
             />
           </Form.Group>
         </div>
@@ -473,15 +491,15 @@ export default function AddressOrderCard() {
 
         <Form.Group className="mt-5">
           <div>
-            <Link to="/order/overview">
-              <Button
-                variant="success"
-                size="block"
-                // onCLick={(event) => submitForm(event)}
-              >
-                Doorgaan
-              </Button>
-            </Link>
+            {/* <Link to="/order/overview"> */}
+            <Button
+              variant="success"
+              size="block"
+              onClick={(event) => submitForm(event)}
+            >
+              Doorgaan
+            </Button>
+            {/* </Link> */}
           </div>
         </Form.Group>
       </Form>

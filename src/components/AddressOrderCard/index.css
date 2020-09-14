@@ -105,6 +105,9 @@
 .checkBox {
   padding-left: 10%;
 }
+.billingAddressTextField {
+  min-height: 22px;
+}
 
 input[type="checkbox"] {
   /* Double-sized Checkboxes */

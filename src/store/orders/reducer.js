@@ -1,8 +1,16 @@
 const initialState = {
   city: "",
-  streetName: "",
   cityBilling: "",
+  streetName: "",
   streetNameBilling: "",
+  postalCode: "",
+  postalCodeBilling: "",
+  houseNumber: "",
+  houseNumberBilling: "",
+  houseNumberAddition: "",
+  houseNumberAdditionBilling: "",
+  displayPostalCode: false,
+  displayPostalCodeBilling: false,
 };
 
 export default (state = initialState, action) => {
@@ -15,6 +23,22 @@ export default (state = initialState, action) => {
       return { ...state, streetName: action.payload };
     case "SET_STREET_NAME_BILLING":
       return { ...state, streetNameBilling: action.payload };
+    case "SET_DISPLAY_POSTAL_CODE":
+      return { ...state, displayPostalCode: action.payload };
+    case "SET_DISPLAY_POSTAL_CODE_BILLING":
+      return { ...state, displayPostalCodeBilling: action.payload };
+    case "SET_POSTAL_CODE_VALUE":
+      return { ...state, postalCode: action.payload };
+    case "SET_POSTAL_CODE_BILLING_VALUE":
+      return { ...state, postalCodeBilling: action.payload };
+    case "SET_HOUSE_NUMBER_VALUE":
+      return { ...state, houseNumber: action.payload };
+    case "SET_HOUSE_NUMBER_BILLING_VALUE":
+      return { ...state, houseNumberBilling: action.payload };
+    case "SET_HOUSE_NUMBER_ADDITION":
+      return { ...state, houseNumberAddition: action.payload };
+    case "SET_HOUSE_NUMBER_ADDITION_BILLING":
+      return { ...state, houseNumberAdditionBilling: action.payload };
     default:
       return state;
   }
