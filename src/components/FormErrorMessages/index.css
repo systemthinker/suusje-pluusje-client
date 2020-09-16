@@ -1,5 +1,9 @@
 .spanErrorMessage {
-    color: red;
-    margin:0;
-    font-size: 12px;
+  color: red;
+  margin: 0;
+  font-size: 12px;
+}
+
+.postalCodeErrorMessage {
+  text-align: left;
 }

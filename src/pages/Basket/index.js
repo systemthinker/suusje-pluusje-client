@@ -40,7 +40,7 @@ export default function Basket() {
   useEffect(() => {
     dispatch(fetchBasket(id));
     dispatch(fetchProducts());
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const totalBasketPrice =
     basket
@@ -146,10 +146,9 @@ export default function Basket() {
             <div>
               <Link to={`${verified}`}>
                 <Button
-                  className="orderButtonBasket"
+                  className="orderButtonBasket block"
                   variant="success"
                   size="lg"
-                  className="block"
                   id="basketButtonOrder"
                 >
                   {" "}
@@ -171,9 +170,9 @@ export default function Basket() {
             <h3 className="h3">Voeg Toe:</h3>
             {products.map((product, index) => {
               if (
-                index == productIdForExtraProductsOne ||
-                index == productIdForExtraProductsTwo ||
-                index == 14
+                index === productIdForExtraProductsOne ||
+                index === productIdForExtraProductsTwo ||
+                index === 14
               ) {
                 return (
                   <div sm={3} className="column" key={product.id}>
@@ -183,6 +182,8 @@ export default function Basket() {
                     />
                   </div>
                 );
+              } else {
+                return null;
               }
             })}
           </Col>

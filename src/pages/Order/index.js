@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Col, Row, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import AddressOrderCard from "../../components/AddressOrderCard";
 
 export default function Order() {

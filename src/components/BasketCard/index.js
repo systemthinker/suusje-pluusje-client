@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { selectAppLoading } from "../../store/appState/selectors";
 import { useSelector } from "react-redux";
 import { Col, Row } from "react-bootstrap";
@@ -92,9 +92,7 @@ export default function BasketCard(props) {
             <div className="grid-item plusMinus">
               <Button
                 onClick={(e) => {
-                  {
-                    loading("Remove");
-                  }
+                  loading("Remove");
                 }}
                 size="sm"
                 type="button"
@@ -109,12 +107,11 @@ export default function BasketCard(props) {
                 value={quantity}
                 max="999"
                 id="numberCol"
+                readOnly
               />
               <Button
                 onClick={(e) => {
-                  {
-                    loading("Add");
-                  }
+                  loading("Add");
                 }}
                 value={quantity}
                 type="button"

@@ -10,8 +10,6 @@ export const fetchProductDetailPage = (id) => {
   return async (dispatch) => {
     const response = await axios.get(`${apiUrl}/details/${id}`);
 
-    console.log("reponse", response.data);
-
     dispatch(fetchProductDetailPageAction(response.data));
   };
 };
