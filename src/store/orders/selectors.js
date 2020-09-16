@@ -10,10 +10,10 @@ export const selectDisplayPostalCodeBilling = (state) =>
 export const selectHouseNumber = (state) => state.orders.houseNumber;
 export const selectHouseNumberBilling = (state) =>
   state.orders.houseNumberBilling;
-export const selectHouseNumberAddition = (state) =>
-  state.orders.houseNumberAddition;
-export const selectHouseNumberAdditionBilling = (state) =>
-  state.orders.houseNumberAdditionBilling;
+
 export const selectPostalCode = (state) => state.orders.postalCode;
 export const selectPostalCodeBilling = (state) =>
   state.orders.postalCodeBilling;
+export const selectErrorStatus = (state) => state.orders.errorStatus;
+export const selectErrorStatusBilling = (state) =>
+  state.orders.errorStatusBilling;

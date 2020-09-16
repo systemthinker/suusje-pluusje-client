@@ -7,8 +7,9 @@ const initialState = {
   postalCodeBilling: "",
   houseNumber: "",
   houseNumberBilling: "",
-  houseNumberAddition: "",
-  houseNumberAdditionBilling: "",
+  errorStatus: false,
+  errorStatusBilling: false,
+
   displayPostalCode: false,
   displayPostalCodeBilling: false,
 };
@@ -35,10 +36,11 @@ export default (state = initialState, action) => {
       return { ...state, houseNumber: action.payload };
     case "SET_HOUSE_NUMBER_BILLING_VALUE":
       return { ...state, houseNumberBilling: action.payload };
-    case "SET_HOUSE_NUMBER_ADDITION":
-      return { ...state, houseNumberAddition: action.payload };
-    case "SET_HOUSE_NUMBER_ADDITION_BILLING":
-      return { ...state, houseNumberAdditionBilling: action.payload };
+    case "SET_ERROR_FOR_ORDER_PAGE":
+      return { ...state, errorStatus: action.payload };
+    case "SET_ERROR_FOR_ORDER_PAGE_BILLING ":
+      return { ...state, errorStatusBilling: action.payload };
+
     default:
       return state;
   }

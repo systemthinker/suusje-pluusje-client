@@ -11,8 +11,6 @@ import {
   setPostalCodeBilling,
   setHouseNumber,
   setHouseNumberBilling,
-  setHouseNumberAddition,
-  setHouseNumberAdditionBilling,
 } from "../../store/orders/actions";
 
 import {
@@ -24,11 +22,12 @@ import {
   selectDisplayPostalCodeBilling,
   selectHouseNumber,
   selectHouseNumberBilling,
-  selectHouseNumberAddition,
-  selectHouseNumberAdditionBilling,
   selectPostalCode,
   selectPostalCodeBilling,
+  selectErrorStatus,
+  selectErrorStatusBilling,
 } from "../../store/orders/selectors";
+
 import { selectAppLoading } from "../../store/appState/selectors";
 import { selectClient } from "../../store/clients/selectors";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,6 +35,7 @@ import { Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import "./index.css";
 import Email from "../../components/FormErrorMessages/Email";
+import PostalCodeApiStatus from "../FormErrorMessages/PostalCodeApiStatus";
 
 export default function AddressOrderCard() {
   // also add error handling if postal code is not found
@@ -51,6 +51,10 @@ export default function AddressOrderCard() {
   const [lastName, setLastName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [email, setEmail] = useState("");
+  const [houseNumberAddition, setHouseNumberAddition] = useState("");
+  const [houseNumberAdditionBilling, setHouseNumberAdditionBilling] = useState(
+    ""
+  );
 
   const billingAddressText = "Hetzelfde als bezorg adres";
 
@@ -67,12 +71,8 @@ export default function AddressOrderCard() {
   const isLoading = useSelector(selectAppLoading);
   const houseNumber = useSelector(selectHouseNumber);
   const houseNumberBilling = useSelector(selectHouseNumberBilling);
-  const houseNumberAddition = useSelector(selectHouseNumberAddition);
-  const houseNumberAdditionBilling = useSelector(
-    selectHouseNumberAdditionBilling
-  );
-
-  console.log(" displayPostalCodebil", displayPostalCodeBilling);
+  const errorStatus = useSelector(selectErrorStatus);
+  const errorStatusBilling = useSelector(selectErrorStatusBilling);
 
   useEffect(() => {
     if (client.email) {
@@ -224,33 +224,6 @@ export default function AddressOrderCard() {
     }
   }
 
-  function returnAddressInfoBilling() {
-    if (isLoading) {
-      return null;
-    } else if (
-      displayPostalCodeBilling &&
-      postalCodeBilling.length === 6 &&
-      Number.isInteger(houseNumberBilling)
-    ) {
-      return (
-        <div className="align-left AddressDiv">
-          <p className="bolder deliveryAddresssHide">Factuur adres</p>
-          <p>
-            {streetNameFromApiBilling}{" "}
-            {houseNumberBilling && Number.isInteger(houseNumberBilling)
-              ? houseNumberBilling
-              : null}{" "}
-            {houseNumberAdditionBilling && houseNumberAdditionBilling.length > 0
-              ? houseNumberAdditionBilling
-              : null}
-          </p>
-          <p>
-            {postalCodeBilling} {cityNameFromApiBilling}
-          </p>
-        </div>
-      );
-    }
-  }
   function isRFC822ValidEmail(value) {
     var sQtext = "[^\\x0d\\x22\\x5c\\x80-\\xff]";
     var sDtext = "[^\\x0d\\x5b-\\x5d\\x80-\\xff]";
@@ -333,13 +306,41 @@ export default function AddressOrderCard() {
               )}  smaller`}
               required
             />
+            {errorStatusBilling ? <PostalCodeApiStatus /> : null}
           </Form.Group>
-          {returnAddressInfoBilling()}
+          <div>{returnAddressInfoBilling()}</div>
         </div>
       );
     }
   }
 
+  function returnAddressInfoBilling() {
+    if (isLoading) {
+      return null;
+    } else if (
+      displayPostalCodeBilling &&
+      postalCodeBilling.length === 6 &&
+      Number.isInteger(houseNumberBilling)
+    ) {
+      return (
+        <div className="align-left AddressDiv">
+          <p className="bolder deliveryAddresssHide">Factuur adres</p>
+          <p>
+            {streetNameFromApiBilling}{" "}
+            {houseNumberBilling && Number.isInteger(houseNumberBilling)
+              ? houseNumberBilling
+              : null}{" "}
+            {houseNumberAdditionBilling && houseNumberAdditionBilling.length > 0
+              ? houseNumberAdditionBilling
+              : null}
+          </p>
+          <p>
+            {postalCodeBilling} {cityNameFromApiBilling}
+          </p>
+        </div>
+      );
+    }
+  }
   function onChangeSalutationHandler(event) {
     setSalutation(event.target.value);
   }
@@ -433,9 +434,7 @@ export default function AddressOrderCard() {
 
           <Form.Control
             value={houseNumberAddition}
-            onChange={(event) =>
-              dispatch(setHouseNumberAddition(event.target.value))
-            }
+            onChange={(event) => setHouseNumberAddition(event.target.value)}
             type="text"
             placeholder="toev"
             text="muted"
@@ -445,6 +444,7 @@ export default function AddressOrderCard() {
             required
           />
         </Form.Group>
+        {errorStatus ? <PostalCodeApiStatus /> : null}
         <div>{returnAddressInfo()}</div>
 
         <div className=" align-left AddressDiv">

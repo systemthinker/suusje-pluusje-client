@@ -86,6 +86,20 @@ const setHouseNumberAdditionValueBilling = (value) => {
   };
 };
 
+const setErrorForOrderPage = (value) => {
+  return {
+    payload: value,
+    type: "SET_ERROR_FOR_ORDER_PAGE",
+  };
+};
+
+const setErrorForOrderPageBilling = (value) => {
+  return {
+    payload: value,
+    type: "SET_ERROR_FOR_ORDER_PAGE_BILLING",
+  };
+};
+
 export const getCityName = () => {
   const postalCode = store.getState().orders.postalCode;
   const houseNumber = store.getState().orders.houseNumber;
@@ -105,13 +119,14 @@ export const getCityName = () => {
       await dispatch(setCity(response.data.response.docs[0].woonplaatsnaam));
       await dispatch(setStreetName(response.data.response.docs[0].straatnaam));
       await dispatch(displayPostalCode(true));
-
+      dispatch(setErrorForOrderPage(false));
       await setTimeout(function () {
         dispatch(appDoneLoading());
       }, 200);
     } catch (e) {
       console.log("error", e);
       await dispatch(displayPostalCode(false));
+      dispatch(setErrorForOrderPage(true));
       await setTimeout(function () {
         dispatch(appDoneLoading());
       }, 200);
@@ -140,16 +155,18 @@ export const getCityNameBilling = () => {
         setStreetNameBilling(response.data.response.docs[0].straatnaam)
       );
       await dispatch(displayPostalCodeBilling(true));
+      dispatch(setErrorForOrderPageBilling(false));
 
       await setTimeout(function () {
         dispatch(appDoneLoading());
-      }, 100);
+      }, 200);
     } catch (e) {
       console.log("error", e);
       await dispatch(displayPostalCodeBilling(false));
+      dispatch(setErrorForOrderPageBilling(true));
       await setTimeout(function () {
         dispatch(appDoneLoading());
-      }, 100);
+      }, 200);
     }
   };
 };
