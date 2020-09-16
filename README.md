@@ -3,11 +3,11 @@ Suusje Pluusje is a webshop where you can buy the best "babynestjes" in the worl
 
 ### Live working version
 [Click here](https://suusje-pluusje.netlify.app)
-*** please note that the site is still in development and is not fully functional yet, however don't be afraid to have a look around
+*** please note that the site is still in development, however don't be afraid to have a look around
 
 ### Goals of this project
 Helping my sister with selling her great merchandise. She is a true craftsman and makes the greatest "babynestjes".
-This is also part of an individual project for Codaisseur in order to practise building a React JS app, total time spend on this project is around 80 hour.
+This is also part of an individual project for Codaisseur in order to practise building a React JS app.
 
 ### Tech used in the project
 ReactJS, React Bootstrap, custom CSS and HTML for frontend. Node JS for backend, deployed with Netlify, Heroku and the database is ElephantSQL.
