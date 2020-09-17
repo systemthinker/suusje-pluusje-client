@@ -12,7 +12,7 @@ import nestje3 from "../../assets/nestje3.jpg";
 import nestje4 from "../../assets/nestje4.jpg";
 import nestje5 from "../../assets/nestje5.jpg";
 import nestje6 from "../../assets/nestje6.jpg";
-import nestje7 from "../../assets/nestje7.png";
+import nestje7 from "../../assets/nestje7.jpg";
 import "./productDetailCard.css";
 
 export default function ProductDetailCard({

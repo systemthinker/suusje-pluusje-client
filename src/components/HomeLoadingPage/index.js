@@ -1,6 +1,12 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import babyLoading from "../../assets/babyLoading.jpg";
+import nestje1 from "../../assets/nestje1.jpg";
+import nestje2 from "../../assets/nestje2.jpg";
+import nestje3 from "../../assets/nestje3.jpg";
+import nestje4 from "../../assets/nestje4.jpg";
+import nestje5 from "../../assets/nestje5.jpg";
+import nestje6 from "../../assets/nestje6.jpg";
 
 export default function HomeloadingPage() {
   return (
@@ -11,7 +17,7 @@ export default function HomeloadingPage() {
             <img
               id="productImage"
               className="imageBoxLoading"
-              src={babyLoading}
+              src={nestje1}
               alt=""
             ></img>
           </div>
@@ -21,7 +27,7 @@ export default function HomeloadingPage() {
             <img
               id="productImage"
               className="center-block imageBoxLoading"
-              src={babyLoading}
+              src={nestje2}
               alt=""
             ></img>
           </div>
@@ -33,7 +39,7 @@ export default function HomeloadingPage() {
             <img
               id="productImage"
               className="imageBoxLoading"
-              src={babyLoading}
+              src={nestje3}
               alt=""
             ></img>
           </div>
@@ -43,7 +49,7 @@ export default function HomeloadingPage() {
             <img
               id="productImage"
               className="center-block imageBoxLoading"
-              src={babyLoading}
+              src={nestje4}
               alt=""
             ></img>
           </div>
