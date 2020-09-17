@@ -2,13 +2,13 @@ import React from "react";
 import "./productCard.css";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import nestje1 from "../../assets/nestje1.jpg";
-import nestje2 from "../../assets/nestje2.jpg";
-import nestje3 from "../../assets/nestje3.jpg";
-import nestje4 from "../../assets/nestje4.jpg";
-import nestje5 from "../../assets/nestje5.jpg";
-import nestje6 from "../../assets/nestje6.jpg";
-import nestje7 from "../../assets/nestje7.jpg";
+import nestje1 from "../../assets/nestje1.webp";
+import nestje2 from "../../assets/nestje2.webp";
+import nestje3 from "../../assets/nestje3.webp";
+import nestje4 from "../../assets/nestje4.webp";
+import nestje5 from "../../assets/nestje5.webp";
+import nestje6 from "../../assets/nestje6.webp";
+import nestje7 from "../../assets/nestje7.webp";
 
 export default function ProductCard({
   id,

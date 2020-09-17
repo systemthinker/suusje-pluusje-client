@@ -24,6 +24,7 @@
   font-size: 140px;
   font-weight: bolder;
   transition: ease all 0.5s;
+  font-display: swap;
 }
 
 #babyNestjesVideoText {
