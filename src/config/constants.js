@@ -1,5 +1,6 @@
-export const apiUrl =
-  process.env.API_URL || "https://suusje-server.herokuapp.com";
+export const apiUrl = "https://suusje-server.herokuapp.com";
+
+// process.env.API_URL ||
 
 export const siteUrl = "http://suusje-pluusje.netlify.app";
 
