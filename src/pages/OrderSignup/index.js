@@ -47,7 +47,7 @@ export default function OrderSignup() {
     if (token === null) {
       history.push("/");
     }
-    dispatch(getUserWithStoredToken());
+    // dispatch(getUserWithStoredToken());
     if ((clientId, name, email, password, client.isVerified)) {
       history.push("/order");
     }
