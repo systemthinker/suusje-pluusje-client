@@ -1,10 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-import nestje1 from "../../assets/nestje1.webp";
-import nestje2 from "../../assets/nestje2.webp";
-import nestje3 from "../../assets/nestje3.webp";
-import nestje4 from "../../assets/nestje4.webp";
+import { getId } from "../Functions";
 
 export default function HomeloadingPage() {
   return (
@@ -15,7 +12,7 @@ export default function HomeloadingPage() {
             <img
               id="productImage"
               className="imageBoxLoading"
-              src={nestje1}
+              src={getId(1)}
               alt=""
             ></img>
           </div>
@@ -25,7 +22,7 @@ export default function HomeloadingPage() {
             <img
               id="productImage"
               className="center-block imageBoxLoading"
-              src={nestje2}
+              src={getId(2)}
               alt=""
             ></img>
           </div>
@@ -37,7 +34,7 @@ export default function HomeloadingPage() {
             <img
               id="productImage"
               className="imageBoxLoading"
-              src={nestje3}
+              src={getId(3)}
               alt=""
             ></img>
           </div>
@@ -47,7 +44,7 @@ export default function HomeloadingPage() {
             <img
               id="productImage"
               className="center-block imageBoxLoading"
-              src={nestje4}
+              src={getId(4)}
               alt=""
             ></img>
           </div>

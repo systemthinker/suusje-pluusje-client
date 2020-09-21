@@ -6,13 +6,7 @@ import { selectBasket } from "../../store/baskets/selectors";
 import { selectAppLoading } from "../../store/appState/selectors";
 import OrderButton from "../OrderButton";
 
-import nestje1 from "../../assets/nestje1.webp";
-import nestje2 from "../../assets/nestje2.webp";
-import nestje3 from "../../assets/nestje3.webp";
-import nestje4 from "../../assets/nestje4.webp";
-import nestje5 from "../../assets/nestje5.webp";
-import nestje6 from "../../assets/nestje6.webp";
-import nestje7 from "../../assets/nestje7.webp";
+import { getId } from "../Functions";
 import "./productDetailCard.css";
 
 export default function ProductDetailCard({
@@ -38,28 +32,6 @@ export default function ProductDetailCard({
       return null;
     } else {
       return <OrderButton />;
-    }
-  }
-
-  function getId(id) {
-    switch (id) {
-      case 1:
-        return nestje1;
-      case 2:
-        return nestje2;
-      case 3:
-        return nestje3;
-      case 4:
-        return nestje4;
-      case 5:
-        return nestje5;
-      case 6:
-        return nestje6;
-      case 7:
-        return nestje7;
-
-      default:
-        return nestje1;
     }
   }
 

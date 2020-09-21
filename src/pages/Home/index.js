@@ -41,7 +41,7 @@ export default function Home() {
     }
   };
 
-  function componentDidMount() {
+  function loadVideo() {
     return (
       <div>
         <video id="video" autoPlay muted loop>
@@ -55,7 +55,7 @@ export default function Home() {
     <Container fluid className="App">
       <Row>
         <Col offset={3}>
-          {componentDidMount()}
+          {loadVideo()}
           <div className="content">
             <p>Prachtige</p>
             <p id="babyNestjesVideoText">BabyNestjes</p>
