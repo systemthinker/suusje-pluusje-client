@@ -17,3 +17,6 @@ export const Nestje6Jpg = require("./nestje6.jpg");
 export const Nestje7Jpg = require("./nestje7.jpg");
 export const Toppertje13Jpg = require("./toppertje13.jpg");
 export const Dekentje14Jpg = require("./dekentje14.jpg");
+
+export const logoSuusjePluusjePng = require("./logoSuusjePluusje.png");
+export const logoSuusjePluusjeWebp = require("./logoSuusjePluusje.webp");
