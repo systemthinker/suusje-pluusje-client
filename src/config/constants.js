@@ -1,4 +1,4 @@
-export const apiUrl = " https://suusje-server.herokuapp.com";
+export const apiUrl = "https://suusje-server.herokuapp.com";
 
 // "https://suusje-server.herokuapp.com"
 // "http://localhost:4000"
