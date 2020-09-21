@@ -4,117 +4,90 @@
   padding-left: 50px;
   text-decoration: none;
 }
-
 .checkBoxInline {
   display: inline-flex;
 }
-
 .right {
   margin-left: 10%;
 }
-
 .rightControl {
   margin-left: 10px;
   text-decoration: none;
 }
-
 .leftControl {
   margin-left: 10px;
   text-decoration: none;
 }
-
 .mevr {
   margin-left: 30px;
 }
-
 .name {
   margin-left: 2px;
 }
 .bolder {
   font-weight: bolder;
 }
-
 .align-left {
   text-align: left;
   margin-left: 10%;
 }
-
 .smaller {
   max-width: 100px;
   margin-left: 5px;
 }
-
 .small {
   max-width: 150px;
   margin-left: 5px;
 }
-
 .huisnr {
   margin-left: 20px;
 }
-
 .firstElement {
   margin-left: -20 px;
 }
-
 .nameTitle {
   margin-right: 48%;
   margin-bottom: 0;
 }
-
-.mt-5 {
-}
-
 .borderOrangeRed {
-  border-bottom: 3px solid rgb(241, 99, 5) !important;
+  border-bottom: 3px solid #f16305 !important;
 }
-
 .borderGreen {
-  border-bottom: 3px solid rgb(14, 231, 61) !important;
+  border-bottom: 3px solid #0ee73d !important;
 }
-
 .borderGrey {
   border-bottom: 0.6px solid rgba(119, 121, 119) !important;
 }
-
 .PostalCodeTitle {
   margin-bottom: 0;
 }
-
 .houseNumber {
   padding-left: 5em;
 }
-
 .adresDiv p {
   margin-bottom: 0;
 }
-
 .adresDiv {
   margin-top: 10px;
   transition: ease 0.5s;
 }
-
 .optional {
   color: rgb(0, 0, 0, 0.4);
 }
-
 .houseNumber {
   margin-left: 10%;
 }
-
 .checkBox {
   padding-left: 10%;
 }
 .billingAddressTextField {
   min-height: 22px;
 }
-
 input[type="checkbox"] {
-  /* Double-sized Checkboxes */
-  -ms-transform: scale(0.5); /* IE */
-  -moz-transform: scale(0.5); /* FF */
-  -webkit-transform: scale(0.5); /* Safari and Chrome */
-  -o-transform: scale(0.5); /* Opera */
+  -ms-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -webkit-transform: scale(0.5);
+  -o-transform: scale(0.5);
   padding: 10px;
 }
 @media screen and (max-width: 550px) {
@@ -143,7 +116,6 @@ input[type="checkbox"] {
     left: 20%;
   }
 }
-
 .legend {
   height: 20px;
   width: 20px;
