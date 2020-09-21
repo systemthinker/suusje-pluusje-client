@@ -12,7 +12,7 @@ import "./index.css";
 import { FaBabyCarriage, FaBaby } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
-import logoSuusjePluusje from "../../images/logoSuusjePluusje.webp";
+import logoSuusjePluusje from "../../assets/logoSuusjePluusje.webp";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
