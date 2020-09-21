@@ -5,12 +5,17 @@ import nestje1 from "../../assets/nestje1.webp";
 import nestje2 from "../../assets/nestje2.webp";
 import nestje3 from "../../assets/nestje3.webp";
 import nestje4 from "../../assets/nestje4.webp";
-import nestje5 from "../../assets/nestje5.webp";
-import nestje6 from "../../assets/nestje6.webp";
 
 export default function HomeloadingPage() {
   return (
     <Container fluid className="App">
+      <link
+        rel="stylesheet"
+        href="style.css"
+        media="print"
+        onload="this.media='all'"
+      ></link>
+
       <Row>
         <Col sm={6}>
           <div>
