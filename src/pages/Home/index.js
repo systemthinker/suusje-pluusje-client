@@ -10,6 +10,7 @@ import ProductCard from "../../components/ProductCard";
 import { Container, Row, Col } from "react-bootstrap";
 import Footer from "../../components/Footer";
 import HomeLoadingPage from "../../components/HomeLoadingPage";
+import Homevideo from "../../assets/Homevideo-1(1).mp4";
 
 import "./home.css";
 
@@ -41,18 +42,21 @@ export default function Home() {
     }
   };
 
+  function loadVideo() {
+    return (
+      <div>
+        <video id="video" autoPlay muted loop>
+          <source src={`${Homevideo}`} type="video/mp4"></source>
+        </video>
+      </div>
+    );
+  }
+
   return (
     <Container fluid className="App">
       <Row>
         <Col offset={3}>
-          <div>
-            <video id="video" autoPlay muted loop>
-              <source
-                src="./Videos/Homevideo-1(1).mp4"
-                type="video/mp4"
-              ></source>
-            </video>
-          </div>
+          {loadVideo()}
           <div className="content">
             <p>Prachtige</p>
             <p id="babyNestjesVideoText">BabyNestjes</p>
