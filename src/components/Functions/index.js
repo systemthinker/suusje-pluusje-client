@@ -19,29 +19,56 @@ import {
   Dekentje14Jpg,
 } from "../../assets";
 
-export const getId = (id) => {
+export const getPictureWebp = (id) => {
   switch (id) {
     case 1:
-      return Nestje1Webp || Nestje1Jpg;
+      return Nestje1Webp;
     case 2:
-      return Nestje2Webp || Nestje2Jpg;
+      return Nestje2Webp;
     case 3:
-      return Nestje3Webp || Nestje3Jpg;
+      return Nestje3Webp;
     case 4:
-      return Nestje4Webp || Nestje4Jpg;
+      return Nestje4Webp;
     case 5:
-      return Nestje5Webp || Nestje5Jpg;
+      return Nestje5Webp;
     case 6:
-      return Nestje6Webp || Nestje6Jpg;
+      return Nestje6Webp;
     case 7:
-      return Nestje7Webp || Nestje7Jpg;
+      return Nestje7Webp;
 
     case 13:
-      return Toppertje13Webp || Toppertje13Jpg;
+      return Toppertje13Webp;
     case 14:
-      return Dekentje14Webp || Dekentje14Jpg;
+      return Dekentje14Webp;
 
     default:
-      return Nestje1Webp || Nestje1Jpg;
+      return Nestje1Webp;
+  }
+};
+
+export const getPictureJpg = (id) => {
+  switch (id) {
+    case 1:
+      return Nestje1Jpg;
+    case 2:
+      return Nestje2Jpg;
+    case 3:
+      return Nestje3Jpg;
+    case 4:
+      return Nestje4Jpg;
+    case 5:
+      return Nestje5Jpg;
+    case 6:
+      return Nestje6Jpg;
+    case 7:
+      return Nestje7Jpg;
+
+    case 13:
+      return Toppertje13Jpg;
+    case 14:
+      return Dekentje14Jpg;
+
+    default:
+      return Nestje1Jpg;
   }
 };

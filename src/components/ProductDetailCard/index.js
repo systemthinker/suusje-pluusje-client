@@ -6,7 +6,7 @@ import { selectBasket } from "../../store/baskets/selectors";
 import { selectAppLoading } from "../../store/appState/selectors";
 import OrderButton from "../OrderButton";
 
-import { getId } from "../Functions";
+import { getPictureWebp, getPictureJpg } from "../../components/Functions";
 import "./productDetailCard.css";
 
 export default function ProductDetailCard({
@@ -54,7 +54,10 @@ export default function ProductDetailCard({
     <Container fluid>
       <div className="App" height="200px" width="400px"></div>
       <h1>{name}</h1>
-      <img height="400px" src={getId(id)} alt=""></img>
+      <picture>
+        <source srcset={getPictureWebp(id)} type="image/webp" />
+        <img height="400px" src={getPictureJpg(id)} alt=""></img>
+      </picture>
       <p id="description">{description}</p>
       <h1>&euro;{price}</h1>
       {isInBasket}

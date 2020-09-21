@@ -13,7 +13,6 @@ import { FaBabyCarriage, FaBaby } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
 import { logoSuusjePluusjePng, logoSuusjePluusjeWebp } from "../../assets";
-import { logoSuusjePluusjeJpg } from "../../assets";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
@@ -93,7 +92,10 @@ export default function Navigation() {
   return (
     <Navbar expand="sm" id="navbar-main" fixed="top">
       <Navbar.Brand as={NavLink} className="brand" to="/">
-        <img src={`${logoSuusjePluusjeWebp || logoSuusjePluusjePng}`} alt="" />
+        <picture>
+          <source srcset={logoSuusjePluusjeWebp} type="image/webp" />
+          <img src={`${logoSuusjePluusjePng}`} alt="" />
+        </picture>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
 

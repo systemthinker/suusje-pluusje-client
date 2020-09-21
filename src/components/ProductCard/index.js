@@ -2,7 +2,7 @@ import React from "react";
 import "./productCard.css";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { getId } from "../Functions";
+import { getPictureWebp, getPictureJpg } from "../../components/Functions";
 
 export default function ProductCard({
   id,
@@ -14,12 +14,15 @@ export default function ProductCard({
   return (
     <div className="card" data-aos="fade-up">
       <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
-        <img
-          id="productImage"
-          className="center-block"
-          src={getId(id)}
-          alt=""
-        ></img>
+        <picture>
+          <source srcset={getPictureWebp(id)} type="image/webp" />
+          <img
+            id="productImage"
+            className="center-block"
+            src={getPictureJpg(id)}
+            alt=""
+          ></img>
+        </picture>
 
         <div className="itemTextBlock">
           <p>{name}</p>

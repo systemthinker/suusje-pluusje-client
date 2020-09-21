@@ -2,7 +2,7 @@ import React from "react";
 import { selectAppLoading } from "../../store/appState/selectors";
 import { useSelector } from "react-redux";
 import { Col, Row } from "react-bootstrap";
-import { getId } from "../../components/Functions";
+import { getPictureWebp, getPictureJpg } from "../../components/Functions";
 import { Button } from "react-bootstrap";
 import "./index.css";
 export default function BasketCard(props) {
@@ -37,13 +37,16 @@ export default function BasketCard(props) {
         <Row className="row-bg">
           <Col>
             <div className="containerOverlay">
-              <img
-                height="100"
-                width="90"
-                className="center-block grid-item image"
-                src={getId(id)}
-                alt=""
-              ></img>
+              <picture>
+                <source srcset={getPictureWebp(id)} type="image/webp" />
+                <img
+                  height="100"
+                  width="90"
+                  className="center-block grid-item image"
+                  src={getPictureJpg(id)}
+                  alt=""
+                ></img>
+              </picture>
               <div className="overlay">
                 <div className="text">{name}</div>
               </div>
