@@ -31,7 +31,7 @@ import {
 import { selectAppLoading } from "../../store/appState/selectors";
 import { selectClient } from "../../store/clients/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+
 import { Col } from "react-bootstrap";
 import "./index.css";
 import Email from "../../components/FormErrorMessages/Email";
@@ -73,6 +73,7 @@ export default function AddressOrderCard() {
   const houseNumberBilling = useSelector(selectHouseNumberBilling);
   const errorStatus = useSelector(selectErrorStatus);
   const errorStatusBilling = useSelector(selectErrorStatusBilling);
+  const id = client.id;
 
   useEffect(() => {
     if (client.email) {
@@ -82,18 +83,19 @@ export default function AddressOrderCard() {
 
   function submitForm(event) {
     event.preventDefault();
-
-    dispatch();
-    // orderOverview(
-    //   salutation,
-    //   name,
-    //   lastName,
-    //   middleName,
-    //   email,
-    //   postalCode,
-    //   houseNumber,
-    //   houseNumberAddition
-    // )
+    if (id) {
+      dispatch();
+      // orderOverview(
+      //   salutation,
+      //   name,
+      //   lastName,
+      //   middleName,
+      //   email,
+      //   postalCode,
+      //   houseNumber,
+      //   houseNumberAddition
+      // )
+    }
 
     console.log("submitForm called");
   }
@@ -491,7 +493,6 @@ export default function AddressOrderCard() {
 
         <Form.Group className="mt-5">
           <div>
-            {/* <Link to="/order/overview"> */}
             <Button
               variant="success"
               size="block"
@@ -499,7 +500,6 @@ export default function AddressOrderCard() {
             >
               Doorgaan
             </Button>
-            {/* </Link> */}
           </div>
         </Form.Group>
       </Form>
