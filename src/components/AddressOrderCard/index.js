@@ -96,8 +96,6 @@ export default function AddressOrderCard() {
       //   houseNumberAddition
       // )
     }
-
-    console.log("submitForm called");
   }
 
   function borderControls(value) {
@@ -142,8 +140,6 @@ export default function AddressOrderCard() {
 
     do {
       if (targetElement === insideElementConstant) {
-        console.log("clicked inside");
-
         return;
       }
 
@@ -155,7 +151,6 @@ export default function AddressOrderCard() {
       Number.isInteger(houseNumber) &&
       cityNameFromApi.length < 2
     ) {
-      console.log("dispatch called");
       dispatch(getCityName());
     } else {
     }
@@ -169,8 +164,6 @@ export default function AddressOrderCard() {
 
     do {
       if (targetElement === insideElementConstantBilling) {
-        console.log("clicked inside");
-
         return;
       }
 

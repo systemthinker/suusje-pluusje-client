@@ -114,7 +114,6 @@ export const getCityName = () => {
       const response = await axios.get(
         `https://geodata.nationaalgeoregister.nl/locatieserver/free?fq=postcode:${postalCode}&fq=huisnummer~${houseNumber}*`
       );
-      console.log(response.data.response.docs[0].woonplaatsnaam);
 
       await dispatch(setCity(response.data.response.docs[0].woonplaatsnaam));
       await dispatch(setStreetName(response.data.response.docs[0].straatnaam));
@@ -174,7 +173,6 @@ export const getCityNameBilling = () => {
 export const setDisplayPostalCode = (value) => {
   return async (dispatch) => {
     try {
-      console.log("value is", value);
       dispatch(displayPostalCode(value));
       if (value === false) {
         dispatch(setCity(""));
@@ -189,7 +187,6 @@ export const setDisplayPostalCode = (value) => {
 export const setDisplayPostalCodeBilling = (value) => {
   return async (dispatch) => {
     try {
-      console.log("value is", value);
       dispatch(displayPostalCodeBilling(value));
       if (value === false) dispatch(setCityBilling(""));
       dispatch(setStreetNameBilling(""));
@@ -262,7 +259,6 @@ export const setHouseNumberAdditionBilling = (value) => {
 export const signUp = () => {
   return async (dispatch) => {
     try {
-      console.log("signUp called");
     } catch (e) {
       console.log("error", e);
     }
