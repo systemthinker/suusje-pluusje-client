@@ -9,13 +9,6 @@ import nestje4 from "../../assets/nestje4.webp";
 export default function HomeloadingPage() {
   return (
     <Container fluid className="App">
-      <link
-        rel="stylesheet"
-        href="style.css"
-        media="print"
-        onload="this.media='all'"
-      ></link>
-
       <Row>
         <Col sm={6}>
           <div>
