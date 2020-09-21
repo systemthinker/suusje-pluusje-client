@@ -1,6 +1,14 @@
 import React from "react";
 import "./footer.css";
 import { siteUrl } from "../../config/constants";
+import {
+  FaAngleDoubleRight,
+  FaFacebookSquare,
+  FaTwitterSquare,
+  FaInstagramSquare,
+  FaGooglePlus,
+  FaEnvelope,
+} from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -12,61 +20,32 @@ export default function Footer() {
             <ul className="list-unstyled quick-links">
               <li>
                 <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Home
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Home
                 </a>
               </li>
               <li>
                 <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Over
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Over
                 </a>
               </li>
               <li>
                 <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Info
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Info
                 </a>
               </li>
               <li>
                 <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Verzending {"&"}{" "}
-                  Bezorging
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Verzending {"&"} Bezorging
                 </a>
               </li>
               <li>
                 <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Retourneren {"&"}{" "}
-                  Ruilen
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="col-xs-12 col-sm-4 col-md-4">
-            <h5>Snel koppelingen</h5>
-            <ul className="list-unstyled quick-links">
-              <li>
-                <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Home
-                </a>
-              </li>
-              <li>
-                <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Over
-                </a>
-              </li>
-              <li>
-                <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Info
-                </a>
-              </li>
-              <li>
-                <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Verzending {"&"}{" "}
-                  Bezorging
-                </a>
-              </li>
-              <li>
-                <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Retourneren {"&"}{" "}
-                  Ruilen
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Retourneren {"&"} Ruilen
                 </a>
               </li>
             </ul>
@@ -76,29 +55,67 @@ export default function Footer() {
             <ul className="list-unstyled quick-links">
               <li>
                 <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Home
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Home
                 </a>
               </li>
               <li>
                 <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Over
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Over
                 </a>
               </li>
               <li>
                 <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Info
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Info
                 </a>
               </li>
               <li>
                 <a href={`${siteUrl}`}>
-                  <i className="fa fa-angle-double-right"></i>Verzending {"&"}{" "}
-                  Bezorging
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Verzending {"&"} Bezorging
+                </a>
+              </li>
+              <li>
+                <a href={`${siteUrl}`}>
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Retourneren {"&"} Ruilen
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="col-xs-12 col-sm-4 col-md-4">
+            <h5>Snel koppelingen</h5>
+            <ul className="list-unstyled quick-links">
+              <li>
+                <a href={`${siteUrl}`}>
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Home
+                </a>
+              </li>
+              <li>
+                <a href={`${siteUrl}`}>
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Over
+                </a>
+              </li>
+              <li>
+                <a href={`${siteUrl}`}>
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Info
+                </a>
+              </li>
+              <li>
+                <a href={`${siteUrl}`}>
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Verzending {"&"} Bezorging
                 </a>
               </li>
               <li>
                 <a href={`${siteUrl}`} title="Design and developed by">
-                  <i className="fa fa-angle-double-right"></i>Retourneren {"&"}{" "}
-                  Ruilen
+                  <FaAngleDoubleRight></FaAngleDoubleRight>
+                  &nbsp;Retourneren {"&"} Ruilen
                 </a>
               </li>
             </ul>
@@ -112,22 +129,22 @@ export default function Footer() {
                   href="https://nl-nl.facebook.com/suusjepluusjebabynestjes/"
                   target="blank"
                 >
-                  <i className="fa fa-facebook"></i>
+                  <FaFacebookSquare size={32}></FaFacebookSquare>
                 </a>
               </li>
               <li className="list-inline-item">
                 <a href={`${siteUrl}`}>
-                  <i className="fa fa-twitter"></i>
+                  <FaTwitterSquare size={32}></FaTwitterSquare>
                 </a>
               </li>
               <li className="list-inline-item">
                 <a href={`${siteUrl}`}>
-                  <i className="fa fa-instagram"></i>
+                  <FaInstagramSquare size={32}></FaInstagramSquare>
                 </a>
               </li>
               <li className="list-inline-item">
                 <a href={`${siteUrl}`}>
-                  <i className="fa fa-google-plus"></i>
+                  <FaGooglePlus size={32}></FaGooglePlus>
                 </a>
               </li>
               <li className="list-inline-item">
@@ -136,7 +153,7 @@ export default function Footer() {
                   target="_blank"
                   href="mailto:susanneou@gmail.com"
                 >
-                  <i className="fa fa-envelope"></i>
+                  <FaEnvelope size={32}></FaEnvelope>
                 </a>
               </li>
             </ul>
