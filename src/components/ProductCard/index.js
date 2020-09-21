@@ -41,6 +41,12 @@ export default function ProductCard({
 
   return (
     <div className="card" data-aos="fade-up">
+      <link
+        rel="stylesheet"
+        href="style.css"
+        media="print"
+        onload="this.media='all'"
+      ></link>
       <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
         <img
           id="productImage"

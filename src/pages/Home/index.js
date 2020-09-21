@@ -43,6 +43,12 @@ export default function Home() {
 
   return (
     <Container fluid className="App">
+      <link
+        rel="stylesheet"
+        href="style.css"
+        media="print"
+        onload="this.media='all'"
+      ></link>
       <Row>
         <Col offset={3}>
           <div>
