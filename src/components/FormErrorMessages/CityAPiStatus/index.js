@@ -7,7 +7,8 @@ export default function CityApiStatus() {
     <div>
       <Form.Text>
         <span className="spanErrorMessage postalCodeErrorMessage">
-          Woonplaats niet gevond, vul postcode opnieuw in en druk op Enter.
+          Woonplaats niet gevond, vul postcode en huisnummer opnieuw in en druk
+          op Enter.
         </span>
       </Form.Text>
     </div>

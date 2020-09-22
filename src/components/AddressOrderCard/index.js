@@ -10,6 +10,7 @@ import {
   setPostalCodeBilling,
   setHouseNumber,
   setHouseNumberBilling,
+  setOrder,
 } from "../../store/orders/actions";
 
 import {
@@ -36,7 +37,9 @@ import "./index.css";
 import Email from "../../components/FormErrorMessages/Email";
 import PostalCodeApiStatus from "../FormErrorMessages/PostalCodeApiStatus";
 import CityApiStatus from "../../components/FormErrorMessages/CityAPiStatus";
-import NoIdError from "../FormErrorMessages/NoIdError";
+import NoIdError from "../../components/FormErrorMessages/NoIdError";
+import FirstName from "../../components/FormErrorMessages/FirstName";
+import LastName from "../../components/FormErrorMessages/LastName";
 
 export default function AddressOrderCard() {
   // also add error handling if postal code is not found
@@ -59,6 +62,10 @@ export default function AddressOrderCard() {
 
   const [errorCityApi, setErrorCityApi] = useState(false);
   const [errorID, setErrorId] = useState(false);
+  const [errorName, setErrorName] = useState(false);
+  const [errorLastName, setErrorLastName] = useState(false);
+  const [errorPostalCode, setErrorPostalCode] = useState(false);
+  const [errorEmail, setErrorEmail] = useState(false);
 
   const billingAddressText = "Hetzelfde als bezorg adres";
 
@@ -77,7 +84,7 @@ export default function AddressOrderCard() {
   const houseNumberBilling = useSelector(selectHouseNumberBilling);
   const errorStatus = useSelector(selectErrorStatus);
   const errorStatusBilling = useSelector(selectErrorStatusBilling);
-  const id = client.id;
+  let id = client.id;
 
   useEffect(() => {
     if (client.email) {
@@ -87,28 +94,61 @@ export default function AddressOrderCard() {
 
   function submitForm(event) {
     event.preventDefault();
-    console.log("id", id, "name", name, "lastName", lastName, "email", email);
-    if (!id) {
-      console.log("id error called");
-      setErrorId(true);
-    }
 
-    if (!cityNameFromApi) {
-      console.log("error message called");
-      setErrorCityApi(true);
-    }
+    // if (!id) {
+    //   console.log("id error called");
+    //   setErrorId(true);
+    // }
 
-    // dispatch();
-    // orderOverview(
-    //   salutation,
-    //   name,
-    //   lastName,
-    //   middleName,
-    //   email,
-    //   postalCode,
-    //   houseNumber,
-    //   houseNumberAddition
-    // )
+    // if (!name) {
+    //   setErrorName(true);
+    //   return;
+    // }
+
+    // if (!lastName) {
+    //   setErrorLastName(true);
+    //   return;
+    // }
+
+    // if (!postalCode) {
+    //   setErrorPostalCode(true);
+    //   return;
+    // }
+
+    // if (!cityNameFromApi) {
+    //   setErrorCityApi(true);
+    //   return;
+    // }
+
+    // if (!isRFC822ValidEmail()) {
+    //   setErrorEmail(true);
+    //   return;
+    // }
+
+    id = 1;
+
+    console.log("test");
+
+    dispatch(
+      setOrder({
+        id,
+        salutation,
+        name,
+        lastName,
+        middleName,
+        email,
+        houseNumberAddition,
+        houseNumberAdditionBilling,
+        postalCode,
+        postalCodeBilling,
+        houseNumber,
+        houseNumberBilling,
+        cityNameFromApi,
+        cityNameFromApiBilling,
+        streetNameFromApi,
+        streetNameFromApiBilling,
+      })
+    );
   }
 
   function borderControls(value) {
@@ -195,6 +235,7 @@ export default function AddressOrderCard() {
   document.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
       if (postalCode.length === 6 && Number.isInteger(houseNumber)) {
+        setErrorPostalCode(false);
         dispatch(getCityName());
       }
       if (
@@ -254,17 +295,23 @@ export default function AddressOrderCard() {
       if (value === "id") {
         return "borderGreen";
       }
+
       return true;
     } else if (value === "id") {
       return "borderOrangeRed";
     } else if (email.length > 0) {
-      return <Email />;
+      return false;
+    } else {
+      return false;
     }
   }
 
   function onChangePostalCodeHandler(event) {
     dispatch(setPostalCode(event.target.value.toUpperCase()));
     dispatch(setDisplayPostalCode(false));
+    if (postalCode.length === 6) {
+      setErrorPostalCode(false);
+    }
   }
 
   function onChangePostalCodeHandlerBilling(event) {
@@ -357,6 +404,27 @@ export default function AddressOrderCard() {
     setChecked(!checked);
   }
 
+  function setNameHandler(event) {
+    setName(event.target.value);
+    if (name.length > 1) {
+      setErrorName(false);
+    }
+  }
+
+  function setLastNameHandler(event) {
+    setLastName(event.target.value);
+    if (lastName.length > 1) {
+      setErrorLastName(false);
+    }
+  }
+
+  function setEmailHandler(event) {
+    setEmail(event.target.value);
+    if (isRFC822ValidEmail()) {
+      setErrorEmail(false);
+    }
+  }
+
   return (
     <div>
       <Form as={Col} sm={{ span: 6, offset: 3 }} className="mt-5">
@@ -391,7 +459,7 @@ export default function AddressOrderCard() {
         <Form.Group className=" form-inline">
           <Form.Control
             value={name}
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => setNameHandler(event)}
             type="text"
             className={`small firstElement ${borderControls(name)}`}
             input="sm"
@@ -409,7 +477,7 @@ export default function AddressOrderCard() {
 
           <Form.Control
             value={lastName}
-            onChange={(event) => setLastName(event.target.value)}
+            onChange={(event) => setLastNameHandler(event)}
             type="text"
             className={`small ${borderControls(lastName)}`}
             placeholder="achternaam"
@@ -484,13 +552,13 @@ export default function AddressOrderCard() {
           <Form.Group id="" className="checkBox">
             <Form.Control
               value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={(event) => setEmailHandler(event)}
               type="text"
               className={`${isRFC822ValidEmail("id")}`}
               placeholder="uwemail@email.com"
               required
             />
-            {isRFC822ValidEmail()}
+            {isRFC822ValidEmail() || email.length === 0 ? null : <Email />}
             <Form.Text className="text-muted">
               Wij delen uw email nooit.
             </Form.Text>
@@ -508,8 +576,12 @@ export default function AddressOrderCard() {
             </Button>
           </div>
         </Form.Group>
-        {errorCityApi ? <CityApiStatus /> : null}
+        {errorCityApi && !cityNameFromApi ? <CityApiStatus /> : null}
         {errorID ? <NoIdError /> : null}
+        {errorName ? <FirstName /> : null}
+        {errorLastName ? <LastName /> : null}
+        {errorPostalCode && !cityNameFromApi ? <PostalCodeApiStatus /> : null}
+        {errorEmail ? <Email /> : null}
       </Form>
     </div>
   );

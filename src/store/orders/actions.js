@@ -264,3 +264,14 @@ export const signUp = () => {
     }
   };
 };
+
+export const setOrder = (props) => {
+  return async (dispatch) => {
+    try {
+      console.log("setOrder called");
+      console.log(props.id);
+    } catch (e) {
+      console.log("error", e);
+    }
+  };
+};

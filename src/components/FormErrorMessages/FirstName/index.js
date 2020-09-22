@@ -6,7 +6,7 @@ export default function FirstName() {
   return (
     <Form.Text>
       <span className="spanErrorMessage">
-        Vul alstublieft uw naam in met minimaal 3 tekens
+        Vul alstublieft uw voornaam in met minimaal 2 tekens
       </span>
     </Form.Text>
   );
