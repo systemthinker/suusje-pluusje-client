@@ -268,8 +268,15 @@ export const signUp = () => {
 export const setOrder = (props) => {
   return async (dispatch) => {
     try {
-      console.log("setOrder called");
-      console.log(props.id);
+      const response = await axios.patch(`${apiUrl}/client`,{
+        
+        name = props.name,
+        middleName = props.middleName,
+        lastName = props.lastName,
+        email = props.email,
+
+      })
+      console.log('res is', response)
     } catch (e) {
       console.log("error", e);
     }
