@@ -93,7 +93,7 @@ export default function Navigation() {
     <Navbar expand="sm" id="navbar-main" fixed="top">
       <Navbar.Brand as={NavLink} className="brand" to="/">
         <picture>
-          <source srcset={logoSuusjePluusjeWebp} type="image/webp" />
+          <source srcSet={logoSuusjePluusjeWebp} type="image/webp" />
           <img src={`${logoSuusjePluusjePng}`} alt="" />
         </picture>
       </Navbar.Brand>

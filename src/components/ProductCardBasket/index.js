@@ -9,7 +9,7 @@ export default function ProductCardBasket({
   name,
   description,
   price,
-  imageUrl,
+
   dispatchOnClick,
 }) {
   function getId(id) {

@@ -10,7 +10,7 @@ export default function HomeloadingPage() {
         <Col sm={6}>
           <div>
             <picture>
-              <source srcset={getPictureWebp(1)} type="image/webp" />
+              <source srcSet={getPictureWebp(1)} type="image/webp" />
               <img
                 id="productImage"
                 className="imageBoxLoading"
@@ -23,7 +23,7 @@ export default function HomeloadingPage() {
         <Col sm={6}>
           <div>
             <picture>
-              <source srcset={getPictureWebp(2)} type="image/webp" />
+              <source srcSet={getPictureWebp(2)} type="image/webp" />
               <img
                 id="productImage"
                 className="center-block imageBoxLoading"
@@ -38,7 +38,7 @@ export default function HomeloadingPage() {
         <Col sm={6}>
           <div>
             <picture>
-              <source srcset={getPictureWebp(3)} type="image/webp" />
+              <source srcSet={getPictureWebp(3)} type="image/webp" />
               <img
                 id="productImage"
                 className="imageBoxLoading"
@@ -51,7 +51,7 @@ export default function HomeloadingPage() {
         <Col sm={6}>
           <div>
             <picture>
-              <source srcset={getPictureWebp(4)} type="image/webp" />
+              <source srcSet={getPictureWebp(4)} type="image/webp" />
               <img
                 id="productImage"
                 className="center-block imageBoxLoading"

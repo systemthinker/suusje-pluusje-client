@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserWithStoredToken } from "../../store/clients/actions";
+
 import { selectToken, selectClient } from "../../store/clients/selectors";
 import { useHistory, Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";

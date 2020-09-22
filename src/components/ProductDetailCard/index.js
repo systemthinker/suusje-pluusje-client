@@ -55,7 +55,7 @@ export default function ProductDetailCard({
       <div className="App" height="200px" width="400px"></div>
       <h1>{name}</h1>
       <picture>
-        <source srcset={getPictureWebp(id)} type="image/webp" />
+        <source srcSet={getPictureWebp(id)} type="image/webp" />
         <img height="400px" src={getPictureJpg(id)} alt=""></img>
       </picture>
       <p id="description">{description}</p>

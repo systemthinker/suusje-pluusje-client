@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import {
   getCityName,
   getCityNameBilling,
-  orderOverview,
   setDisplayPostalCode,
   setDisplayPostalCodeBilling,
   setPostalCode,
@@ -36,6 +35,8 @@ import { Col } from "react-bootstrap";
 import "./index.css";
 import Email from "../../components/FormErrorMessages/Email";
 import PostalCodeApiStatus from "../FormErrorMessages/PostalCodeApiStatus";
+import CityApiStatus from "../../components/FormErrorMessages/CityAPiStatus";
+import NoIdError from "../FormErrorMessages/NoIdError";
 
 export default function AddressOrderCard() {
   // also add error handling if postal code is not found
@@ -55,6 +56,9 @@ export default function AddressOrderCard() {
   const [houseNumberAdditionBilling, setHouseNumberAdditionBilling] = useState(
     ""
   );
+
+  const [errorCityApi, setErrorCityApi] = useState(false);
+  const [errorID, setErrorId] = useState(false);
 
   const billingAddressText = "Hetzelfde als bezorg adres";
 
@@ -83,19 +87,28 @@ export default function AddressOrderCard() {
 
   function submitForm(event) {
     event.preventDefault();
-    if (id) {
-      dispatch();
-      // orderOverview(
-      //   salutation,
-      //   name,
-      //   lastName,
-      //   middleName,
-      //   email,
-      //   postalCode,
-      //   houseNumber,
-      //   houseNumberAddition
-      // )
+    console.log("id", id, "name", name, "lastName", lastName, "email", email);
+    if (!id) {
+      console.log("id error called");
+      setErrorId(true);
     }
+
+    if (!cityNameFromApi) {
+      console.log("error message called");
+      setErrorCityApi(true);
+    }
+
+    // dispatch();
+    // orderOverview(
+    //   salutation,
+    //   name,
+    //   lastName,
+    //   middleName,
+    //   email,
+    //   postalCode,
+    //   houseNumber,
+    //   houseNumberAddition
+    // )
   }
 
   function borderControls(value) {
@@ -495,6 +508,8 @@ export default function AddressOrderCard() {
             </Button>
           </div>
         </Form.Group>
+        {errorCityApi ? <CityApiStatus /> : null}
+        {errorID ? <NoIdError /> : null}
       </Form>
     </div>
   );

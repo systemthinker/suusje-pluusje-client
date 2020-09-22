@@ -15,7 +15,7 @@ export default function ProductCard({
     <div className="card" data-aos="fade-up">
       <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
         <picture>
-          <source srcset={getPictureWebp(id)} type="image/webp" />
+          <source srcSet={getPictureWebp(id)} type="image/webp" />
           <img
             id="productImage"
             className="center-block"
