@@ -1,6 +1,7 @@
 import axios from "axios";
 import { appLoading, appDoneLoading } from "../appState/actions";
 import store from "../../store";
+import { apiUrl } from "../../config/constants";
 
 const setCity = (city) => {
   return {
@@ -268,15 +269,13 @@ export const signUp = () => {
 export const setOrder = (props) => {
   return async (dispatch) => {
     try {
-      const response = await axios.patch(`${apiUrl}/client`,{
-        
-        name = props.name,
-        middleName = props.middleName,
-        lastName = props.lastName,
-        email = props.email,
-
-      })
-      console.log('res is', response)
+      const response = await axios.patch(`${apiUrl}/client`, {
+        name: props.name,
+        middleName: props.middleName,
+        lastName: props.lastName,
+        email: props.email,
+      });
+      console.log("res is", response);
     } catch (e) {
       console.log("error", e);
     }
