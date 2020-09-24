@@ -1,5 +1,7 @@
 export const apiUrl = "https://suusje-server.herokuapp.com";
 
+// https://cors-anywhere.herokuapp.com/
+// "http://suusje-server.herokuapp.com"
 // "https://suusje-server.herokuapp.com"
 // "http://localhost:4000"
 // process.env.API_URL ||

@@ -2,6 +2,7 @@ import axios from "axios";
 import { appLoading, appDoneLoading } from "../appState/actions";
 import store from "../../store";
 import { apiUrl } from "../../config/constants";
+import { selectToken } from "../clients/selectors";
 
 const setCity = (city) => {
   return {
@@ -267,14 +268,25 @@ export const signUp = () => {
 };
 
 export const setOrder = (props) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const token = selectToken(getState());
+    console.log("props are", props);
+    console.log("token is", token);
     try {
-      const response = await axios.patch(`${apiUrl}/client`, {
-        name: props.name,
-        middleName: props.middleName,
-        lastName: props.lastName,
-        email: props.email,
-      });
+      const response = await axios.post(
+        `${apiUrl}/client/order`,
+        {
+          id: props.id,
+          name: props.name,
+          middleName: props.middleName || null,
+          lastName: props.lastName,
+          email: props.email,
+          salutation: props.salutation || null,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       console.log("res is", response);
     } catch (e) {
       console.log("error", e);

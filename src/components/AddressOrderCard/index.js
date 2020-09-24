@@ -125,8 +125,6 @@ export default function AddressOrderCard() {
     //   return;
     // }
 
-    id = 1;
-
     console.log("test");
 
     dispatch(
