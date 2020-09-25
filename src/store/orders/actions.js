@@ -267,7 +267,7 @@ export const signUp = () => {
   };
 };
 
-export const setOrder = (props) => {
+export const setClientData = (props) => {
   return async (dispatch, getState) => {
     const token = selectToken(getState());
     console.log("props are", props);
@@ -282,6 +282,39 @@ export const setOrder = (props) => {
           lastName: props.lastName,
           email: props.email,
           salutation: props.salutation || null,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      console.log("res is", response);
+    } catch (e) {
+      console.log("error", e);
+    }
+  };
+};
+
+export const setClientAddress = (props) => {
+  return async (dispatch, getState) => {
+    const token = selectToken(getState());
+    console.log("props are", props);
+    console.log("token is", token);
+
+    try {
+      const response = await axios.post(
+        `${apiUrl}/client/address`,
+        {
+          id: props.id,
+          postalCode: props.postalCode,
+          postalCodeBilling: props.postalCodeBilling || null,
+          houseNumber: props.houseNumber,
+          houseNumberBilling: props.houseNumberBilling || null,
+          houseNumberAddition: props.houseNumberAddition || null,
+          houseNumberAdditionBilling: props.houseNumberAdditionBilling || null,
+          cityNameFromApi: props.cityNameFromApi,
+          cityNameFromApiBilling: props.cityNameFromApiBilling || null,
+          streetNameFromApi: props.streetNameFromApi || null,
+          streetNameFromApiBilling: props.streetNameFromApiBilling || null,
         },
         {
           headers: { Authorization: `Bearer ${token}` },

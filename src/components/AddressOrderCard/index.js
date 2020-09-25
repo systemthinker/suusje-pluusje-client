@@ -10,7 +10,8 @@ import {
   setPostalCodeBilling,
   setHouseNumber,
   setHouseNumberBilling,
-  setOrder,
+  setClientData,
+  setClientAddress,
 } from "../../store/orders/actions";
 
 import {
@@ -127,20 +128,26 @@ export default function AddressOrderCard() {
 
     console.log("test");
 
+    // dispatch(
+    //   setClientData({
+    //     id,
+    //     salutation,
+    //     name,
+    //     lastName,
+    //     middleName,
+    //     email,
+    //   })
+    // );
+
     dispatch(
-      setOrder({
+      setClientAddress({
         id,
-        salutation,
-        name,
-        lastName,
-        middleName,
-        email,
-        houseNumberAddition,
-        houseNumberAdditionBilling,
         postalCode,
         postalCodeBilling,
         houseNumber,
         houseNumberBilling,
+        houseNumberAddition,
+        houseNumberAdditionBilling,
         cityNameFromApi,
         cityNameFromApiBilling,
         streetNameFromApi,
