@@ -1,4 +1,4 @@
-export const apiUrl = "http://suusje-server.herokuapp.com";
+export const apiUrl = "https://suusje-server.herokuapp.com";
 
 // https://cors-anywhere.herokuapp.com/
 // "http://suusje-server.herokuapp.com"
