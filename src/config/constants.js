@@ -1,4 +1,4 @@
-export const apiUrl = "http://localhost:4000";
+export const apiUrl = "https://suusje-server.herokuapp.com";
 
 // https://cors-anywhere.herokuapp.com/
 // "http://suusje-server.herokuapp.com"
