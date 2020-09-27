@@ -38,7 +38,7 @@ export default function BasketCard(props) {
           <Col>
             <div className="containerOverlay">
               <picture>
-                <source srcset={getPictureWebp(id)} type="image/webp" />
+                <source srcSet={getPictureWebp(id)} type="image/webp" />
                 <img
                   height="100"
                   width="90"

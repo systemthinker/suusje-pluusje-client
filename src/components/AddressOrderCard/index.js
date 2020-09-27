@@ -12,6 +12,7 @@ import {
   setHouseNumberBilling,
   setClientData,
   setClientAddress,
+  setClientAddressBilling,
 } from "../../store/orders/actions";
 
 import {
@@ -99,6 +100,7 @@ export default function AddressOrderCard() {
     // if (!id) {
     //   console.log("id error called");
     //   setErrorId(true);
+    //   return;
     // }
 
     // if (!name) {
@@ -139,21 +141,37 @@ export default function AddressOrderCard() {
     //   })
     // );
 
-    dispatch(
-      setClientAddress({
-        id,
-        postalCode,
-        postalCodeBilling,
-        houseNumber,
-        houseNumberBilling,
-        houseNumberAddition,
-        houseNumberAdditionBilling,
-        cityNameFromApi,
-        cityNameFromApiBilling,
-        streetNameFromApi,
-        streetNameFromApiBilling,
-      })
-    );
+    // dispatch(
+    //   setClientAddress({
+    //     id,
+    //     postalCode,
+    //     houseNumber,
+    //     houseNumberAddition,
+    //     cityNameFromApi,
+    //     streetNameFromApi,
+    //   })
+    // );
+
+    // add extra validation for billing later
+    if (
+      (id,
+      postalCodeBilling,
+      houseNumberBilling,
+      cityNameFromApiBilling,
+      streetNameFromApiBilling)
+    ) {
+      console.log("chhecked");
+      dispatch(
+        setClientAddressBilling({
+          id,
+          postalCodeBilling,
+          houseNumberBilling,
+          houseNumberAdditionBilling,
+          cityNameFromApiBilling,
+          streetNameFromApiBilling,
+        })
+      );
+    }
   }
 
   function borderControls(value) {
