@@ -11,9 +11,9 @@ const setCity = (city) => {
   };
 };
 
-const setCityBilling = (city) => {
+const setCityBilling = (cityBilling) => {
   return {
-    payload: city,
+    payload: cityBilling,
     type: "SET_CITY_BILLING",
   };
 };

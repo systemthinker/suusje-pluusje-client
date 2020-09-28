@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
 import {
   getCityName,
   getCityNameBilling,
@@ -39,6 +40,8 @@ import "./index.css";
 import Email from "../../components/FormErrorMessages/Email";
 import PostalCodeApiStatus from "../FormErrorMessages/PostalCodeApiStatus";
 import CityApiStatus from "../../components/FormErrorMessages/CityAPiStatus";
+import PostalCodeApiStatusBilling from "../FormErrorMessages/PostalCodeApiStatusBilling";
+import CityApiStatusBilling from "../../components/FormErrorMessages/CityAPiStatusBilling";
 import NoIdError from "../../components/FormErrorMessages/NoIdError";
 import FirstName from "../../components/FormErrorMessages/FirstName";
 import LastName from "../../components/FormErrorMessages/LastName";
@@ -46,6 +49,7 @@ import LastName from "../../components/FormErrorMessages/LastName";
 export default function AddressOrderCard() {
   // also add error handling if postal code is not found
   const client = useSelector(selectClient);
+  const history = useHistory();
 
   const salutationMevr = "mevrouw";
   const salutationDhr = "heer";
@@ -63,10 +67,14 @@ export default function AddressOrderCard() {
   );
 
   const [errorCityApi, setErrorCityApi] = useState(false);
+  const [errorCityApiBilling, setErrorCityApiBilling] = useState(false);
+  const [errorPostalCode, setErrorPostalCode] = useState(false);
+  const [errorPostalCodeBilling, setErrorPostalCodeBilling] = useState(false);
+
   const [errorID, setErrorId] = useState(false);
   const [errorName, setErrorName] = useState(false);
   const [errorLastName, setErrorLastName] = useState(false);
-  const [errorPostalCode, setErrorPostalCode] = useState(false);
+
   const [errorEmail, setErrorEmail] = useState(false);
 
   const billingAddressText = "Hetzelfde als bezorg adres";
@@ -97,70 +105,53 @@ export default function AddressOrderCard() {
   function submitForm(event) {
     event.preventDefault();
 
-    // if (!id) {
-    //   console.log("id error called");
-    //   setErrorId(true);
-    //   return;
-    // }
+    if (!id) {
+      console.log("id error called");
+      setErrorId(true);
+      return;
+    }
 
-    // if (!name) {
-    //   setErrorName(true);
-    //   return;
-    // }
+    if (!name) {
+      setErrorName(true);
+      return;
+    }
 
-    // if (!lastName) {
-    //   setErrorLastName(true);
-    //   return;
-    // }
+    if (!lastName) {
+      setErrorLastName(true);
+      return;
+    }
 
-    // if (!postalCode) {
-    //   setErrorPostalCode(true);
-    //   return;
-    // }
+    if (!postalCode) {
+      setErrorPostalCode(true);
+      return;
+    }
 
-    // if (!cityNameFromApi) {
-    //   setErrorCityApi(true);
-    //   return;
-    // }
+    if (!cityNameFromApi) {
+      setErrorCityApi(true);
+      return;
+    }
 
-    // if (!isRFC822ValidEmail()) {
-    //   setErrorEmail(true);
-    //   return;
-    // }
+    if (!isRFC822ValidEmail()) {
+      setErrorEmail(true);
+      return;
+    }
 
-    console.log("test");
-
-    // dispatch(
-    //   setClientData({
-    //     id,
-    //     salutation,
-    //     name,
-    //     lastName,
-    //     middleName,
-    //     email,
-    //   })
-    // );
-
-    // dispatch(
-    //   setClientAddress({
-    //     id,
-    //     postalCode,
-    //     houseNumber,
-    //     houseNumberAddition,
-    //     cityNameFromApi,
-    //     streetNameFromApi,
-    //   })
-    // );
-
-    // add extra validation for billing later
     if (
-      (id,
-      postalCodeBilling,
-      houseNumberBilling,
-      cityNameFromApiBilling,
-      streetNameFromApiBilling)
+      postalCodeBilling ||
+      houseNumberBilling ||
+      cityNameFromApiBilling ||
+      streetNameFromApiBilling
     ) {
-      console.log("chhecked");
+      if (!postalCodeBilling) {
+        setErrorPostalCodeBilling(true);
+        return;
+      }
+
+      if (!cityNameFromApiBilling) {
+        setErrorCityApiBilling(true);
+        return;
+      }
+
       dispatch(
         setClientAddressBilling({
           id,
@@ -171,7 +162,38 @@ export default function AddressOrderCard() {
           streetNameFromApiBilling,
         })
       );
+      console.log("dispatch billing");
     }
+
+    console.log("first check trough");
+
+    dispatch(
+      setClientData({
+        id,
+        salutation,
+        name,
+        lastName,
+        middleName,
+        email,
+      })
+    );
+
+    console.log("after client data dispatch");
+
+    dispatch(
+      setClientAddress({
+        id,
+        postalCode,
+        houseNumber,
+        houseNumberAddition,
+        cityNameFromApi,
+        streetNameFromApi,
+      })
+    );
+
+    console.log("after address client");
+
+    history.push("/order/overview");
   }
 
   function borderControls(value) {
@@ -228,7 +250,6 @@ export default function AddressOrderCard() {
       cityNameFromApi.length < 2
     ) {
       dispatch(getCityName());
-    } else {
     }
   });
 
@@ -251,7 +272,6 @@ export default function AddressOrderCard() {
       Number.isInteger(houseNumberBilling)
     ) {
       dispatch(getCityNameBilling());
-    } else {
     }
   });
 
@@ -261,12 +281,15 @@ export default function AddressOrderCard() {
         setErrorPostalCode(false);
         dispatch(getCityName());
       }
+    }
+  });
+  document.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
       if (
         postalCodeBilling.length === 6 &&
         Number.isInteger(houseNumberBilling)
       ) {
         dispatch(getCityNameBilling());
-      } else {
       }
     }
   });
@@ -338,6 +361,7 @@ export default function AddressOrderCard() {
   }
 
   function onChangePostalCodeHandlerBilling(event) {
+    console.log("event target value ");
     dispatch(setPostalCodeBilling(event.target.value.toUpperCase()));
     dispatch(setDisplayPostalCodeBilling(false));
   }
@@ -600,10 +624,16 @@ export default function AddressOrderCard() {
           </div>
         </Form.Group>
         {errorCityApi && !cityNameFromApi ? <CityApiStatus /> : null}
+        {errorCityApiBilling && !cityNameFromApiBilling ? (
+          <CityApiStatusBilling />
+        ) : null}
         {errorID ? <NoIdError /> : null}
         {errorName ? <FirstName /> : null}
         {errorLastName ? <LastName /> : null}
         {errorPostalCode && !cityNameFromApi ? <PostalCodeApiStatus /> : null}
+        {errorPostalCodeBilling && !cityNameFromApiBilling ? (
+          <PostalCodeApiStatusBilling />
+        ) : null}
         {errorEmail ? <Email /> : null}
       </Form>
     </div>

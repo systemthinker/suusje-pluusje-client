@@ -2,13 +2,12 @@ import React from "react";
 import "../index.css";
 import { Form } from "react-bootstrap";
 
-export default function CityApiStatus() {
+export default function PostalCodeApiStatusBilling() {
   return (
     <div>
       <Form.Text>
         <span className="spanErrorMessage postalCodeErrorMessage">
-          Woonplaats niet gevonden, vul postcode en huisnummer opnieuw in en
-          druk op Enter.
+          Vul alstublieft een geldige postcode in voor uw factuur adres.
         </span>
       </Form.Text>
     </div>

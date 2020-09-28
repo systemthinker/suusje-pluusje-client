@@ -28,10 +28,6 @@ export default function OrderSignup() {
     event.preventDefault();
     if (name.length > 2 && testPassword() && isRFC822ValidEmail()) {
       dispatch(orderSignUp(clientId, name, email, password));
-
-      setEmail("");
-      setPassword("");
-      setName("");
     } else {
       dispatch(
         showMessageWithTimeout(
