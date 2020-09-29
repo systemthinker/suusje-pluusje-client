@@ -19,6 +19,8 @@ import {
   Dekentje14Jpg,
 } from "../../assets";
 
+import { deliveryCosts } from "../../config/constants";
+
 export const getPictureWebp = (id) => {
   switch (id) {
     case 1:
@@ -71,4 +73,12 @@ export const getPictureJpg = (id) => {
     default:
       return Nestje1Jpg;
   }
+};
+
+export const totalBasketPrice = (basket) => {
+  return (
+    basket
+      .map((b) => parseFloat(b.price.replace(",", ".")) * b.quantity)
+      .reduce((a, b) => a + b, 0) + deliveryCosts
+  );
 };

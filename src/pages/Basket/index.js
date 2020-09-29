@@ -16,6 +16,7 @@ import { useParams } from "react-router-dom";
 import BasketCard from "../../components/BasketCard";
 import ProductCardBasket from "../../components/ProductCardBasket";
 import InfoProductBasketCard from "../../components/InfoProductBasketCard";
+import { totalBasketPrice } from "../../components/Functions";
 
 import {
   deliveryCosts,
@@ -42,10 +43,10 @@ export default function Basket() {
     dispatch(fetchProducts());
   }, [dispatch, id]);
 
-  const totalBasketPrice =
-    basket
-      .map((b) => parseFloat(b.price.replace(",", ".")) * b.quantity)
-      .reduce((a, b) => a + b, 0) + deliveryCosts;
+  const totalBasketPriceResult = totalBasketPrice(basket);
+  // basket
+  //   .map((b) => parseFloat(b.price.replace(",", ".")) * b.quantity)
+  //   .reduce((a, b) => a + b, 0) + deliveryCosts;
 
   function onClickAddItemToCard(productId) {
     dispatch(appLoading);
@@ -114,7 +115,7 @@ export default function Basket() {
               <Col>
                 <p className="grid-item">
                   <span id="euroSign">&#8364;</span>
-                  {totalBasketPrice.toFixed(2).replace(".", ",")}
+                  {totalBasketPriceResult.toFixed(2).replace(".", ",")}
                 </p>
               </Col>
             </Row>

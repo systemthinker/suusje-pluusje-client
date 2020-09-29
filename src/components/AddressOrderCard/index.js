@@ -51,12 +51,12 @@ export default function AddressOrderCard() {
   const client = useSelector(selectClient);
   const history = useHistory();
 
-  const salutationMevr = "mevrouw";
-  const salutationDhr = "heer";
+  const salutationMevr = "Mevr.";
+  const salutationDhr = "Dhr.";
 
   const [checked, setChecked] = useState(true);
 
-  const [salutation, setSalutation] = useState("mevrouw/heer");
+  const [salutation, setSalutation] = useState("Mevr/Dhr");
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [middleName, setMiddleName] = useState("");
