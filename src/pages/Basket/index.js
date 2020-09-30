@@ -16,10 +16,13 @@ import { useParams } from "react-router-dom";
 import BasketCard from "../../components/BasketCard";
 import ProductCardBasket from "../../components/ProductCardBasket";
 import InfoProductBasketCard from "../../components/InfoProductBasketCard";
-import { totalBasketPrice } from "../../components/Functions";
+import {
+  totalBasketPriceAndToFixed,
+  sortBasket,
+  deliveryCostsAndToFixed,
+} from "../../components/Functions";
 
 import {
-  deliveryCosts,
   productIdForExtraProductsOne,
   productIdForExtraProductsTwo,
 } from "../../config/constants";
@@ -43,10 +46,8 @@ export default function Basket() {
     dispatch(fetchProducts());
   }, [dispatch, id]);
 
-  const totalBasketPriceResult = totalBasketPrice(basket);
-  // basket
-  //   .map((b) => parseFloat(b.price.replace(",", ".")) * b.quantity)
-  //   .reduce((a, b) => a + b, 0) + deliveryCosts;
+  const totalBasketPriceResult = totalBasketPriceAndToFixed(basket);
+  const deliveryCosts = deliveryCostsAndToFixed();
 
   function onClickAddItemToCard(productId) {
     dispatch(appLoading);
@@ -64,7 +65,7 @@ export default function Basket() {
     dispatch(addProductToBasket(clientId, productId));
   }
 
-  const filtedBasket = basket.sort((a, b) => a.name.localeCompare(b.name));
+  const sortedBasket = sortBasket(basket);
   const verified =
     client.isVerified && client.name && client.email && token
       ? orderPath
@@ -79,7 +80,7 @@ export default function Basket() {
         <Row>
           <Col lg={1}></Col>
           <Col lg={5}>
-            {filtedBasket.map((basketProduct) => {
+            {sortedBasket.map((basketProduct) => {
               return (
                 <BasketCard
                   {...basketProduct}
@@ -99,8 +100,7 @@ export default function Basket() {
               </Col>
               <Col>
                 <p className="grid-item">
-                  <span id="euroSign">&#8364;</span> &nbsp;{" "}
-                  {deliveryCosts.toFixed(2).replace(".", ",")}
+                  <span id="euroSign">&#8364;</span> {deliveryCosts}
                 </p>
               </Col>
             </Row>
@@ -114,8 +114,7 @@ export default function Basket() {
               </Col>
               <Col>
                 <p className="grid-item">
-                  <span id="euroSign">&#8364;</span>
-                  {totalBasketPriceResult.toFixed(2).replace(".", ",")}
+                  <span id="euroSign">&#8364;</span> {totalBasketPriceResult}
                 </p>
               </Col>
             </Row>

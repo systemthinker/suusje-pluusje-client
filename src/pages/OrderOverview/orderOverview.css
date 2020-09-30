@@ -7,3 +7,26 @@
   list-style-type: none;
   text-align: left;
 }
+
+.column-shoppingcart-order-overview {
+  border: 0.3px solid lightgrey;
+}
+
+.text-align-left-overview {
+  margin-top: 15px;
+  float: left;
+}
+
+.number-align-right-overview {
+  margin-top: 15px;
+  float: right;
+}
+
+.total-amount-text-align-left-overview {
+  margin-top: 15px;
+  float: left;
+}
+.total-amount-number-align-right-overview {
+  margin-top: 15px;
+  float: right;
+}

@@ -50,6 +50,8 @@ export default function AddressOrderCard() {
   // also add error handling if postal code is not found
   const client = useSelector(selectClient);
   const history = useHistory();
+  const id = client.id;
+  const linkData = `/order/overview/${id}`;
 
   const salutationMevr = "Mevr.";
   const salutationDhr = "Dhr.";
@@ -94,7 +96,6 @@ export default function AddressOrderCard() {
   const houseNumberBilling = useSelector(selectHouseNumberBilling);
   const errorStatus = useSelector(selectErrorStatus);
   const errorStatusBilling = useSelector(selectErrorStatusBilling);
-  let id = client.id;
 
   useEffect(() => {
     if (client.email) {
@@ -193,7 +194,7 @@ export default function AddressOrderCard() {
 
     console.log("after address client");
 
-    history.push("/order/overview");
+    history.push(linkData);
   }
 
   function borderControls(value) {

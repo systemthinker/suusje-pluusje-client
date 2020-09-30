@@ -75,10 +75,18 @@ export const getPictureJpg = (id) => {
   }
 };
 
-export const totalBasketPrice = (basket) => {
-  return (
+export const totalBasketPriceAndToFixed = (basket) => {
+  let result =
     basket
       .map((b) => parseFloat(b.price.replace(",", ".")) * b.quantity)
-      .reduce((a, b) => a + b, 0) + deliveryCosts
-  );
+      .reduce((a, b) => a + b, 0) + deliveryCosts;
+  return result.toFixed(2).replace(".", ",");
+};
+
+export const sortBasket = (basket) => {
+  return basket.sort((a, b) => a.name.localeCompare(b.name));
+};
+
+export const deliveryCostsAndToFixed = () => {
+  return deliveryCosts.toFixed(2).replace(".", ",");
 };
