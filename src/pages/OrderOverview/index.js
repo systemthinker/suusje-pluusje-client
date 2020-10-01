@@ -28,8 +28,11 @@ export default function OrderOverview() {
 
   useEffect(() => {
     console.log("id is", id);
-    dispatch(getUserWithStoredToken());
-    dispatch(fetchBasket(id));
+    dispatch(getUserWithStoredToken()).then((value) => {
+      if (value) {
+        dispatch(fetchBasket(id));
+      }
+    });
   }, [dispatch, id]);
 
   console.log("client is", client);

@@ -111,6 +111,7 @@ export const getUserWithStoredToken = () => {
       // token is still valid
       dispatch(tokenStillValid(response.data));
       dispatch(appDoneLoading());
+      return true;
     } catch (error) {
       if (error.response) {
         console.log(error.response.message);
@@ -121,6 +122,7 @@ export const getUserWithStoredToken = () => {
       // get rid of the token by logging out
       dispatch(logOut());
       dispatch(appDoneLoading());
+      return false;
     }
   };
 };
