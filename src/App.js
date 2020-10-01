@@ -19,6 +19,7 @@ import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/clients/actions";
 import UnderContruction from "./pages/UnderContruction";
 import OrderOverview from "./pages/OrderOverview";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function App() {
     dispatch(getUserWithStoredToken());
   }, [dispatch]);
 
+  console.log("load");
   return (
     <div className="App">
       <Navigation />
@@ -45,6 +47,7 @@ function App() {
         <Route path="/basket/:id" component={Basket} />
         <Route path="/product/:id" component={ProductDetails} />
         <Route path="/construction" component={UnderContruction} />
+        <Route path="/:else" component={ErrorPage} />
       </Switch>
     </div>
   );

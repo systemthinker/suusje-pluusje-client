@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Container, Form, Col, Row, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { selectClient } from "../../store/clients/selectors";
 import { selectBasket } from "../../store/baskets/selectors";
 import { getUserWithStoredToken } from "../../store/clients/actions";
@@ -19,6 +19,7 @@ import "./orderOverview.css";
 
 export default function OrderOverview() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const basket = useSelector(selectBasket);
   const client = useSelector(selectClient);
   const { id } = useParams();
@@ -28,9 +29,14 @@ export default function OrderOverview() {
 
   useEffect(() => {
     console.log("id is", id);
+    if (!id) {
+      history.push("/error");
+    }
     dispatch(getUserWithStoredToken()).then((value) => {
       if (value) {
         dispatch(fetchBasket(id));
+      } else if (value === false) {
+        history.push("/error");
       }
     });
   }, [dispatch, id]);

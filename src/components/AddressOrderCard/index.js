@@ -45,6 +45,7 @@ import CityApiStatusBilling from "../../components/FormErrorMessages/CityAPiStat
 import NoIdError from "../../components/FormErrorMessages/NoIdError";
 import FirstName from "../../components/FormErrorMessages/FirstName";
 import LastName from "../../components/FormErrorMessages/LastName";
+import { isValidEmail } from "../../components/Functions";
 
 export default function AddressOrderCard() {
   // also add error handling if postal code is not found
@@ -132,7 +133,7 @@ export default function AddressOrderCard() {
       return;
     }
 
-    if (!isRFC822ValidEmail()) {
+    if (!isValidEmail("noid", email)) {
       setErrorEmail(true);
       return;
     }
@@ -224,20 +225,15 @@ export default function AddressOrderCard() {
     }
   }
 
-  //billing
   document.addEventListener("click", (e) => {
     const insideElementConstant = document.getElementById("insideElement");
-
     let targetElement = e.target;
-
     do {
       if (targetElement === insideElementConstant) {
         return;
       }
-
       targetElement = targetElement.parentNode;
     } while (targetElement);
-
     if (
       postalCode.length === 6 &&
       Number.isInteger(houseNumber) &&
@@ -252,15 +248,12 @@ export default function AddressOrderCard() {
       "insideElementBilling"
     );
     let targetElement = e.target;
-
     do {
       if (targetElement === insideElementConstantBilling) {
         return;
       }
-
       targetElement = targetElement.parentNode;
     } while (targetElement);
-
     if (
       postalCodeBilling.length === 6 &&
       Number.isInteger(houseNumberBilling)
@@ -277,6 +270,7 @@ export default function AddressOrderCard() {
       }
     }
   });
+
   document.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
       if (
@@ -310,39 +304,6 @@ export default function AddressOrderCard() {
           </p>
         </div>
       );
-    }
-  }
-
-  function isRFC822ValidEmail(value) {
-    var sQtext = "[^\\x0d\\x22\\x5c\\x80-\\xff]";
-    var sDtext = "[^\\x0d\\x5b-\\x5d\\x80-\\xff]";
-    var sAtom =
-      "[^\\x00-\\x20\\x22\\x28\\x29\\x2c\\x2e\\x3a-\\x3c\\x3e\\x40\\x5b-\\x5d\\x7f-\\xff]+";
-    var sQuotedPair = "\\x5c[\\x00-\\x7f]";
-    var sDomainLiteral = "\\x5b(" + sDtext + "|" + sQuotedPair + ")*\\x5d";
-    var sQuotedString = "\\x22(" + sQtext + "|" + sQuotedPair + ")*\\x22";
-    var sDomain_ref = sAtom;
-    var sSubDomain = "(" + sDomain_ref + "|" + sDomainLiteral + ")";
-    var sWord = "(" + sAtom + "|" + sQuotedString + ")";
-    var sDomain = sSubDomain + "(\\x2e" + sSubDomain + ")*";
-    var sLocalPart = sWord + "(\\x2e" + sWord + ")*";
-    var sAddrSpec = sLocalPart + "\\x40" + sDomain; // complete RFC822 email address spec
-    var sValidEmail = "^" + sAddrSpec + "$"; // as whole string
-
-    var reValidEmail = new RegExp(sValidEmail);
-
-    if (reValidEmail.test(email)) {
-      if (value === "id") {
-        return "borderGreen";
-      }
-
-      return true;
-    } else if (value === "id") {
-      return "borderOrangeRed";
-    } else if (email.length > 0) {
-      return false;
-    } else {
-      return false;
     }
   }
 
@@ -461,7 +422,7 @@ export default function AddressOrderCard() {
 
   function setEmailHandler(event) {
     setEmail(event.target.value);
-    if (isRFC822ValidEmail()) {
+    if (isValidEmail("noid", email)) {
       setErrorEmail(false);
     }
   }
@@ -599,11 +560,13 @@ export default function AddressOrderCard() {
               value={email}
               onChange={(event) => setEmailHandler(event)}
               type="text"
-              className={`${isRFC822ValidEmail("id")}`}
+              className={`${isValidEmail("id", email)}`}
               placeholder="uwemail@email.com"
               required
             />
-            {isRFC822ValidEmail() || email.length === 0 ? null : <Email />}
+            {isValidEmail("noid", email) || email.length === 0 ? null : (
+              <Email />
+            )}
             <Form.Text className="text-muted">
               Wij delen uw email nooit.
             </Form.Text>

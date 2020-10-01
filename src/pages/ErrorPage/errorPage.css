@@ -1,0 +1,8 @@
+.errorImage {
+  height: 30vh;
+  width: 25vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-top: 10%;
+}
