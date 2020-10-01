@@ -6,6 +6,11 @@
 }
 .checkBoxInline {
   display: inline-flex;
+  margin-bottom: 0;
+}
+
+#formBasicName {
+  margin-bottom: 0;
 }
 .right {
   margin-left: 10%;
@@ -82,40 +87,15 @@
 }
 .billingAddressTextField {
   min-height: 22px;
+  margin-bottom: 0;
 }
 input[type="checkbox"] {
-  -ms-transform: scale(0.5);
-  -moz-transform: scale(0.5);
-  -webkit-transform: scale(0.5);
-  -o-transform: scale(0.5);
-  padding: 10px;
+  -ms-transform: scale(1);
+  -moz-transform: scale(1);
+  -webkit-transform: scale(1);
+  -o-transform: scale(1);
 }
-@media screen and (max-width: 550px) {
-  .Dhr {
-    position: absolute;
-    top: 6%;
-    left: 31%;
-    font-weight: bolder;
-  }
-  .mevr {
-    position: absolute;
-    top: 13%;
-    left: 23%;
-    font-weight: bolder;
-  }
-}
-@media screen and (max-width: 400px) {
-  .mevr {
-    position: absolute;
-    top: 12%;
-    left: 12%;
-  }
-  .Dhr {
-    position: absolute;
-    top: 6%;
-    left: 20%;
-  }
-}
+
 .legend {
   height: 20px;
   width: 20px;

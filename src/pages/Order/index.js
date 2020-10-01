@@ -6,7 +6,6 @@ export default function Order() {
   return (
     <div>
       <Container fluid>
-        <h1>Bestelling</h1>
         <div key={`inline-radio`} className="mb-3">
           <Form.Check inline type="radio" id={`inline-radio-1`} />
           <Form.Check inline type="radio" id={`inline-radio-2`} />

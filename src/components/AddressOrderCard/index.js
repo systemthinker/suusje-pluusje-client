@@ -163,10 +163,7 @@ export default function AddressOrderCard() {
           streetNameFromApiBilling,
         })
       );
-      console.log("dispatch billing");
     }
-
-    console.log("first check trough");
 
     dispatch(
       setClientData({
@@ -179,8 +176,6 @@ export default function AddressOrderCard() {
       })
     );
 
-    console.log("after client data dispatch");
-
     dispatch(
       setClientAddress({
         id,
@@ -191,8 +186,6 @@ export default function AddressOrderCard() {
         streetNameFromApi,
       })
     );
-
-    console.log("after address client");
 
     history.push(linkData);
   }
@@ -476,6 +469,7 @@ export default function AddressOrderCard() {
   return (
     <div>
       <Form as={Col} sm={{ span: 6, offset: 3 }} className="mt-5">
+        <h5 style={{ textAlign: "center" }}>BEZORGGEGEVENS</h5>
         <h6 className="align-left nameTitle">Aanhef</h6>
         <Form.Group
           onChange={(event) => onChangeSalutationHandler(event)}
@@ -485,6 +479,7 @@ export default function AddressOrderCard() {
           <Form.Label className="Dhr">Dhr.</Form.Label>
           <Form.Control
             value={salutationDhr}
+            style={{ width: "15px" }}
             type="radio"
             className="leftControl"
             name="radioAanhef"
@@ -496,6 +491,7 @@ export default function AddressOrderCard() {
           <Form.Control
             value={salutationMevr}
             checked={salutation === salutationMevr}
+            style={{ width: "15px" }}
             type="radio"
             className="rightControl "
             name="radioAanhef"
@@ -535,7 +531,7 @@ export default function AddressOrderCard() {
         <h6 className="align-left nameTitle">
           <span>Postcode</span>
         </h6>
-        <Form.Group id="insideElement" className="form-inline ">
+        <Form.Group id="insideElement" className="form-inline">
           <Form.Control
             value={postalCode}
             placeholder="0000AA"
@@ -571,8 +567,8 @@ export default function AddressOrderCard() {
         {errorStatus ? <PostalCodeApiStatus /> : null}
         <div>{returnAddressInfo()}</div>
 
-        <div className=" align-left AddressDiv">
-          <p className="bolder">
+        <div className="align-left AddressDiv">
+          <p className="bolder billingAddressTextField">
             Factuur adres <span className="optional">optioneel</span>
           </p>
           <p className="billingAddressTextField">
@@ -581,11 +577,12 @@ export default function AddressOrderCard() {
         </div>
 
         <div>
-          <Form.Group id="" className="checkBox">
+          <Form.Group className="form-inline" style={{ marginBottom: "0" }}>
             <Form.Control
               value={"adjust"}
               type="checkbox"
-              className="small"
+              className=""
+              style={{ width: "15px", height: "15px" }}
               checked={checked}
               onChange={(event) => onChangeCheckHandler(event)}
             />
@@ -613,8 +610,8 @@ export default function AddressOrderCard() {
           </Form.Group>
         </div>
 
-        <Form.Group className="mt-5">
-          <div>
+        <Form.Group className="mt-5 " id="button-continue-form-group">
+          <div className="align-left">
             <Button
               variant="success"
               size="block"
