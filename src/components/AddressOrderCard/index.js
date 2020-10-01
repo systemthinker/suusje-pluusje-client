@@ -291,15 +291,15 @@ export default function AddressOrderCard() {
       Number.isInteger(houseNumber)
     ) {
       return (
-        <div className="align-left AddressDiv">
-          <p className="bolder deliveryAddresssHide">Bezorg adres</p>
-          <p>
+        <div className="align-left">
+          <p className="bolder deliveryAddressHide">Bezorg adres</p>
+          <p className="deliveryAddressHide">
             {streetNameFromApi} {houseNumber}{" "}
             {houseNumberAddition && houseNumberAddition.length > 0
               ? houseNumberAddition
               : null}
           </p>
-          <p>
+          <p className="deliveryAddressHide">
             {postalCode} {cityNameFromApi}
           </p>
         </div>
@@ -381,8 +381,8 @@ export default function AddressOrderCard() {
     ) {
       return (
         <div className="align-left AddressDiv">
-          <p className="bolder deliveryAddresssHide">Factuur adres</p>
-          <p>
+          <p className="bolder deliveryAddressHide">Factuur adres</p>
+          <p className="deliveryAddressHide">
             {streetNameFromApiBilling}{" "}
             {houseNumberBilling && Number.isInteger(houseNumberBilling)
               ? houseNumberBilling
@@ -391,7 +391,7 @@ export default function AddressOrderCard() {
               ? houseNumberAdditionBilling
               : null}
           </p>
-          <p>
+          <p className="deliveryAddressHide">
             {postalCodeBilling} {cityNameFromApiBilling}
           </p>
         </div>

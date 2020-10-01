@@ -100,3 +100,6 @@ input[type="checkbox"] {
   height: 20px;
   width: 20px;
 }
+.deliveryAddressHide {
+  margin-bottom: 0;
+}
