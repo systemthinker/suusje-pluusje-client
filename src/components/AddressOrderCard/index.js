@@ -430,7 +430,7 @@ export default function AddressOrderCard() {
   return (
     <div>
       <Form as={Col} sm={{ span: 6, offset: 3 }} className="mt-5">
-        <h5 style={{ textAlign: "center" }}>BEZORGGEGEVENS TEST</h5>
+        <h5 style={{ textAlign: "center" }}>BEZORGGEGEVENS</h5>
         <h6 className="align-left nameTitle">Aanhef</h6>
         <Form.Group
           onChange={(event) => onChangeSalutationHandler(event)}
